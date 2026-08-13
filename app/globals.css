@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-on-background antialiased font-body-md selection:bg-primary-container selection:text-white;
+  }
+}
+
+.chevron-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5L10 10.5L11.4 9.1L20 17.7L28.6 9.1L30 10.5L20 20.5Z' fill='%23e1e3e4' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.hero-overlay {
+  background: linear-gradient(90deg, rgba(20,29,35,0.94) 0%, rgba(20,29,35,0.78) 50%, rgba(20,29,35,0.45) 100%);
+}
+
+/* Statistics Looping Marquee Styles */
+.stats-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.stats-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left-to-right 28s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee-left-to-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-marquee-track {
+    animation: none;
+    transform: translate3d(-25%, 0, 0);
+  }
+}
+

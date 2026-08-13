@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Request a Quote - Logifex Freight Services</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#e1e3e4",
+            "primary-fixed": "#ffdad4",
+            "tertiary-container": "#434242",
+            "tertiary": "#2c2c2c",
+            "on-primary-fixed-variant": "#920703",
+            "surface-variant": "#dbe4ed",
+            "on-secondary-container": "#626566",
+            "inverse-primary": "#ffb4a8",
+            "tertiary-fixed-dim": "#c8c6c5",
+            "outline-variant": "#e3beb8",
+            "on-error": "#ffffff",
+            "surface-container-high": "#e0e9f2",
+            "surface-container": "#e6eff8",
+            "primary-fixed-dim": "#ffb4a8",
+            "primary-container": "#8b0000",
+            "secondary-fixed-dim": "#c5c7c8",
+            "on-tertiary-fixed-variant": "#474746",
+            "on-tertiary-container": "#b1aeae",
+            "surface-dim": "#d2dbe4",
+            "surface-tint": "#b52619",
+            "surface-container-low": "#ecf5fe",
+            "secondary-fixed": "#e1e3e4",
+            "on-tertiary-fixed": "#1c1b1b",
+            "inverse-on-surface": "#e9f2fb",
+            "error-container": "#ffdad6",
+            "secondary": "#5c5f60",
+            "on-background": "#141d23",
+            "surface-container-highest": "#dbe4ed",
+            "background": "#f6faff",
+            "on-primary-container": "#ff907f",
+            "primary": "#610000",
+            "on-primary-fixed": "#410000",
+            "surface-bright": "#f6faff",
+            "surface": "#f6faff",
+            "tertiary-fixed": "#e5e2e1",
+            "on-secondary-fixed-variant": "#454748",
+            "on-surface-variant": "#5a403c",
+            "inverse-surface": "#293138",
+            "outline": "#8e706b",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#191c1d",
+            "on-surface": "#141d23",
+            "error": "#ba1a1a"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "margin-mobile": "16px",
+            "gutter": "24px",
+            "margin-desktop": "48px",
+            "unit": "8px",
+            "container-max": "1280px"
+          },
+          fontFamily: {
+            "body-md": ["Hanken Grotesk", "sans-serif"],
+            "label-sm": ["Hanken Grotesk", "sans-serif"],
+            "label-bold": ["Hanken Grotesk", "sans-serif"],
+            "body-lg": ["Hanken Grotesk", "sans-serif"],
+            "headline-display": ["Montserrat", "sans-serif"],
+            "headline-md": ["Montserrat", "sans-serif"],
+            "headline-lg-mobile": ["Montserrat", "sans-serif"],
+            "headline-lg": ["Montserrat", "sans-serif"]
+          },
+          fontSize: {
+            "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+            "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "500" }],
+            "label-bold": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "600" }],
+            "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+            "headline-display": ["64px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+            "headline-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+            "headline-lg": ["40px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .chevron-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5l-10-10L11.5 9l8.5 8.5L28.5 9 30 10.5l-10 10zM20 30.5l-10-10L11.5 19l8.5 8.5L28.5 19 30 20.5l-10 10z' fill='%23f6faff' fill-opacity='0.5' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased">
+  
+  <!-- Header -->
+  <header class="bg-surface-container-lowest border-b border-secondary-container w-full top-0 sticky z-50 shadow-sm">
+    <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-3.5 max-w-container-max mx-auto">
+      <a class="flex items-center gap-2" href="index.html">
+        <img alt="Logifex Freight Services Logo" class="h-10 w-auto object-contain" src="image_from_https_logifex.in_wp_content_uploads_2025_08_logifex_logo_png_new_1.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/aida/AP1WRLt5YBr8YnMnNfQ_-PpSA5k76MJ2Kr3f0G7SHLq0JN76O40b4HjtKIJB0VPbMXINKqGDUMTL9D5R2-6VKSXRMwa58OzjLHuMfD96IAJoFpYhfzTrZ84dWyM2QCu7nuMdbFrUxLP4OgrYoJeyhc1Dmj9eRyPJXXgtl4kTeNZ1hClvRhAxOzVxoODLJ9bbIEqZOmgWSDONTTH95mp-ZWVMFBMWZ32WvUjab1OuLEkEREFcRw32PoRSSiMHNbw'"/>
+      </a>
+      <div class="flex items-center gap-6">
+        <a class="hidden sm:flex text-secondary font-label-bold items-center gap-2 hover:text-primary transition-colors text-sm" href="services.html">
+          Services
+        </a>
+        <a class="hidden sm:flex text-secondary font-label-bold items-center gap-2 hover:text-primary transition-colors text-sm" href="tracking.html">
+          Live Tracking
+        </a>
+        <a class="text-secondary font-label-bold flex items-center gap-1.5 hover:text-primary-container transition-colors text-sm" href="index.html">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+    
+    <!-- Sidebar - Why Logifex? (4 columns on lg) -->
+    <aside class="lg:col-span-4 order-2 lg:order-1 flex flex-col gap-6">
+      <div class="bg-surface-container-lowest p-8 border border-secondary-container rounded-xl shadow-sm relative overflow-hidden">
+        <div class="chevron-pattern absolute inset-0 opacity-20 pointer-events-none"></div>
+        <h2 class="font-headline-md text-xl text-on-surface mb-6 relative z-10 font-bold">Why Ship with Logifex?</h2>
+        
+        <ul class="space-y-6 relative z-10">
+          <li class="flex gap-4 items-start">
+            <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-primary-container shadow-sm">
+              <span class="material-symbols-outlined">schedule</span>
+            </div>
+            <div>
+              <h3 class="font-label-bold text-sm text-on-surface mb-0.5 font-bold">Guaranteed Transit Speeds</h3>
+              <p class="text-secondary text-xs leading-relaxed">Direct scheduled routes across Air, Ocean, and Multimodal corridors worldwide.</p>
+            </div>
+          </li>
+          <li class="flex gap-4 items-start">
+            <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-primary-container shadow-sm">
+              <span class="material-symbols-outlined">account_tree</span>
+            </div>
+            <div>
+              <h3 class="font-label-bold text-sm text-on-surface mb-0.5 font-bold">Tailored Supply Route Strategy</h3>
+              <p class="text-secondary text-xs leading-relaxed">Dedicated logistics engineers optimize payload capacity, tariff structures, and lead times.</p>
+            </div>
+          </li>
+          <li class="flex gap-4 items-start">
+            <div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center shrink-0 text-primary-container shadow-sm">
+              <span class="material-symbols-outlined">verified_user</span>
+            </div>
+            <div>
+              <h3 class="font-label-bold text-sm text-on-surface mb-0.5 font-bold">Secure Handling & Telemetry</h3>
+              <p class="text-secondary text-xs leading-relaxed">Real-time GPS tracking, electronic documentation, and end-to-end cargo insurance.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-8 pt-6 border-t border-secondary-container relative z-10">
+          <p class="text-secondary font-label-bold text-xs uppercase tracking-wider mb-3">Need Immediate Assistance?</p>
+          <div class="flex flex-col gap-2.5 text-sm font-medium">
+            <a class="flex items-center gap-2 text-primary hover:text-primary-container transition-colors" href="tel:+97145752307">
+              <span class="material-symbols-outlined text-base">call</span>
+              UAE: +971 45752307
+            </a>
+            <a class="flex items-center gap-2 text-primary hover:text-primary-container transition-colors" href="tel:+914842778899">
+              <span class="material-symbols-outlined text-base">call</span>
+              India: +91 484 277 8899
+            </a>
+            <a class="flex items-center gap-2 text-primary hover:text-primary-container transition-colors" href="mailto:info@logifexgroup.com">
+              <span class="material-symbols-outlined text-base">mail</span>
+              info@logifexgroup.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl overflow-hidden border border-secondary-container relative shadow-sm">
+        <img alt="Logistics Warehouse" class="w-full h-52 object-cover" src="image_from_https_logifex.in_wp_content_uploads_2025_08_1198.jpg.png"/>
+        <div class="p-4 bg-surface-container-lowest border-t border-secondary-container text-xs text-secondary">
+          <span class="font-bold text-on-surface">Global Warehouse Hubs:</span> High-throughput consolidation facilities across Dubai, Kerala, and London.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Form Area (8 columns on lg) -->
+    <section class="lg:col-span-8 order-1 lg:order-2">
+      <div class="mb-6">
+        <span class="text-primary-container font-label-bold text-xs uppercase tracking-wider block mb-1">Instant Estimation & Booking</span>
+        <h1 class="font-headline-lg-mobile md:font-headline-lg text-2xl md:text-3xl text-on-surface font-bold mb-2">Request Freight Rate Quote</h1>
+        <p class="text-secondary font-body-md text-sm">Provide your shipment parameters below to receive a customized rate and transit breakdown within minutes.</p>
+      </div>
+
+      <form id="quoteForm" class="bg-surface-container-lowest border border-secondary-container rounded-xl p-6 md:p-10 shadow-sm flex flex-col gap-8">
+        
+        <!-- Step 1: Service Type -->
+        <div>
+          <h3 class="font-headline-md text-lg text-on-surface mb-4 flex items-center gap-3 font-bold">
+            <span class="w-7 h-7 rounded-full bg-primary-container text-white flex items-center justify-center font-label-bold text-xs">1</span>
+            Select Transport Modality
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <label class="cursor-pointer relative">
+              <input checked="" class="peer sr-only" name="service" type="radio" value="Air Freight"/>
+              <div class="border-2 border-secondary-container rounded-xl p-4 flex flex-col items-center gap-2 hover:border-primary-container transition-all peer-checked:border-primary-container peer-checked:bg-surface-container-low text-center">
+                <span class="material-symbols-outlined text-secondary peer-checked:text-primary-container text-3xl">flight_takeoff</span>
+                <span class="font-label-bold text-xs text-on-surface">Air Freight</span>
+                <span class="text-[10px] text-secondary">1-4 Days</span>
+              </div>
+            </label>
+            <label class="cursor-pointer relative">
+              <input class="peer sr-only" name="service" type="radio" value="Sea Freight"/>
+              <div class="border-2 border-secondary-container rounded-xl p-4 flex flex-col items-center gap-2 hover:border-primary-container transition-all peer-checked:border-primary-container peer-checked:bg-surface-container-low text-center">
+                <span class="material-symbols-outlined text-secondary peer-checked:text-primary-container text-3xl">directions_boat</span>
+                <span class="font-label-bold text-xs text-on-surface">Ocean / Sea</span>
+                <span class="text-[10px] text-secondary">12-30 Days</span>
+              </div>
+            </label>
+            <label class="cursor-pointer relative">
+              <input class="peer sr-only" name="service" type="radio" value="Road Freight"/>
+              <div class="border-2 border-secondary-container rounded-xl p-4 flex flex-col items-center gap-2 hover:border-primary-container transition-all peer-checked:border-primary-container peer-checked:bg-surface-container-low text-center">
+                <span class="material-symbols-outlined text-secondary peer-checked:text-primary-container text-3xl">local_shipping</span>
+                <span class="font-label-bold text-xs text-on-surface">Road / Overland</span>
+                <span class="text-[10px] text-secondary">Door-to-Door</span>
+              </div>
+            </label>
+            <label class="cursor-pointer relative">
+              <input class="peer sr-only" name="service" type="radio" value="Multimodal"/>
+              <div class="border-2 border-secondary-container rounded-xl p-4 flex flex-col items-center gap-2 hover:border-primary-container transition-all peer-checked:border-primary-container peer-checked:bg-surface-container-low text-center">
+                <span class="material-symbols-outlined text-secondary peer-checked:text-primary-container text-3xl">hub</span>
+                <span class="font-label-bold text-xs text-on-surface">Multimodal</span>
+                <span class="text-[10px] text-secondary">Optimized</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <hr class="border-secondary-container"/>
+
+        <!-- Step 2: Routing -->
+        <div>
+          <h3 class="font-headline-md text-lg text-on-surface mb-4 flex items-center gap-3 font-bold">
+            <span class="w-7 h-7 rounded-full bg-primary-container text-white flex items-center justify-center font-label-bold text-xs">2</span>
+            Origin & Destination Routing
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Origin Location / Port *</label>
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">location_on</span>
+                <input id="originInput" required class="w-full pl-10 pr-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm placeholder:text-neutral-400" placeholder="e.g. Dubai Port (DXB / Jebel Ali)" type="text" value="Dubai, UAE"/>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Destination Location / Port *</label>
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">pin_drop</span>
+                <input id="destInput" required class="w-full pl-10 pr-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm placeholder:text-neutral-400" placeholder="e.g. Cochin Port (COK), India" type="text" value="Cochin (COK), India"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-secondary-container"/>
+
+        <!-- Step 3: Shipment Details & Dynamic Volume -->
+        <div>
+          <h3 class="font-headline-md text-lg text-on-surface mb-4 flex items-center gap-3 font-bold">
+            <span class="w-7 h-7 rounded-full bg-primary-container text-white flex items-center justify-center font-label-bold text-xs">3</span>
+            Payload & Dimension Specifications
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Total Gross Weight (KG) *</label>
+              <input id="weightInput" required min="1" class="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm" placeholder="e.g. 1500" type="number" value="1250"/>
+            </div>
+            <div class="flex flex-col gap-1.5 md:col-span-2">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Dimensions (L × W × H in cm)</label>
+              <div class="flex items-center gap-2">
+                <input id="dimL" class="w-full px-3 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-center text-sm" placeholder="Length" type="number" value="120"/>
+                <span class="text-secondary text-sm">×</span>
+                <input id="dimW" class="w-full px-3 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-center text-sm" placeholder="Width" type="number" value="80"/>
+                <span class="text-secondary text-sm">×</span>
+                <input id="dimH" class="w-full px-3 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-center text-sm" placeholder="Height" type="number" value="100"/>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Container / Cargo Type</label>
+              <select class="w-full px-3 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm text-on-surface">
+                <option>General Cargo (Palletized)</option>
+                <option>FCL 20ft Standard Container</option>
+                <option>FCL 40ft High Cube Container</option>
+                <option>LCL Consolidated Cargo</option>
+                <option>Temperature Controlled / Pharma</option>
+                <option>Dangerous Goods (DG / IMO)</option>
+              </select>
+            </div>
+
+            <div class="flex flex-col gap-1.5 md:col-span-2">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Commodity & Special Handling Notes</label>
+              <input class="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm" placeholder="e.g. Industrial Machinery, Fragile, Stackable" type="text" value="Industrial Electrical Parts"/>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-secondary-container"/>
+
+        <!-- Step 4: Contact Info -->
+        <div>
+          <h3 class="font-headline-md text-lg text-on-surface mb-4 flex items-center gap-3 font-bold">
+            <span class="w-7 h-7 rounded-full bg-primary-container text-white flex items-center justify-center font-label-bold text-xs">4</span>
+            Client & Dispatch Contact Details
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Full Name *</label>
+              <input id="contactName" required class="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm" placeholder="Johnathan Doe" type="text" value="Rashid Al Mansoori"/>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Company Name</label>
+              <input class="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm" placeholder="e.g. Global Tech Logistics LLC" type="text" value="Apex Engineering Trading LLC"/>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Work Email Address *</label>
+              <input id="contactEmail" required class="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm" placeholder="name@company.com" type="email" value="logistics@apexeng.ae"/>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-bold text-xs text-on-surface uppercase tracking-wider">Phone / WhatsApp Number *</label>
+              <input id="contactPhone" required class="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm" placeholder="+971 50 123 4567" type="tel" value="+971 50 882 1920"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-secondary-container">
+          <span class="text-xs text-secondary flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm text-emerald-600">lock</span>
+            Data encrypted. No obligations. Instant quotation dispatch.
+          </span>
+          <button type="submit" class="w-full sm:w-auto bg-primary-container text-white hover:bg-primary transition-all duration-200 px-8 py-3.5 rounded-lg font-label-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg">
+            Calculate & Request Quote
+            <span class="material-symbols-outlined text-sm">send</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Confirmation / Instant Estimation Modal -->
+      <div id="quoteModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-6 md:p-8 border border-secondary-container shadow-2xl relative animate-in fade-in zoom-in duration-200">
+          <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+            <span class="material-symbols-outlined text-2xl">check_circle</span>
+          </div>
+          <h3 class="font-headline-md text-xl font-bold text-on-background mb-1">Quote Request Generated!</h3>
+          <p class="text-xs text-secondary mb-4">Reference ID: <span id="modalRef" class="font-mono font-bold text-primary">LGFX-Q98234</span> • Dispatched to Dispatch Engine</p>
+          
+          <div class="bg-surface p-4 rounded-xl border border-secondary-container text-xs space-y-2 mb-6">
+            <div class="flex justify-between pb-1 border-b border-secondary-container">
+              <span class="text-secondary">Service:</span>
+              <span id="modalService" class="font-bold text-on-surface">Air Freight</span>
+            </div>
+            <div class="flex justify-between pb-1 border-b border-secondary-container">
+              <span class="text-secondary">Route:</span>
+              <span id="modalRoute" class="font-bold text-on-surface">Dubai &rarr; Cochin</span>
+            </div>
+            <div class="flex justify-between pb-1 border-b border-secondary-container">
+              <span class="text-secondary">Weight & Volume:</span>
+              <span id="modalSpecs" class="font-bold text-on-surface">1,250 KG (0.96 CBM)</span>
+            </div>
+            <div class="flex justify-between pt-1 font-bold text-sm text-primary">
+              <span>Estimated Rate Bracket:</span>
+              <span id="modalPrice">$1,480 - $1,750 USD</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-secondary mb-6 leading-relaxed">
+            Our trade desk in Dubai has received your exact cargo specs. A formalized proforma invoice and booking note have also been sent to your email.
+          </p>
+
+          <div class="flex gap-3">
+            <button id="closeModalBtn" class="flex-1 bg-primary-container text-white py-2.5 rounded-lg font-label-bold text-sm hover:bg-primary transition-colors">
+              Close
+            </button>
+            <a href="tracking.html" class="flex-1 border border-secondary-container text-center py-2.5 rounded-lg font-label-bold text-sm hover:bg-surface transition-colors">
+              Go to Tracking
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-inverse-surface w-full mt-auto text-surface-variant">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto">
+      <div class="flex flex-col gap-3">
+        <a class="flex items-center gap-2" href="index.html">
+          <img alt="Logifex Logo" class="h-8 w-auto brightness-0 invert" src="image_from_https_logifex.in_wp_content_uploads_2025_08_logifex_logo_png_new_1.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/aida/AP1WRLt5YBr8YnMnNfQ_-PpSA5k76MJ2Kr3f0G7SHLq0JN76O40b4HjtKIJB0VPbMXINKqGDUMTL9D5R2-6VKSXRMwa58OzjLHuMfD96IAJoFpYhfzTrZ84dWyM2QCu7nuMdbFrUxLP4OgrYoJeyhc1Dmj9eRyPJXXgtl4kTeNZ1hClvRhAxOzVxoODLJ9bbIEqZOmgWSDONTTH95mp-ZWVMFBMWZ32WvUjab1OuLEkEREFcRw32PoRSSiMHNbw'"/>
+        </a>
+        <p class="font-body-md text-xs text-surface-variant">© 2026 Logifex Freight Services. Precision in Motion.</p>
+      </div>
+      <div class="flex flex-col gap-2 text-xs">
+        <span class="font-label-bold text-sm text-surface-bright mb-1 uppercase tracking-wider">Offices</span>
+        <a class="hover:text-primary-fixed-dim transition-colors" href="contact.html">UAE Office: +971 45752307</a>
+        <a class="hover:text-primary-fixed-dim transition-colors" href="contact.html">India Office: +91 484 277 8899</a>
+        <a class="hover:text-primary-fixed-dim transition-colors" href="contact.html">UK Hub: London</a>
+      </div>
+      <div class="flex flex-col gap-2 text-xs">
+        <span class="font-label-bold text-sm text-surface-bright mb-1 uppercase tracking-wider">Solutions</span>
+        <a class="hover:text-primary-fixed-dim transition-colors" href="services.html#air">Air Charter & Cargo</a>
+        <a class="hover:text-primary-fixed-dim transition-colors" href="services.html#sea">FCL / LCL Ocean</a>
+        <a class="hover:text-primary-fixed-dim transition-colors" href="services.html#multimodal">Multimodal Rail & Road</a>
+      </div>
+      <div class="flex flex-col gap-2 text-xs">
+        <span class="font-label-bold text-sm text-surface-bright mb-1 uppercase tracking-wider">Quick Actions</span>
+        <a class="hover:text-primary-fixed-dim transition-colors" href="tracking.html">Track Existing Consignment</a>
+        <a class="hover:text-primary-fixed-dim transition-colors" href="contact.html">Contact Customer Helpdesk</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('quoteForm');
+    const modal = document.getElementById('quoteModal');
+    const closeModal = document.getElementById('closeModalBtn');
+
+    if (form && modal) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const selectedService = form.querySelector('input[name="service"]:checked')?.value || 'Air Freight';
+        const origin = document.getElementById('originInput').value || 'Origin Port';
+        const dest = document.getElementById('destInput').value || 'Destination Port';
+        const weight = parseFloat(document.getElementById('weightInput').value) || 500;
+        const l = parseFloat(document.getElementById('dimL').value) || 100;
+        const w = parseFloat(document.getElementById('dimW').value) || 100;
+        const h = parseFloat(document.getElementById('dimH').value) || 100;
+        const cbm = ((l * w * h) / 1000000).toFixed(2);
+
+        const refId = 'LGFX-Q' + Math.floor(10000 + Math.random() * 90000);
+        document.getElementById('modalRef').textContent = refId;
+        document.getElementById('modalService').textContent = selectedService;
+        document.getElementById('modalRoute').textContent = `${origin} → ${dest}`;
+        document.getElementById('modalSpecs').textContent = `${weight.toLocaleString()} KG (${cbm} CBM)`;
+
+        let estBase = 0;
+        if (selectedService.includes('Air')) estBase = weight * 1.6;
+        else if (selectedService.includes('Sea')) estBase = Math.max(weight * 0.4, cbm * 180);
+        else estBase = weight * 0.85;
+
+        const low = Math.round(estBase);
+        const high = Math.round(estBase * 1.25);
+        document.getElementById('modalPrice').textContent = `$${low.toLocaleString()} - $${high.toLocaleString()} USD`;
+
+        modal.classList.remove('hidden');
+      });
+    }
+
+    if (closeModal && modal) {
+      closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+    }
+  </script>
+</body>
+</html>
