@@ -254,7 +254,7 @@
             <div class="relative z-10 stats-marquee-wrapper w-full overflow-hidden select-none border-t border-white/10 pt-10 mt-16 pb-2">
               <div class="stats-marquee-track flex">
                 <!-- Group 1 -->
-                <div class="flex-shrink-0 flex items-center justify-around gap-12 md:gap-24 px-8 whitespace-nowrap min-w-[680px] md:min-w-full">
+                <div class="flex-shrink-0 flex items-center gap-16 md:gap-32 px-8 md:px-16 whitespace-nowrap">
                   <div class="flex flex-col items-center text-center">
                     <span class="font-headline-display text-3xl md:text-4xl font-bold text-white mb-1">120+</span>
                     <span class="text-[10px] md:text-xs font-label-bold text-white/80 uppercase tracking-wider">Global Destinations</span>
@@ -278,7 +278,7 @@
                 </div>
 
                 <!-- Group 2 (identical copy for seamless infinite looping) -->
-                <div class="flex-shrink-0 flex items-center justify-around gap-12 md:gap-24 px-8 whitespace-nowrap min-w-[680px] md:min-w-full">
+                <div class="flex-shrink-0 flex items-center gap-16 md:gap-32 px-8 md:px-16 whitespace-nowrap">
                   <div class="flex flex-col items-center text-center">
                     <span class="font-headline-display text-3xl md:text-4xl font-bold text-white mb-1">120+</span>
                     <span class="text-[10px] md:text-xs font-label-bold text-white/80 uppercase tracking-wider">Global Destinations</span>
@@ -306,15 +306,15 @@
         </div>
       </section>
 
-      <section id="core-values-container" class="relative w-full h-auto md:h-[460vh] bg-primary z-30 overflow-visible">
+      <section id="core-values-container" class="relative w-full h-auto md:h-[400vh] bg-primary z-30 overflow-visible">
         <!-- Sticky / static wrapper -->
         <div class="md:sticky md:top-0 w-full h-auto md:h-screen bg-primary overflow-hidden flex items-center">
           <div class="w-full h-full flex flex-col md:flex-row max-w-container-max mx-auto relative px-margin-mobile md:px-margin-desktop py-16 md:py-0">
 
             <!-- Left Column: Sticky Title & Progress -->
             <div class="w-full md:w-1/2 flex flex-col justify-between h-auto md:h-full py-0 md:py-24 z-20">
-              <div>
-                <h2 class="font-headline-display text-4xl sm:text-5xl md:text-8xl text-white font-black uppercase tracking-tight leading-none">
+              <div class="flex-grow flex items-center">
+                <h2 id="core-values-heading" class="font-headline-display text-4xl sm:text-5xl md:text-8xl text-white font-black uppercase tracking-tight leading-none" style="will-change: transform, opacity, clip-path;">
                   Core <br class="hidden md:inline" /> Values
                 </h2>
               </div>
@@ -326,38 +326,38 @@
                   <span>04 / ACCOUNTABILITY</span>
                 </div>
                 <div class="w-full h-[2px] bg-white/20 relative">
-                  <div id="core-values-progress-bar" class="h-full bg-lime-400 absolute left-0 top-0 transition-all duration-100" style="width: 0%;"></div>
+                  <div id="core-values-progress-bar" class="h-full bg-lime-400 absolute left-0 top-0 transition-all" style="width: 0%; transition-duration: 400ms; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);"></div>
                 </div>
               </div>
             </div>
 
             <!-- Right Column: Moving Content -->
             <div class="w-full md:w-1/2 h-auto md:h-full relative overflow-visible md:overflow-hidden mt-12 md:mt-0">
-              <div id="core-values-track" class="w-full flex flex-col space-y-16 md:space-y-0 transition-transform duration-200 ease-out">
+              <div id="core-values-track" class="w-full flex flex-col space-y-16 md:space-y-0 transition-transform" style="will-change: transform;">
                 
                 <!-- Card 1 -->
-                <div class="core-value-card w-full h-auto md:h-screen flex flex-col justify-center md:justify-start md:pt-[54vh] px-0 md:px-12 transition-all duration-500 self-start">
+                <div class="core-value-card w-full h-auto md:h-screen flex flex-col justify-center md:justify-start md:pt-24 px-0 md:px-12 self-start">
                   <span class="font-headline-display text-5xl md:text-8xl font-black text-lime-400 block mb-3">01.</span>
                   <h3 class="font-headline-md text-2xl md:text-4xl text-white font-bold mb-3 uppercase tracking-tight">Reliability</h3>
                   <p class="font-body-md text-sm md:text-base text-white/80 max-w-md leading-relaxed">Consistency in every shipment and operation</p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="core-value-card w-full h-auto md:h-screen flex flex-col justify-center md:justify-start md:pt-[54vh] px-0 md:px-12 transition-all duration-500 self-end md:pl-24">
+                <div class="core-value-card w-full h-auto md:h-screen flex flex-col justify-center md:justify-start md:pt-24 px-0 md:px-12 self-end md:pl-24">
                   <span class="font-headline-display text-5xl md:text-8xl font-black text-lime-400 block mb-3">02.</span>
                   <h3 class="font-headline-md text-2xl md:text-4xl text-white font-bold mb-3 uppercase tracking-tight">Transparency</h3>
                   <p class="font-body-md text-sm md:text-base text-white/80 max-w-md leading-relaxed">Clear communication and process visibility</p>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="core-value-card w-full h-auto md:h-screen flex flex-col justify-center md:justify-start md:pt-[54vh] px-0 md:px-12 transition-all duration-500 self-start">
+                <div class="core-value-card w-full h-auto md:h-screen flex flex-col justify-center md:justify-start md:pt-24 px-0 md:px-12 self-start">
                   <span class="font-headline-display text-5xl md:text-8xl font-black text-lime-400 block mb-3">03.</span>
                   <h3 class="font-headline-md text-2xl md:text-4xl text-white font-bold mb-3 uppercase tracking-tight">Efficiency</h3>
                   <p class="font-body-md text-sm md:text-base text-white/80 max-w-md leading-relaxed">Optimized logistics for time and cost control</p>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="core-value-card w-full h-auto md:h-screen flex flex-col justify-center md:justify-start md:pt-[54vh] px-0 md:px-12 transition-all duration-500 self-end md:pl-24">
+                <div class="core-value-card w-full h-auto md:h-screen flex flex-col justify-center md:justify-start md:pt-24 px-0 md:px-12 self-end md:pl-24">
                   <span class="font-headline-display text-5xl md:text-8xl font-black text-lime-400 block mb-3">04.</span>
                   <h3 class="font-headline-md text-2xl md:text-4xl text-white font-bold mb-3 uppercase tracking-tight">Accountability</h3>
                   <p class="font-body-md text-sm md:text-base text-white/80 max-w-md leading-relaxed">Ownership at every stage of execution</p>
@@ -628,6 +628,8 @@
     </div>
   </footer>
 
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
   <script>
     // Mobile Drawer Toggle
     const mobileBtn = document.getElementById('mobileMenuBtn');
@@ -640,11 +642,106 @@
 
     // Core Values Scroll Animation
     (function() {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
       const container = document.getElementById('core-values-container');
       const track = document.getElementById('core-values-track');
       const progressBar = document.getElementById('core-values-progress-bar');
       const cards = document.querySelectorAll('.core-value-card');
+
+      function calculateActiveIndex() {
+        if (!container) return 0;
+        const offsetTop = container.offsetTop;
+        const scrollY = window.scrollY;
+        
+        if (scrollY < offsetTop) return 0;
+        
+        const scrolled = scrollY - offsetTop;
+        const scrolledVh = (scrolled / window.innerHeight) * 100;
+        
+        let index = 0;
+        if (scrolledVh < 50) index = 0;
+        else if (scrolledVh < 150) index = 1;
+        else if (scrolledVh < 250) index = 2;
+        else index = 3;
+        
+        return index;
+      }
       
+      let isTransitioning = false;
+      let activeIdx = calculateActiveIndex();
+      let accumulatedDelta = 0;
+      let touchStartY = 0;
+      let hasScrolledIntoView = window.scrollY > (container ? container.offsetTop : 0);
+
+      // Initialize GSAP ScrollTrigger for Core Values title reveal
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        const heading = document.getElementById('core-values-heading');
+        if (heading && container) {
+          const isMobileViewport = window.innerWidth < 768;
+          const startY = isMobileViewport ? 40 : 80;
+
+          gsap.fromTo(heading, {
+            y: startY,
+            opacity: 0,
+            clipPath: 'inset(100% 0 0 0)'
+          }, {
+            y: 0,
+            opacity: 1,
+            clipPath: 'inset(0% 0 0 0)',
+            scrollTrigger: {
+              trigger: container,
+              start: 'top 75%',
+              end: 'top 25%',
+              scrub: true
+            }
+          });
+
+          // Refresh ScrollTrigger on body size changes (image/video dynamic loading)
+          let resizeObserver = null;
+          if (typeof window !== 'undefined' && 'ResizeObserver' in window) {
+            resizeObserver = new ResizeObserver(function() {
+              ScrollTrigger.refresh();
+              
+              // Sync active index after layout stabilizes
+              const currentIdx = calculateActiveIndex();
+              if (currentIdx !== activeIdx) {
+                activeIdx = currentIdx;
+                updateUI(activeIdx, '0ms');
+              }
+            });
+            resizeObserver.observe(document.body);
+          }
+
+          setTimeout(function() {
+            ScrollTrigger.refresh();
+          }, 200);
+        }
+      }
+      
+      function smoothScrollTo(targetY, duration) {
+        const startY = window.scrollY;
+        const difference = targetY - startY;
+        let startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const progress = timestamp - startTime;
+          const percent = Math.min(progress / duration, 1);
+          const ease = 1 - Math.pow(1 - percent, 4);
+          window.scrollTo(0, startY + difference * ease);
+          if (progress < duration) {
+            window.requestAnimationFrame(step);
+          }
+        }
+
+        window.requestAnimationFrame(step);
+      }
+
       function handleScroll() {
         if (!container || window.innerWidth < 768) {
           if (track) track.style.transform = 'none';
@@ -657,42 +754,223 @@
         }
         
         const rect = container.getBoundingClientRect();
-        const totalScrollable = rect.height - window.innerHeight;
         
-        const scrolled = -rect.top;
-        const pct = totalScrollable <= 0 ? 0 : Math.max(0, Math.min(100, (scrolled / totalScrollable) * 100));
-        
-        if (progressBar) progressBar.style.width = pct + '%';
-        
-        const scrolledVh = (scrolled / window.innerHeight) * 100;
-        const tVal = Math.min(335, Math.max(0, scrolledVh));
+        // Reset and stop calculations if at top of page or container is below viewport
+        if (window.scrollY === 0 || rect.top > 0) {
+          if (progressBar) progressBar.style.width = '0%';
+          activeIdx = 0;
+          isTransitioning = false;
+          accumulatedDelta = 0;
+          hasScrolledIntoView = false;
+          updateUI(0, '0ms');
+          return;
+        }
 
-        const activeIdx = (function() {
-          if (tVal < 50) return 0;
-          if (tVal < 150) return 1;
-          if (tVal < 250) return 2;
-          return 3;
-        })();
-        
-        if (track) track.style.transform = `translateY(-${tVal}vh)`;
-        
-        cards.forEach((card, idx) => {
-          if (idx === activeIdx) {
-            card.style.opacity = 1;
-            card.style.transform = 'scale(1)';
+        if (rect.top <= 0) {
+          hasScrolledIntoView = true;
+        }
+
+        const offsetTop = container.offsetTop;
+        const height = container.offsetHeight;
+        const maxScroll = offsetTop + height - window.innerHeight;
+        const scrollY = window.scrollY;
+
+        // Reset to 3 if we scrolled past the container natively
+        if (scrollY > maxScroll + 5) {
+          if (progressBar) progressBar.style.width = '100%';
+          activeIdx = 3;
+          isTransitioning = false;
+          accumulatedDelta = 0;
+          updateUI(3, '0ms');
+          return;
+        }
+
+        // Sync active index with actual scroll position if not transitioning
+        if (!isTransitioning) {
+          const targetIdx = calculateActiveIndex();
+          if (targetIdx !== activeIdx) {
+            activeIdx = targetIdx;
+            updateUI(activeIdx, '0ms');
+          }
+        }
+      }      function updateUI(idx, duration) {
+        if (window.innerWidth < 768) {
+          if (track) track.style.transform = 'none';
+          if (progressBar) {
+            progressBar.style.transitionDuration = '0ms';
+            progressBar.style.width = '0%';
+          }
+          cards.forEach(card => {
+            card.style.position = 'static';
+            card.style.top = 'auto';
+            card.style.left = 'auto';
+            card.style.right = 'auto';
+            card.style.paddingTop = '';
+            card.style.height = '';
+            card.style.opacity = '1';
+            card.style.transform = 'none';
             card.style.filter = 'none';
+            card.style.pointerEvents = 'auto';
+          });
+          return;
+        }
+
+        if (track) {
+          track.style.transitionDuration = '0ms';
+          track.style.transform = 'none';
+        }
+
+        if (progressBar) {
+          progressBar.style.transitionDuration = '800ms';
+          progressBar.style.transitionTimingFunction = 'cubic-bezier(0.22, 1, 0.36, 1)';
+          progressBar.style.width = `${(idx / 3) * 100}%`;
+        }
+
+        cards.forEach((card, i) => {
+          card.style.position = 'absolute';
+          card.style.top = '50%';
+          card.style.left = '0';
+          card.style.right = '0';
+          card.style.paddingTop = '0';
+          card.style.height = 'auto';
+          
+          card.style.transitionDuration = '800ms';
+          card.style.transitionTimingFunction = 'cubic-bezier(0.22, 1, 0.36, 1)';
+          
+          if (i === idx) {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(-50%) scale(1)';
+            card.style.filter = 'none';
+            card.style.pointerEvents = 'auto';
+          } else if (i < idx) {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(-50%) translateY(-30px) scale(0.97)';
+            card.style.filter = 'blur(4px)';
+            card.style.pointerEvents = 'none';
           } else {
-            card.style.opacity = 0.2;
-            card.style.transform = 'scale(0.95)';
-            card.style.filter = 'blur(1px)';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(-50%) translateY(30px) scale(0.97)';
+            card.style.filter = 'blur(4px)';
+            card.style.pointerEvents = 'none';
           }
         });
-
-        console.log("[CoreValues HTML] rect.top:", rect.top, "rect.height:", rect.height, "pct:", pct, "activeIdx:", activeIdx);
       }
-      
+      function triggerTransition(nextIdx) {
+        isTransitioning = true;
+        activeIdx = nextIdx;
+        updateUI(activeIdx, '1200ms');
+
+        if (container) {
+          const targetScrollY = container.offsetTop + nextIdx * window.innerHeight;
+          smoothScrollTo(targetScrollY, 1200);
+        }
+
+        setTimeout(() => {
+          isTransitioning = false;
+          accumulatedDelta = 0;
+        }, 1250);
+      }
+
+      function onWheel(e) {
+        if (window.innerWidth < 768 || !container) return;
+        const offsetTop = container.offsetTop;
+        const height = container.offsetHeight;
+        const maxScroll = offsetTop + height - window.innerHeight;
+        const scrollY = window.scrollY;
+
+        const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
+        if (!isInside) return;
+
+        if (isTransitioning) {
+          e.preventDefault();
+          return;
+        }
+
+        if (activeIdx === 0 && e.deltaY < 0 && scrollY <= offsetTop + 5) {
+          return;
+        }
+
+        if (activeIdx === 3 && e.deltaY > 0 && scrollY >= maxScroll - 5) {
+          return;
+        }
+
+        // Let the page scroll naturally to the top of the container before starting 01 -> 02 transition
+        if (activeIdx === 0 && e.deltaY > 0 && scrollY < offsetTop) {
+          return;
+        }
+
+        e.preventDefault();
+
+        accumulatedDelta += e.deltaY;
+        const threshold = 50;
+
+        if (Math.abs(accumulatedDelta) >= threshold) {
+          const direction = accumulatedDelta > 0 ? 1 : -1;
+          accumulatedDelta = 0;
+
+          const nextIdx = activeIdx + direction;
+          if (nextIdx >= 0 && nextIdx <= 3) {
+            triggerTransition(nextIdx);
+          }
+        }
+      }
+
+      function onTouchStart(e) {
+        if (window.innerWidth < 768) return;
+        touchStartY = e.touches[0].clientY;
+      }
+
+      function onTouchMove(e) {
+        if (window.innerWidth < 768 || !container) return;
+        const offsetTop = container.offsetTop;
+        const height = container.offsetHeight;
+        const maxScroll = offsetTop + height - window.innerHeight;
+        const scrollY = window.scrollY;
+
+        const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
+        if (!isInside) return;
+
+        if (isTransitioning) {
+          e.preventDefault();
+          return;
+        }
+
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchStartY - touchY;
+
+        if (activeIdx === 0 && deltaY < 0 && scrollY <= offsetTop + 5) {
+          return;
+        }
+
+        if (activeIdx === 3 && deltaY > 0 && scrollY >= maxScroll - 5) {
+          return;
+        }
+
+        // Let the page scroll naturally to the top of the container before starting 01 -> 02 transition
+        if (activeIdx === 0 && deltaY > 0 && scrollY < offsetTop) {
+          return;
+        }
+
+        e.preventDefault();
+
+        const touchThreshold = 50;
+        if (Math.abs(deltaY) >= touchThreshold) {
+          const direction = deltaY > 0 ? 1 : -1;
+          touchStartY = touchY;
+
+          const nextIdx = activeIdx + direction;
+          if (nextIdx >= 0 && nextIdx <= 3) {
+            triggerTransition(nextIdx);
+          }
+        }
+      }
+
       window.addEventListener('scroll', handleScroll, { passive: true });
       window.addEventListener('resize', handleScroll, { passive: true });
+      window.addEventListener('wheel', onWheel, { passive: false });
+      window.addEventListener('touchstart', onTouchStart, { passive: true });
+      window.addEventListener('touchmove', onTouchMove, { passive: false });
+      
       handleScroll();
     })();
   </script>
