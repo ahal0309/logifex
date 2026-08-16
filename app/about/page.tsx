@@ -18,23 +18,19 @@ export default function AboutPage() {
         <div className="absolute inset-0 opacity-15 chevron-pattern pointer-events-none"></div>
  
         <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
-          <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start justify-between">
-            <div className="w-full md:w-1/2">
-              <h1 className="font-headline-display text-5xl sm:text-6xl md:text-8xl font-black leading-none text-white uppercase tracking-tight">
-                About Us
-              </h1>
-            </div>
-            <div className="w-full md:w-1/2 md:mt-24">
-              <p className="text-surface-variant font-body-lg text-sm sm:text-base md:text-lg leading-relaxed">
-                Logifex was established with a clear intent —
-                to bring structure, reliability, and clarity into
-                logistics operations that are often complex and
-                time-sensitive. Every shipment is approached
-                with careful planning, ensuring that each stage,
-                from pickup to final delivery, is managed with
-                consistency and control.
-              </p>
-            </div>
+          <div className="max-w-3xl">
+            <h1 className="font-headline-display text-5xl sm:text-6xl md:text-8xl font-black mb-8 leading-none text-white uppercase tracking-tight">
+              About Us
+            </h1>
+            <p className="text-surface-variant font-body-lg text-lg sm:text-xl md:text-2xl leading-relaxed">
+              Logifex was established with a clear intent —
+              to bring structure, reliability, and clarity into
+              logistics operations that are often complex and
+              time-sensitive. Every shipment is approached
+              with careful planning, ensuring that each stage,
+              from pickup to final delivery, is managed with
+              consistency and control.
+            </p>
           </div>
         </div>
       </section>
