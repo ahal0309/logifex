@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import AnimatedParagraphs from "./AnimatedParagraphs";
 
 export const metadata: Metadata = {
   title: "About Us - Logifex Freight Services",
@@ -41,21 +42,7 @@ export default function AboutPage() {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 space-y-24">
         {/* Company Story & Overview */}
         <section className="flex flex-col gap-12 items-center text-center">
-          <div className="max-w-4xl space-y-6">
-            <div className="space-y-6 max-w-3xl mx-auto">
-              <p className="text-secondary font-body-md text-base md:text-lg lg:text-xl leading-relaxed">
-                Founded with the vision to modernize freight forwarding, Logifex
-                combines decades of industry expertise with cutting-edge telemetry,
-                regulatory compliance, and dedicated client service.
-              </p>
-              <p className="text-secondary font-body-md text-base md:text-lg lg:text-xl leading-relaxed">
-                Whether orchestrating full aircraft charters for urgent industrial
-                machinery, deep-sea container lines, or overland cross-border trucking,
-                we ensure that your cargo moves with uninterrupted precision from origin to
-                final destination.
-              </p>
-            </div>
-          </div>
+          <AnimatedParagraphs />
 
           <div className="w-full max-w-5xl">
             <div className="rounded-2xl overflow-hidden border border-secondary-container shadow-lg">
