@@ -35,50 +35,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Key Metrics Ribbon - In between Hero and Heritage section */}
-      <section className="bg-surface-container border-y border-secondary-container py-10 shadow-sm">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="font-headline-display text-3xl md:text-4xl font-bold text-primary mb-1">
-              120+
-            </div>
-            <div className="text-xs md:text-sm font-label-bold text-on-surface uppercase tracking-wider">
-              Global Trade Ports
-            </div>
-            <p className="text-[11px] text-secondary mt-0.5">Connected worldwide</p>
-          </div>
 
-          <div>
-            <div className="font-headline-display text-3xl md:text-4xl font-bold text-primary mb-1">
-              99.4%
-            </div>
-            <div className="text-xs md:text-sm font-label-bold text-on-surface uppercase tracking-wider">
-              On-Time Deliveries
-            </div>
-            <p className="text-[11px] text-secondary mt-0.5">Reliable SLA performance</p>
-          </div>
-
-          <div>
-            <div className="font-headline-display text-3xl md:text-4xl font-bold text-primary mb-1">
-              3 Hubs
-            </div>
-            <div className="text-xs md:text-sm font-label-bold text-on-surface uppercase tracking-wider">
-              Dubai • Cochin • London
-            </div>
-            <p className="text-[11px] text-secondary mt-0.5">Direct regional presence</p>
-          </div>
-
-          <div>
-            <div className="font-headline-display text-3xl md:text-4xl font-bold text-primary mb-1">
-              24/7
-            </div>
-            <div className="text-xs md:text-sm font-label-bold text-on-surface uppercase tracking-wider">
-              Active Operations Desk
-            </div>
-            <p className="text-[11px] text-secondary mt-0.5">Round-the-clock support</p>
-          </div>
-        </div>
-      </section>
 
       {/* Main Content Area */}
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 space-y-24">
