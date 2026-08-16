@@ -437,6 +437,501 @@ function CoreValuesSection() {
   );
 }
 
+function ServicesSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const activeIdxRef = useRef(0);
+  const accumulatedDeltaRef = useRef(0);
+  const touchStartYRef = useRef(0);
+  const isTransitioningRef = useRef(false);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+
+  const services = [
+    {
+      num: "01",
+      title: "Air Freight",
+      desc: "Fast, reliable, and secure air freight solutions for time-sensitive shipments.",
+      supporting: "Global Air Transit • Priority Cargo",
+      image: "/images/air-freight.png",
+      href: "/services#air",
+    },
+    {
+      num: "02",
+      title: "Sea Freight",
+      desc: "Reliable and economical ocean freight solutions for global cargo transportation.",
+      supporting: "Ocean Carrier • FCL & LCL Consolidation",
+      image: "/images/sea-freight.png",
+      href: "/services#sea",
+    },
+    {
+      num: "03",
+      title: "Road Transport",
+      desc: "Flexible cross-border and door-to-door road transportation solutions.",
+      supporting: "GCC Linehaul • Overland Transport",
+      image: "/images/road-transport.png",
+      href: "/services#road",
+    },
+    {
+      num: "04",
+      title: "Intermodal Logistics",
+      desc: "Seamless coordination across multiple transportation modes for efficient cargo movement.",
+      supporting: "Rail & Multimodal Connectivity",
+      image: "/images/intermodal-logistics.png",
+      href: "/services#road",
+    },
+    {
+      num: "05",
+      title: "Customs Clearance",
+      desc: "Efficient customs documentation and clearance support for smooth international shipments.",
+      supporting: "Licensed Brokerage • HS Code Compliance",
+      image: "/images/customs-clearance.png",
+      href: "/services#warehousing",
+    },
+    {
+      num: "06",
+      title: "Warehousing",
+      desc: "Secure and organized warehousing solutions for efficient inventory management.",
+      supporting: "Bonded Facilities • WMS Inventory",
+      image: "/images/warehousing.png",
+      href: "/services#warehousing",
+    },
+    {
+      num: "07",
+      title: "Packing and Labelling",
+      desc: "Professional packing and labelling solutions to ensure cargo protection and compliance.",
+      supporting: "Cargo Protection • Industrial Compliance",
+      image: "/images/packing-labelling.png",
+      href: "/services#warehousing",
+    },
+  ];
+
+  const calculateActiveIndex = () => {
+    const container = containerRef.current;
+    if (!container) return 0;
+    const offsetTop = container.offsetTop;
+    const scrollY = window.scrollY;
+
+    if (scrollY < offsetTop) return 0;
+
+    const scrolled = scrollY - offsetTop;
+    const scrolledVh = (scrolled / window.innerHeight) * 100;
+
+    const index = Math.min(
+      Math.max(Math.floor((scrolledVh + 50) / 100), 0),
+      services.length - 1
+    );
+
+    return index;
+  };
+
+  useEffect(() => {
+    const initialIdx = calculateActiveIndex();
+    setActiveIdx(initialIdx);
+    activeIdxRef.current = initialIdx;
+  }, []);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const isMobileViewport = window.innerWidth < 768;
+    const startY = isMobileViewport ? 40 : 80;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        headingRef.current,
+        {
+          y: startY,
+          opacity: 0,
+          clipPath: "inset(100% 0 0 0)",
+        },
+        {
+          y: 0,
+          opacity: 1,
+          clipPath: "inset(0% 0 0 0)",
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+            end: "top 25%",
+            scrub: true,
+          },
+        }
+      );
+    });
+
+    let resizeObserver: ResizeObserver | null = null;
+    if (typeof window !== "undefined" && "ResizeObserver" in window) {
+      resizeObserver = new ResizeObserver(() => {
+        ScrollTrigger.refresh();
+        const currentIdx = calculateActiveIndex();
+        if (currentIdx !== activeIdxRef.current) {
+          activeIdxRef.current = currentIdx;
+          setActiveIdx(currentIdx);
+        }
+      });
+      resizeObserver.observe(document.body);
+    }
+
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 200);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(refreshTimer);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth < 768) return;
+      const container = containerRef.current;
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+
+      if (window.scrollY === 0 || rect.top > 0) {
+        setActiveIdx(0);
+        activeIdxRef.current = 0;
+        isTransitioningRef.current = false;
+        accumulatedDeltaRef.current = 0;
+        return;
+      }
+
+      const offsetTop = container.offsetTop;
+      const height = container.offsetHeight;
+      const maxScroll = offsetTop + height - window.innerHeight;
+      const scrollY = window.scrollY;
+
+      if (scrollY > maxScroll + 5) {
+        setActiveIdx(services.length - 1);
+        activeIdxRef.current = services.length - 1;
+        isTransitioningRef.current = false;
+        return;
+      }
+
+      if (!isTransitioningRef.current) {
+        const targetIdx = calculateActiveIndex();
+        if (targetIdx !== activeIdxRef.current) {
+          activeIdxRef.current = targetIdx;
+          setActiveIdx(targetIdx);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const smoothScrollTo = (targetY: number, duration: number) => {
+      const startY = window.scrollY;
+      const difference = targetY - startY;
+      let startTime: number | null = null;
+
+      const step = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const progress = timestamp - startTime;
+        const percent = Math.min(progress / duration, 1);
+        const ease = 1 - Math.pow(1 - percent, 4);
+        window.scrollTo(0, startY + difference * ease);
+        if (progress < duration) {
+          window.requestAnimationFrame(step);
+        }
+      };
+
+      window.requestAnimationFrame(step);
+    };
+
+    const triggerTransition = (nextIdx: number) => {
+      isTransitioningRef.current = true;
+      activeIdxRef.current = nextIdx;
+      setActiveIdx(nextIdx);
+
+      const container = containerRef.current;
+      if (container) {
+        const targetScrollY = container.offsetTop + nextIdx * window.innerHeight;
+        smoothScrollTo(targetScrollY, 900);
+      }
+
+      setTimeout(() => {
+        isTransitioningRef.current = false;
+        accumulatedDeltaRef.current = 0;
+      }, 950);
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      if (window.innerWidth < 768) return;
+      const container = containerRef.current;
+      if (!container) return;
+
+      const offsetTop = container.offsetTop;
+      const height = container.offsetHeight;
+      const maxScroll = offsetTop + height - window.innerHeight;
+      const scrollY = window.scrollY;
+
+      const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
+      if (!isInside) return;
+
+      if (isTransitioningRef.current) {
+        e.preventDefault();
+        return;
+      }
+
+      if (activeIdxRef.current === 0 && e.deltaY < 0 && scrollY <= offsetTop + 5) {
+        return;
+      }
+      if (activeIdxRef.current === services.length - 1 && e.deltaY > 0 && scrollY >= maxScroll - 5) {
+        return;
+      }
+
+      if (activeIdxRef.current === 0 && e.deltaY > 0 && scrollY < offsetTop) {
+        return;
+      }
+
+      e.preventDefault();
+
+      accumulatedDeltaRef.current += e.deltaY;
+      const threshold = 50;
+
+      if (Math.abs(accumulatedDeltaRef.current) >= threshold) {
+        const direction = accumulatedDeltaRef.current > 0 ? 1 : -1;
+        accumulatedDeltaRef.current = 0;
+
+        const nextIdx = activeIdxRef.current + direction;
+        if (nextIdx >= 0 && nextIdx < services.length) {
+          triggerTransition(nextIdx);
+        }
+      }
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (window.innerWidth < 768) return;
+      touchStartYRef.current = e.touches[0].clientY;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (window.innerWidth < 768) return;
+      const container = containerRef.current;
+      if (!container) return;
+
+      const offsetTop = container.offsetTop;
+      const height = container.offsetHeight;
+      const maxScroll = offsetTop + height - window.innerHeight;
+      const scrollY = window.scrollY;
+
+      const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
+      if (!isInside) return;
+
+      if (isTransitioningRef.current) {
+        e.preventDefault();
+        return;
+      }
+
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchStartYRef.current - touchY;
+
+      if (activeIdxRef.current === 0 && deltaY < 0 && scrollY <= offsetTop + 5) {
+        return;
+      }
+      if (activeIdxRef.current === services.length - 1 && deltaY > 0 && scrollY >= maxScroll - 5) {
+        return;
+      }
+
+      if (activeIdxRef.current === 0 && deltaY > 0 && scrollY < offsetTop) {
+        return;
+      }
+
+      e.preventDefault();
+
+      const touchThreshold = 50;
+      if (Math.abs(deltaY) >= touchThreshold) {
+        const direction = deltaY > 0 ? 1 : -1;
+        touchStartYRef.current = touchY;
+
+        const nextIdx = activeIdxRef.current + direction;
+        if (nextIdx >= 0 && nextIdx < services.length) {
+          triggerTransition(nextIdx);
+        }
+      }
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+    };
+  }, []);
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative w-full h-auto md:h-[700vh] bg-background z-30 overflow-visible"
+    >
+      <div className="md:sticky md:top-0 w-full h-auto md:h-screen bg-background overflow-hidden flex items-center">
+        <div className="w-full h-full flex flex-col md:flex-row max-w-container-max mx-auto relative px-margin-mobile md:px-margin-desktop py-16 md:py-0 items-center justify-between gap-8 md:gap-16">
+          
+          {/* Left Column: Visual Panel */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center h-[50vh] md:h-[75vh] relative z-20">
+            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-xl p-8 md:p-12 flex flex-col justify-between">
+              {services.map((service, idx) => (
+                <div
+                  key={idx}
+                  className="absolute inset-0 transition-all duration-1000 ease-out"
+                  style={{
+                    opacity: activeIdx === idx ? 1 : 0,
+                    transform: activeIdx === idx ? "scale(1.03)" : "scale(1.0)",
+                    transitionProperty: "opacity, transform",
+                  }}
+                >
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/60 z-10" />
+
+              <h2
+                ref={headingRef}
+                className="relative z-20 font-headline-display text-4xl sm:text-5xl md:text-7xl text-white font-black uppercase tracking-tight leading-none"
+                style={{ willChange: "transform, opacity, clip-path" }}
+              >
+                Our <br className="hidden md:inline" /> Services
+              </h2>
+
+              <div className="relative z-20 w-full mt-auto">
+                <div className="w-full h-[2.5px] bg-white/20 relative rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-primary-container absolute left-0 top-0 transition-all"
+                    style={{
+                      width: `${((activeIdx + 1) / services.length) * 100}%`,
+                      transitionDuration: "800ms",
+                      transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Moving Content */}
+          <div className="w-full md:w-1/2 h-auto md:h-[75vh] relative overflow-visible md:overflow-hidden flex items-center">
+            <div
+              className={!isMobile ? "w-full h-full relative flex items-center" : "w-full flex flex-col space-y-8"}
+            >
+              {services.map((service, idx) => {
+                const isEven = idx % 2 === 0;
+                const cardBgClass = isEven
+                  ? "bg-white border border-secondary-container/40 text-primary-container"
+                  : "bg-primary-container text-white";
+                const numColorClass = isEven ? "text-black/15" : "text-lime-400";
+                const titleColorClass = isEven ? "text-primary-container" : "text-white";
+                const descColorClass = isEven ? "text-neutral-600" : "text-white/90";
+                const suppColorClass = isEven ? "text-neutral-400" : "text-white/60";
+                const btnBgClass = isEven ? "bg-primary-container text-white hover:bg-neutral-900" : "bg-white text-primary-container hover:bg-neutral-100";
+
+                return (
+                  <div
+                    key={idx}
+                    className={`w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group ${cardBgClass}`}
+                    style={
+                      !isMobile
+                        ? {
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            opacity: activeIdx === idx ? 1 : 0,
+                            transform: activeIdx === idx
+                              ? "translateY(0) scale(1)"
+                              : (idx < activeIdx ? "translateY(-30px) scale(0.98)" : "translateY(40px) scale(0.98)"),
+                            pointerEvents: activeIdx === idx ? "auto" : "none",
+                            transition: "opacity 800ms, transform 800ms",
+                            transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                            willChange: "opacity, transform",
+                          }
+                        : {}
+                    }
+                  >
+                    <div 
+                      className={`font-headline-display text-7xl md:text-9xl font-black tracking-tighter ${numColorClass} select-none leading-none mb-4 transition-all duration-700 delay-75`}
+                      style={!isMobile ? {
+                        opacity: activeIdx === idx ? 1 : 0,
+                        transform: activeIdx === idx ? "translateY(0)" : (idx < activeIdx ? "translateY(-15px)" : "translateY(20px)"),
+                        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                      } : {}}
+                    >
+                      {service.num}
+                    </div>
+
+                    <div 
+                      className="space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150"
+                      style={!isMobile ? {
+                        opacity: activeIdx === idx ? 1 : 0,
+                        transform: activeIdx === idx ? "translateY(0)" : (idx < activeIdx ? "translateY(-15px)" : "translateY(25px)"),
+                        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                      } : {}}
+                    >
+                      <span className={`text-[10px] md:text-xs font-label-bold uppercase tracking-wider block ${suppColorClass}`}>
+                        {service.supporting}
+                      </span>
+                      <h3 className={`font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none ${titleColorClass}`}>
+                        {service.title}
+                      </h3>
+                      <p className={`font-body-md text-sm md:text-base leading-relaxed ${descColorClass} max-w-md`}>
+                        {service.desc}
+                      </p>
+                    </div>
+
+                    <div 
+                      className="mt-6 flex justify-end transition-all duration-700 delay-200"
+                      style={!isMobile ? {
+                        opacity: activeIdx === idx ? 1 : 0,
+                        transform: activeIdx === idx ? "translateY(0)" : (idx < activeIdx ? "translateY(-10px)" : "translateY(20px)"),
+                        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                      } : {}}
+                    >
+                      <Link
+                        href={service.href}
+                        className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 ${btnBgClass}`}
+                      >
+                        <span className="material-symbols-outlined text-xl md:text-2xl font-black">
+                          add
+                        </span>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
     <div className="flex flex-col">
@@ -589,151 +1084,7 @@ export default function HomePage() {
 
       <CoreValuesSection />
 
-      {/* Featured Services Bento Grid */}
-      <section className="py-24 bg-surface-container-lowest chevron-pattern relative">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-primary-container font-label-bold uppercase tracking-wider text-xs block mb-2">
-              Multimodal Excellence
-            </span>
-            <h2 className="font-headline-md text-headline-lg-mobile md:text-headline-lg text-on-background mb-4 font-bold">
-              We Offer Every Way of Transport
-            </h2>
-            <p className="font-body-md text-body-md text-secondary">
-              Seamless integration across all major modalities to ensure your
-              cargo reaches its global destination efficiently, compliantly, and
-              securely.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-            {/* Air Freight */}
-            <Link
-              href="/services#air"
-              className="group relative overflow-hidden rounded-xl border border-secondary-container bg-white flex flex-col h-[420px] shadow-sm hover:shadow-xl transition-all duration-300"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent z-10"></div>
-              <img
-                alt="Air Freight Services"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                src="/images/air-cargo.png"
-              />
-              <div className="relative z-20 mt-auto p-6 text-white">
-                <div className="bg-primary-container w-12 h-12 rounded flex items-center justify-center mb-4 shadow">
-                  <span className="material-symbols-outlined text-white text-2xl">
-                    flight
-                  </span>
-                </div>
-                <h3 className="font-headline-md text-2xl text-white mb-2 font-bold group-hover:text-primary-fixed transition-colors">
-                  Air Freight
-                </h3>
-                <p className="font-body-md text-sm text-surface-variant line-clamp-2 mb-4">
-                  Fast, reliable, and secure air freight solutions with priority
-                  flight space, chartered capacities, and door-to-door delivery.
-                </p>
-                <span className="text-xs font-label-bold uppercase tracking-wider text-primary-fixed flex items-center gap-1 group-hover:underline">
-                  Explore Air Modality{" "}
-                  <span className="material-symbols-outlined text-sm">
-                    arrow_forward
-                  </span>
-                </span>
-              </div>
-            </Link>
-
-            {/* Sea Freight */}
-            <Link
-              href="/services#sea"
-              className="group relative overflow-hidden rounded-xl border border-secondary-container bg-white flex flex-col h-[420px] shadow-sm hover:shadow-xl transition-all duration-300"
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent z-10"></div>
-              <img
-                alt="Sea Freight Services"
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                src="/images/sea-freight.png"
-              />
-              <div className="relative z-20 mt-auto p-6 text-white">
-                <div className="bg-tertiary w-12 h-12 rounded flex items-center justify-center mb-4 shadow">
-                  <span className="material-symbols-outlined text-white text-2xl">
-                    directions_boat
-                  </span>
-                </div>
-                <h3 className="font-headline-md text-2xl text-white mb-2 font-bold group-hover:text-primary-fixed transition-colors">
-                  Sea Freight
-                </h3>
-                <p className="font-body-md text-sm text-surface-variant line-clamp-2 mb-4">
-                  Safe, scalable, and economical ocean freight solutions (FCL &
-                  LCL) connecting major international deep-water ports worldwide.
-                </p>
-                <span className="text-xs font-label-bold uppercase tracking-wider text-primary-fixed flex items-center gap-1 group-hover:underline">
-                  Explore Ocean Modality{" "}
-                  <span className="material-symbols-outlined text-sm">
-                    arrow_forward
-                  </span>
-                </span>
-              </div>
-            </Link>
-
-            {/* Road & Multimodal (Split Column) */}
-            <div className="flex flex-col gap-gutter h-[420px]">
-              {/* Road Freight */}
-              <Link
-                href="/services#road"
-                className="group relative overflow-hidden rounded-xl border border-secondary-container bg-surface flex-grow flex items-end p-6 hover:border-primary-container transition-all"
-              >
-                <div className="absolute right-3 bottom-3 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <span className="material-symbols-outlined text-[110px]">
-                    local_shipping
-                  </span>
-                </div>
-                <div className="relative z-20 w-full">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-headline-md text-xl text-on-background font-bold group-hover:text-primary-container transition-colors">
-                      Road Freight
-                    </h3>
-                    <div className="w-8 h-8 rounded-full border border-secondary flex items-center justify-center group-hover:bg-primary-container group-hover:border-primary-container transition-colors">
-                      <span className="material-symbols-outlined text-secondary group-hover:text-white text-sm">
-                        arrow_forward
-                      </span>
-                    </div>
-                  </div>
-                  <p className="font-body-md text-xs text-secondary">
-                    Flexible, cross-border, and time-critical door-to-door road
-                    network transport.
-                  </p>
-                </div>
-              </Link>
-
-              {/* Multimodal & Rail */}
-              <Link
-                href="/services#road"
-                className="group relative overflow-hidden rounded-xl border border-secondary-container bg-tertiary text-white flex-grow flex items-end p-6 hover:bg-neutral-800 transition-all"
-              >
-                <div className="absolute right-3 bottom-3 opacity-10 group-hover:opacity-25 transition-opacity">
-                  <span className="material-symbols-outlined text-[110px]">
-                    hub
-                  </span>
-                </div>
-                <div className="relative z-20 w-full">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-headline-md text-xl text-white font-bold group-hover:text-primary-fixed transition-colors">
-                      Multimodal & Rail
-                    </h3>
-                    <div className="w-8 h-8 rounded-full border border-surface-variant flex items-center justify-center group-hover:bg-primary-container group-hover:border-primary-container transition-colors">
-                      <span className="material-symbols-outlined text-white text-sm">
-                        arrow_forward
-                      </span>
-                    </div>
-                  </div>
-                  <p className="font-body-md text-xs text-tertiary-fixed-dim">
-                    Seamless optimization combining air, sea, rail corridors,
-                    and road logistics.
-                  </p>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServicesSection />
 
       {/* 7 Steps / Logistics Workflow Section */}
       <section className="py-20 bg-surface border-t border-secondary-container">
