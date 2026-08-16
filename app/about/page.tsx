@@ -42,9 +42,6 @@ export default function AboutPage() {
         {/* Company Story & Overview */}
         <section className="flex flex-col gap-12 items-center text-center">
           <div className="max-w-4xl space-y-6">
-            <span className="text-primary-container font-label-bold text-xs uppercase tracking-wider block">
-              Our Heritage & Foundation
-            </span>
             <h2 className="font-headline-md text-3xl md:text-5xl lg:text-6xl font-extrabold text-on-background leading-tight">
               Empowering Global Trade Through Modern Freight Architecture
             </h2>
