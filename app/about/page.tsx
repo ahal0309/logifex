@@ -40,32 +40,34 @@ export default function AboutPage() {
       {/* Main Content Area */}
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 space-y-24">
         {/* Company Story & Overview */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
+        <section className="flex flex-col gap-12 items-center text-center">
+          <div className="max-w-4xl space-y-6">
             <span className="text-primary-container font-label-bold text-xs uppercase tracking-wider block">
               Our Heritage & Foundation
             </span>
-            <h2 className="font-headline-md text-2xl md:text-4xl font-bold text-on-background">
+            <h2 className="font-headline-md text-3xl md:text-5xl lg:text-6xl font-extrabold text-on-background leading-tight">
               Empowering Global Trade Through Modern Freight Architecture
             </h2>
-            <p className="text-secondary font-body-md text-sm md:text-base leading-relaxed">
-              Founded with the vision to modernize freight forwarding, Logifex
-              combines decades of industry expertise with cutting-edge telemetry,
-              regulatory compliance, and dedicated client service.
-            </p>
-            <p className="text-secondary font-body-md text-sm md:text-base leading-relaxed">
-              Whether orchestrating full aircraft charters for urgent industrial
-              machinery, deep-sea container lines, or overland cross-border trucking,
-              we ensure that your cargo moves with uninterrupted precision from origin to
-              final destination.
-            </p>
+            <div className="space-y-6 max-w-3xl mx-auto">
+              <p className="text-secondary font-body-md text-base md:text-lg lg:text-xl leading-relaxed">
+                Founded with the vision to modernize freight forwarding, Logifex
+                combines decades of industry expertise with cutting-edge telemetry,
+                regulatory compliance, and dedicated client service.
+              </p>
+              <p className="text-secondary font-body-md text-base md:text-lg lg:text-xl leading-relaxed">
+                Whether orchestrating full aircraft charters for urgent industrial
+                machinery, deep-sea container lines, or overland cross-border trucking,
+                we ensure that your cargo moves with uninterrupted precision from origin to
+                final destination.
+              </p>
+            </div>
           </div>
 
-          <div className="lg:col-span-6">
+          <div className="w-full max-w-5xl">
             <div className="rounded-2xl overflow-hidden border border-secondary-container shadow-lg">
               <img
                 alt="Logifex Logistics Facilities"
-                className="w-full h-[400px] object-cover"
+                className="w-full h-[300px] md:h-[500px] object-cover"
                 src="/images/cargo-process.png"
               />
             </div>
