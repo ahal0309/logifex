@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       <section
-        className="relative w-full min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-112px)] flex items-start pt-24 md:pt-40 bg-inverse-surface bg-cover bg-center text-white py-20 overflow-hidden"
+        className="relative w-full min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-112px)] flex items-start pt-12 md:pt-20 bg-inverse-surface bg-cover bg-center text-white py-20 overflow-hidden"
         style={{ backgroundImage: "url('/images/warehouse.png')" }}
       >
         <div className="absolute inset-0 hero-overlay"></div>
