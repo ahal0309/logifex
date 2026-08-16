@@ -20,9 +20,8 @@ export default function AboutPage() {
 
         <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
           <div className="max-w-3xl">
-            <h1 className="font-headline-display text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
-              Precision in Motion. <br />
-              <span className="text-primary-fixed">Built on Trust.</span>
+            <h1 className="font-headline-display text-5xl sm:text-6xl md:text-8xl font-black mb-6 leading-none text-white uppercase tracking-tight">
+              About Us
             </h1>
             <p className="text-surface-variant font-body-lg text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
               Logifex Freight Services is an international freight forwarding and
