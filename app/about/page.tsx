@@ -42,9 +42,6 @@ export default function AboutPage() {
         {/* Company Story & Overview */}
         <section className="flex flex-col gap-12 items-center text-center">
           <div className="max-w-4xl space-y-6">
-            <h2 className="font-headline-md text-3xl md:text-5xl lg:text-6xl font-extrabold text-on-background leading-tight">
-              Empowering Global Trade Through Modern Freight Architecture
-            </h2>
             <div className="space-y-6 max-w-3xl mx-auto">
               <p className="text-secondary font-body-md text-base md:text-lg lg:text-xl leading-relaxed">
                 Founded with the vision to modernize freight forwarding, Logifex
