@@ -329,162 +329,144 @@
       </section>
 
     <!-- Services Section -->
-    <section id="services-container" class="relative w-full h-auto md:h-[700vh] bg-background z-30 overflow-visible">
-      <div class="md:sticky md:top-0 w-full h-auto md:h-screen bg-background overflow-hidden flex items-center">
-        <div class="w-full h-full flex flex-col md:flex-row max-w-container-max mx-auto relative px-margin-mobile md:px-margin-desktop py-16 md:py-0 items-center justify-between gap-8 md:gap-16">
+    <section id="services-container" class="relative w-full bg-background z-30 py-20 md:py-32 overflow-hidden border-t border-secondary-container">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <span class="text-primary-container font-label-bold uppercase tracking-wider mb-2 block text-xs">Our Expertise</span>
+          <h2 id="services-heading" class="font-headline-display text-4xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none mb-6" style="will-change: transform, opacity, clip-path;">
+            Our Services
+          </h2>
+          <p class="font-body-md text-sm md:text-base text-secondary max-w-xl mx-auto">
+            Precision in motion. Integrated global logistics solutions tailored for your cargo.
+          </p>
+        </div>
+
+        <!-- Grid of Services -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
-          <!-- Left Column: Visual Panel -->
-          <div class="w-full md:w-1/2 flex flex-col justify-center h-[50vh] md:h-[75vh] relative z-20">
-            <div class="relative w-full h-full rounded-3xl overflow-hidden shadow-xl p-8 md:p-12 flex flex-col justify-between">
-              <div id="service-img-0" class="absolute inset-0 transition-all duration-1000 ease-out opacity-100 scale-[1.03]" style="transition-property: opacity, transform;">
-                <img src="public/images/air-freight.png" alt="Air Freight" class="w-full h-full object-cover"/>
+          <!-- Card 01: Air Freight -->
+          <div class="service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group bg-white border border-secondary-container/40 text-primary-container transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div>
+              <div class="font-headline-display text-6xl md:text-7xl font-black tracking-tighter text-black/10 select-none leading-none mb-4 transition-all duration-300 group-hover:text-primary-container/10">01</div>
+              <div class="space-y-3">
+                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-neutral-400">Global Air Transit • Priority Cargo</span>
+                <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-primary-container">Air Freight</h3>
+                <p class="font-body-md text-sm leading-relaxed text-neutral-600">Fast, reliable, and secure air freight solutions for time-sensitive shipments.</p>
               </div>
-              <div id="service-img-1" class="absolute inset-0 transition-all duration-1000 ease-out opacity-0 scale-100" style="transition-property: opacity, transform;">
-                <img src="public/images/sea-freight.png" alt="Sea Freight" class="w-full h-full object-cover"/>
-              </div>
-              <div id="service-img-2" class="absolute inset-0 transition-all duration-1000 ease-out opacity-0 scale-100" style="transition-property: opacity, transform;">
-                <img src="public/images/road-transport.png" alt="Road Transport" class="w-full h-full object-cover"/>
-              </div>
-              <div id="service-img-3" class="absolute inset-0 transition-all duration-1000 ease-out opacity-0 scale-100" style="transition-property: opacity, transform;">
-                <img src="public/images/intermodal-logistics.png" alt="Intermodal Logistics" class="w-full h-full object-cover"/>
-              </div>
-              <div id="service-img-4" class="absolute inset-0 transition-all duration-1000 ease-out opacity-0 scale-100" style="transition-property: opacity, transform;">
-                <img src="public/images/customs-clearance.png" alt="Customs Clearance" class="w-full h-full object-cover"/>
-              </div>
-              <div id="service-img-5" class="absolute inset-0 transition-all duration-1000 ease-out opacity-0 scale-100" style="transition-property: opacity, transform;">
-                <img src="public/images/warehousing.png" alt="Warehousing" class="w-full h-full object-cover"/>
-              </div>
-              <div id="service-img-6" class="absolute inset-0 transition-all duration-1000 ease-out opacity-0 scale-100" style="transition-property: opacity, transform;">
-                <img src="public/images/packing-labelling.png" alt="Packing and Labelling" class="w-full h-full object-cover"/>
-              </div>
-              
-              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/60 z-10"></div>
-
-              <h2 id="services-heading" class="relative z-20 font-headline-display text-4xl sm:text-5xl md:text-7xl text-white font-black uppercase tracking-tight leading-none" style="will-change: transform, opacity, clip-path;">
-                Our <br class="hidden md:inline" /> Services
-              </h2>
-
-              <div class="relative z-20 w-full mt-auto">
-                <div class="w-full h-[2.5px] bg-white/20 relative rounded-full overflow-hidden">
-                  <div id="services-progress-bar" class="h-full bg-primary-container absolute left-0 top-0 transition-all" style="width: 14.28%; transition-duration: 800ms; transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);"></div>
-                </div>
-              </div>
+            </div>
+            <div class="mt-8 flex justify-end">
+              <a href="services.html#air" class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-primary-container text-white hover:bg-neutral-900">
+                <span class="material-symbols-outlined text-xl font-black">add</span>
+              </a>
             </div>
           </div>
 
-          <!-- Right Column: Service Cards -->
-          <div class="w-full md:w-1/2 h-auto md:h-[75vh] relative overflow-visible md:overflow-hidden flex items-center">
-            <div id="services-track" class="w-full flex flex-col space-y-8 md:space-y-0 relative h-full justify-center">
-              
-              <!-- Card 01: Air Freight -->
-              <div class="service-card w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group bg-white border border-secondary-container/40 text-primary-container transition-all duration-800" style="transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform;">
-                <div class="service-card-num font-headline-display text-7xl md:text-9xl font-black tracking-tighter text-black/15 select-none leading-none mb-4 transition-all duration-700 delay-75">01</div>
-                <div class="service-card-content space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150">
-                  <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-neutral-400">Global Air Transit • Priority Cargo</span>
-                  <h3 class="font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none text-primary-container">Air Freight</h3>
-                  <p class="font-body-md text-sm md:text-base leading-relaxed text-neutral-600 max-w-md">Fast, reliable, and secure air freight solutions for time-sensitive shipments.</p>
-                </div>
-                <div class="service-card-btn mt-6 flex justify-end transition-all duration-700 delay-200">
-                  <a href="services.html#air" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-primary-container text-white hover:bg-neutral-900">
-                    <span class="material-symbols-outlined text-xl md:text-2xl font-black">add</span>
-                  </a>
-                </div>
+          <!-- Card 02: Sea Freight -->
+          <div class="service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group bg-primary-container text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div>
+              <div class="font-headline-display text-6xl md:text-7xl font-black tracking-tighter text-lime-400/30 select-none leading-none mb-4 transition-all duration-300 group-hover:text-lime-400/40">02</div>
+              <div class="space-y-3">
+                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Ocean Carrier • FCL & LCL Consolidation</span>
+                <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Sea Freight</h3>
+                <p class="font-body-md text-sm leading-relaxed text-white/95">Reliable and economical ocean freight solutions for global cargo transportation.</p>
               </div>
+            </div>
+            <div class="mt-8 flex justify-end">
+              <a href="services.html#sea" class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-white text-primary-container hover:bg-neutral-100">
+                <span class="material-symbols-outlined text-xl font-black">add</span>
+              </a>
+            </div>
+          </div>
 
-              <!-- Card 02: Sea Freight -->
-              <div class="service-card w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group bg-primary-container text-white transition-all duration-800" style="transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform;">
-                <div class="service-card-num font-headline-display text-7xl md:text-9xl font-black tracking-tighter text-lime-400 select-none leading-none mb-4 transition-all duration-700 delay-75">02</div>
-                <div class="service-card-content space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150">
-                  <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Ocean Carrier • FCL & LCL Consolidation</span>
-                  <h3 class="font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none text-white">Sea Freight</h3>
-                  <p class="font-body-md text-sm md:text-base leading-relaxed text-white/90 max-w-md">Reliable and economical ocean freight solutions for global cargo transportation.</p>
-                </div>
-                <div class="service-card-btn mt-6 flex justify-end transition-all duration-700 delay-200">
-                  <a href="services.html#sea" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-white text-primary-container hover:bg-neutral-100">
-                    <span class="material-symbols-outlined text-xl md:text-2xl font-black">add</span>
-                  </a>
-                </div>
+          <!-- Card 03: Road Transport -->
+          <div class="service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group bg-white border border-secondary-container/40 text-primary-container transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div>
+              <div class="font-headline-display text-6xl md:text-7xl font-black tracking-tighter text-black/10 select-none leading-none mb-4 transition-all duration-300 group-hover:text-primary-container/10">03</div>
+              <div class="space-y-3">
+                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-neutral-400">GCC Linehaul • Overland Transport</span>
+                <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-primary-container">Road Transport</h3>
+                <p class="font-body-md text-sm leading-relaxed text-neutral-600">Flexible cross-border and door-to-door road transportation solutions.</p>
               </div>
+            </div>
+            <div class="mt-8 flex justify-end">
+              <a href="services.html#road" class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-primary-container text-white hover:bg-neutral-900">
+                <span class="material-symbols-outlined text-xl font-black">add</span>
+              </a>
+            </div>
+          </div>
 
-              <!-- Card 03: Road Transport -->
-              <div class="service-card w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group bg-white border border-secondary-container/40 text-primary-container transition-all duration-800" style="transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform;">
-                <div class="service-card-num font-headline-display text-7xl md:text-9xl font-black tracking-tighter text-black/15 select-none leading-none mb-4 transition-all duration-700 delay-75">03</div>
-                <div class="service-card-content space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150">
-                  <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-neutral-400">GCC Linehaul • Overland Transport</span>
-                  <h3 class="font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none text-primary-container">Road Transport</h3>
-                  <p class="font-body-md text-sm md:text-base leading-relaxed text-neutral-600 max-w-md">Flexible cross-border and door-to-door road transportation solutions.</p>
-                </div>
-                <div class="service-card-btn mt-6 flex justify-end transition-all duration-700 delay-200">
-                  <a href="services.html#road" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-primary-container text-white hover:bg-neutral-900">
-                    <span class="material-symbols-outlined text-xl md:text-2xl font-black">add</span>
-                  </a>
-                </div>
+          <!-- Card 04: Intermodal Logistics -->
+          <div class="service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group bg-primary-container text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div>
+              <div class="font-headline-display text-6xl md:text-7xl font-black tracking-tighter text-lime-400/30 select-none leading-none mb-4 transition-all duration-300 group-hover:text-lime-400/40">04</div>
+              <div class="space-y-3">
+                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Rail & Multimodal Connectivity</span>
+                <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Intermodal Logistics</h3>
+                <p class="font-body-md text-sm leading-relaxed text-white/95">Seamless coordination across multiple transportation modes for efficient cargo movement.</p>
               </div>
+            </div>
+            <div class="mt-8 flex justify-end">
+              <a href="services.html#road" class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-white text-primary-container hover:bg-neutral-100">
+                <span class="material-symbols-outlined text-xl font-black">add</span>
+              </a>
+            </div>
+          </div>
 
-              <!-- Card 04: Intermodal Logistics -->
-              <div class="service-card w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group bg-primary-container text-white transition-all duration-800" style="transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform;">
-                <div class="service-card-num font-headline-display text-7xl md:text-9xl font-black tracking-tighter text-lime-400 select-none leading-none mb-4 transition-all duration-700 delay-75">04</div>
-                <div class="service-card-content space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150">
-                  <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Rail & Multimodal Connectivity</span>
-                  <h3 class="font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none text-white">Intermodal Logistics</h3>
-                  <p class="font-body-md text-sm md:text-base leading-relaxed text-white/90 max-w-md">Seamless coordination across multiple transportation modes for efficient cargo movement.</p>
-                </div>
-                <div class="service-card-btn mt-6 flex justify-end transition-all duration-700 delay-200">
-                  <a href="services.html#road" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-white text-primary-container hover:bg-neutral-100">
-                    <span class="material-symbols-outlined text-xl md:text-2xl font-black">add</span>
-                  </a>
-                </div>
+          <!-- Card 05: Customs Clearance -->
+          <div class="service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group bg-white border border-secondary-container/40 text-primary-container transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div>
+              <div class="font-headline-display text-6xl md:text-7xl font-black tracking-tighter text-black/10 select-none leading-none mb-4 transition-all duration-300 group-hover:text-primary-container/10">05</div>
+              <div class="space-y-3">
+                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-neutral-400">Licensed Brokerage • HS Code Compliance</span>
+                <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-primary-container">Customs Clearance</h3>
+                <p class="font-body-md text-sm leading-relaxed text-neutral-600">Efficient customs documentation and clearance support for smooth international shipments.</p>
               </div>
+            </div>
+            <div class="mt-8 flex justify-end">
+              <a href="services.html#warehousing" class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-primary-container text-white hover:bg-neutral-900">
+                <span class="material-symbols-outlined text-xl font-black">add</span>
+              </a>
+            </div>
+          </div>
 
-              <!-- Card 05: Customs Clearance -->
-              <div class="service-card w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group bg-white border border-secondary-container/40 text-primary-container transition-all duration-800" style="transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform;">
-                <div class="service-card-num font-headline-display text-7xl md:text-9xl font-black tracking-tighter text-black/15 select-none leading-none mb-4 transition-all duration-700 delay-75">05</div>
-                <div class="service-card-content space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150">
-                  <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-neutral-400">Licensed Brokerage • HS Code Compliance</span>
-                  <h3 class="font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none text-primary-container">Customs Clearance</h3>
-                  <p class="font-body-md text-sm md:text-base leading-relaxed text-neutral-600 max-w-md">Efficient customs documentation and clearance support for smooth international shipments.</p>
-                </div>
-                <div class="service-card-btn mt-6 flex justify-end transition-all duration-700 delay-200">
-                  <a href="services.html#warehousing" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-primary-container text-white hover:bg-neutral-900">
-                    <span class="material-symbols-outlined text-xl md:text-2xl font-black">add</span>
-                  </a>
-                </div>
+          <!-- Card 06: Warehousing -->
+          <div class="service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group bg-primary-container text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div>
+              <div class="font-headline-display text-6xl md:text-7xl font-black tracking-tighter text-lime-400/30 select-none leading-none mb-4 transition-all duration-300 group-hover:text-lime-400/40">06</div>
+              <div class="space-y-3">
+                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Bonded Facilities • WMS Inventory</span>
+                <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Warehousing</h3>
+                <p class="font-body-md text-sm leading-relaxed text-white/95">Secure and organized warehousing solutions for efficient inventory management.</p>
               </div>
+            </div>
+            <div class="mt-8 flex justify-end">
+              <a href="services.html#warehousing" class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-white text-primary-container hover:bg-neutral-100">
+                <span class="material-symbols-outlined text-xl font-black">add</span>
+              </a>
+            </div>
+          </div>
 
-              <!-- Card 06: Warehousing -->
-              <div class="service-card w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group bg-primary-container text-white transition-all duration-800" style="transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform;">
-                <div class="service-card-num font-headline-display text-7xl md:text-9xl font-black tracking-tighter text-lime-400 select-none leading-none mb-4 transition-all duration-700 delay-75">06</div>
-                <div class="service-card-content space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150">
-                  <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Bonded Facilities • WMS Inventory</span>
-                  <h3 class="font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none text-white">Warehousing</h3>
-                  <p class="font-body-md text-sm md:text-base leading-relaxed text-white/90 max-w-md">Secure and organized warehousing solutions for efficient inventory management.</p>
-                </div>
-                <div class="service-card-btn mt-6 flex justify-end transition-all duration-700 delay-200">
-                  <a href="services.html#warehousing" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-white text-primary-container hover:bg-neutral-100">
-                    <span class="material-symbols-outlined text-xl md:text-2xl font-black">add</span>
-                  </a>
-                </div>
+          <!-- Card 07: Packing and Labelling -->
+          <div class="service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group bg-white border border-secondary-container/40 text-primary-container transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:col-span-2 lg:col-span-1">
+            <div>
+              <div class="font-headline-display text-6xl md:text-7xl font-black tracking-tighter text-black/10 select-none leading-none mb-4 transition-all duration-300 group-hover:text-primary-container/10">07</div>
+              <div class="space-y-3">
+                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-neutral-400">Cargo Protection • Industrial Compliance</span>
+                <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-primary-container">Packing and Labelling</h3>
+                <p class="font-body-md text-sm leading-relaxed text-neutral-600">Professional packing and labelling solutions to ensure cargo protection and compliance.</p>
               </div>
-
-              <!-- Card 07: Packing and Labelling -->
-              <div class="service-card w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group bg-white border border-secondary-container/40 text-primary-container transition-all duration-800" style="transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); will-change: opacity, transform;">
-                <div class="service-card-num font-headline-display text-7xl md:text-9xl font-black tracking-tighter text-black/15 select-none leading-none mb-4 transition-all duration-700 delay-75">07</div>
-                <div class="service-card-content space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150">
-                  <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-neutral-400">Cargo Protection • Industrial Compliance</span>
-                  <h3 class="font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none text-primary-container">Packing and Labelling</h3>
-                  <p class="font-body-md text-sm md:text-base leading-relaxed text-neutral-600 max-w-md">Professional packing and labelling solutions to ensure cargo protection and compliance.</p>
-                </div>
-                <div class="service-card-btn mt-6 flex justify-end transition-all duration-700 delay-200">
-                  <a href="services.html#warehousing" class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-primary-container text-white hover:bg-neutral-900">
-                    <span class="material-symbols-outlined text-xl md:text-2xl font-black">add</span>
-                  </a>
-                </div>
-              </div>
-
+            </div>
+            <div class="mt-8 flex justify-end">
+              <a href="services.html#warehousing" class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 bg-primary-container text-white hover:bg-neutral-900">
+                <span class="material-symbols-outlined text-xl font-black">add</span>
+              </a>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -670,47 +652,9 @@
       }
     })();
 
-    // Services Section Scroll Animation
+    // Services Entrance Reveal
     (function() {
       const container = document.getElementById('services-container');
-      const track = document.getElementById('services-track');
-      const progressBar = document.getElementById('services-progress-bar');
-      const cards = document.querySelectorAll('#services-track .service-card');
-      const images = [
-        document.getElementById('service-img-0'),
-        document.getElementById('service-img-1'),
-        document.getElementById('service-img-2'),
-        document.getElementById('service-img-3'),
-        document.getElementById('service-img-4'),
-        document.getElementById('service-img-5'),
-        document.getElementById('service-img-6')
-      ];
-
-      const totalServices = 7;
-
-      function calculateActiveIndex() {
-        if (!container) return 0;
-        const offsetTop = container.offsetTop;
-        const scrollY = window.scrollY;
-        
-        if (scrollY < offsetTop) return 0;
-        
-        const scrolled = scrollY - offsetTop;
-        const scrolledVh = (scrolled / window.innerHeight) * 100;
-        
-        let index = Math.min(
-          Math.max(Math.floor((scrolledVh + 50) / 100), 0),
-          totalServices - 1
-        );
-        return index;
-      }
-      
-      let isTransitioning = false;
-      let activeIdx = calculateActiveIndex();
-      let accumulatedDelta = 0;
-      let touchStartY = 0;
-
-      // Title ScrollTrigger reveal
       if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         const heading = document.getElementById('services-heading');
         if (heading && container) {
@@ -734,289 +678,6 @@
           });
         }
       }
-      
-      function smoothScrollTo(targetY, duration) {
-        const startY = window.scrollY;
-        const difference = targetY - startY;
-        let startTime = null;
-
-        function step(timestamp) {
-          if (!startTime) startTime = timestamp;
-          const progress = timestamp - startTime;
-          const percent = Math.min(progress / duration, 1);
-          const ease = 1 - Math.pow(1 - percent, 4);
-          window.scrollTo(0, startY + difference * ease);
-          if (progress < duration) {
-            window.requestAnimationFrame(step);
-          }
-        }
-
-        window.requestAnimationFrame(step);
-      }
-
-      function handleScroll() {
-        if (!container || window.innerWidth < 768) {
-          cards.forEach(c => {
-            c.style.position = 'static';
-            c.style.top = 'auto';
-            c.style.left = 'auto';
-            c.style.right = 'auto';
-            c.style.bottom = 'auto';
-            c.style.opacity = '1';
-            c.style.transform = 'none';
-            c.style.pointerEvents = 'auto';
-          });
-          const cardContents = document.querySelectorAll('#services-track .service-card-content');
-          cardContents.forEach(el => {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-          });
-          const cardNums = document.querySelectorAll('#services-track .service-card-num');
-          cardNums.forEach(el => {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-          });
-          const cardBtns = document.querySelectorAll('#services-track .service-card-btn');
-          cardBtns.forEach(el => {
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-          });
-          return;
-        }
-        
-        const rect = container.getBoundingClientRect();
-        
-        if (window.scrollY === 0 || rect.top > 0) {
-          activeIdx = 0;
-          isTransitioning = false;
-          accumulatedDelta = 0;
-          updateUI(0);
-          return;
-        }
-
-        const offsetTop = container.offsetTop;
-        const height = container.offsetHeight;
-        const maxScroll = offsetTop + height - window.innerHeight;
-        const scrollY = window.scrollY;
-
-        if (scrollY > maxScroll + 5) {
-          activeIdx = totalServices - 1;
-          isTransitioning = false;
-          accumulatedDelta = 0;
-          updateUI(totalServices - 1);
-          return;
-        }
-
-        if (!isTransitioning) {
-          const targetIdx = calculateActiveIndex();
-          if (targetIdx !== activeIdx) {
-            activeIdx = targetIdx;
-            updateUI(activeIdx);
-          }
-        }
-      }
-
-      function updateUI(idx) {
-        if (window.innerWidth < 768) return;
-
-        if (progressBar) {
-          progressBar.style.width = `${((idx + 1) / totalServices) * 100}%`;
-        }
-
-        // Crossfade images
-        images.forEach((img, i) => {
-          if (img) {
-            if (i === idx) {
-              img.style.opacity = '1';
-              img.style.transform = 'scale(1.03)';
-            } else {
-              img.style.opacity = '0';
-              img.style.transform = 'scale(1.0)';
-            }
-          }
-        });
-
-        // Transition cards
-        cards.forEach((card, i) => {
-          card.style.position = 'absolute';
-          card.style.top = '0';
-          card.style.left = '0';
-          card.style.right = '0';
-          card.style.bottom = '0';
-          
-          const num = card.querySelector('.service-card-num');
-          const content = card.querySelector('.service-card-content');
-          const btn = card.querySelector('.service-card-btn');
-          
-          if (i === idx) {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0) scale(1)';
-            card.style.pointerEvents = 'auto';
-            
-            if (num) {
-              num.style.opacity = '1';
-              num.style.transform = 'translateY(0)';
-            }
-            if (content) {
-              content.style.opacity = '1';
-              content.style.transform = 'translateY(0)';
-            }
-            if (btn) {
-              btn.style.opacity = '1';
-              btn.style.transform = 'translateY(0)';
-            }
-          } else {
-            card.style.opacity = '0';
-            card.style.pointerEvents = 'none';
-            
-            if (i < idx) {
-              card.style.transform = 'translateY(-30px) scale(0.98)';
-              if (num) {
-                num.style.opacity = '0';
-                num.style.transform = 'translateY(-15px)';
-              }
-              if (content) {
-                content.style.opacity = '0';
-                content.style.transform = 'translateY(-15px)';
-              }
-              if (btn) {
-                btn.style.opacity = '0';
-                btn.style.transform = 'translateY(-10px)';
-              }
-            } else {
-              card.style.transform = 'translateY(40px) scale(0.98)';
-              if (num) {
-                num.style.opacity = '0';
-                num.style.transform = 'translateY(20px)';
-              }
-              if (content) {
-                content.style.opacity = '0';
-                content.style.transform = 'translateY(25px)';
-              }
-              if (btn) {
-                btn.style.opacity = '0';
-                btn.style.transform = 'translateY(20px)';
-              }
-            }
-          }
-        });
-      }
-
-      function triggerTransition(nextIdx) {
-        isTransitioning = true;
-        activeIdx = nextIdx;
-        updateUI(activeIdx);
-
-        if (container) {
-          const targetScrollY = container.offsetTop + nextIdx * window.innerHeight;
-          smoothScrollTo(targetScrollY, 900);
-        }
-
-        setTimeout(() => {
-          isTransitioning = false;
-          accumulatedDelta = 0;
-        }, 950);
-      }
-
-      function onWheel(e) {
-        if (window.innerWidth < 768 || !container) return;
-        const offsetTop = container.offsetTop;
-        const height = container.offsetHeight;
-        const maxScroll = offsetTop + height - window.innerHeight;
-        const scrollY = window.scrollY;
-
-        const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
-        if (!isInside) return;
-
-        if (isTransitioning) {
-          e.preventDefault();
-          return;
-        }
-
-        if (activeIdx === 0 && e.deltaY < 0 && scrollY <= offsetTop + 5) {
-          return;
-        }
-
-        if (activeIdx === totalServices - 1 && e.deltaY > 0 && scrollY >= maxScroll - 5) {
-          return;
-        }
-
-        if (activeIdx === 0 && e.deltaY > 0 && scrollY < offsetTop) {
-          return;
-        }
-
-        e.preventDefault();
-
-        accumulatedDelta += e.deltaY;
-        const threshold = 50;
-
-        if (Math.abs(accumulatedDelta) >= threshold) {
-          const direction = accumulatedDelta > 0 ? 1 : -1;
-          accumulatedDelta = 0;
-
-          const nextIdx = activeIdx + direction;
-          if (nextIdx >= 0 && nextIdx < totalServices) {
-            triggerTransition(nextIdx);
-          }
-        }
-      }
-
-      function onTouchStart(e) {
-        if (window.innerWidth < 768) return;
-        touchStartY = e.touches[0].clientY;
-      }
-
-      function onTouchMove(e) {
-        if (window.innerWidth < 768 || !container) return;
-        const offsetTop = container.offsetTop;
-        const height = container.offsetHeight;
-        const maxScroll = offsetTop + height - window.innerHeight;
-        const scrollY = window.scrollY;
-
-        const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
-        if (!isInside) return;
-
-        if (isTransitioning) {
-          e.preventDefault();
-          return;
-        }
-
-        const touchY = e.touches[0].clientY;
-        const deltaY = touchStartY - touchY;
-
-        if (activeIdx === 0 && deltaY < 0 && scrollY <= offsetTop + 5) {
-          return;
-        }
-
-        if (activeIdx === totalServices - 1 && deltaY > 0 && scrollY >= maxScroll - 5) {
-          return;
-        }
-
-        if (activeIdx === 0 && deltaY > 0 && scrollY < offsetTop) {
-          return;
-        }
-
-        e.preventDefault();
-
-        const touchThreshold = 50;
-        if (Math.abs(deltaY) >= touchThreshold) {
-          const direction = deltaY > 0 ? 1 : -1;
-          touchStartY = touchY;
-
-          const nextIdx = activeIdx + direction;
-          if (nextIdx >= 0 && nextIdx < totalServices) {
-            triggerTransition(nextIdx);
-          }
-        }
-      }
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      window.addEventListener('resize', handleScroll, { passive: true });
-      window.addEventListener('wheel', onWheel, { passive: false });
-      window.addEventListener('touchstart', onTouchStart, { passive: true });
-      window.addEventListener('touchmove', onTouchMove, { passive: false });
-      
-      handleScroll();
     })();
   </script>
 </body>

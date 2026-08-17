@@ -115,12 +115,6 @@ function CoreValuesSection() {
 
 function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const activeIdxRef = useRef(0);
-  const accumulatedDeltaRef = useRef(0);
-  const touchStartYRef = useRef(0);
-  const isTransitioningRef = useRef(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   const services = [
@@ -129,7 +123,6 @@ function ServicesSection() {
       title: "Air Freight",
       desc: "Fast, reliable, and secure air freight solutions for time-sensitive shipments.",
       supporting: "Global Air Transit • Priority Cargo",
-      image: "/images/air-freight.png",
       href: "/services#air",
     },
     {
@@ -137,7 +130,6 @@ function ServicesSection() {
       title: "Sea Freight",
       desc: "Reliable and economical ocean freight solutions for global cargo transportation.",
       supporting: "Ocean Carrier • FCL & LCL Consolidation",
-      image: "/images/sea-freight.png",
       href: "/services#sea",
     },
     {
@@ -145,7 +137,6 @@ function ServicesSection() {
       title: "Road Transport",
       desc: "Flexible cross-border and door-to-door road transportation solutions.",
       supporting: "GCC Linehaul • Overland Transport",
-      image: "/images/road-transport.png",
       href: "/services#road",
     },
     {
@@ -153,7 +144,6 @@ function ServicesSection() {
       title: "Intermodal Logistics",
       desc: "Seamless coordination across multiple transportation modes for efficient cargo movement.",
       supporting: "Rail & Multimodal Connectivity",
-      image: "/images/intermodal-logistics.png",
       href: "/services#road",
     },
     {
@@ -161,7 +151,6 @@ function ServicesSection() {
       title: "Customs Clearance",
       desc: "Efficient customs documentation and clearance support for smooth international shipments.",
       supporting: "Licensed Brokerage • HS Code Compliance",
-      image: "/images/customs-clearance.png",
       href: "/services#warehousing",
     },
     {
@@ -169,7 +158,6 @@ function ServicesSection() {
       title: "Warehousing",
       desc: "Secure and organized warehousing solutions for efficient inventory management.",
       supporting: "Bonded Facilities • WMS Inventory",
-      image: "/images/warehousing.png",
       href: "/services#warehousing",
     },
     {
@@ -177,35 +165,9 @@ function ServicesSection() {
       title: "Packing and Labelling",
       desc: "Professional packing and labelling solutions to ensure cargo protection and compliance.",
       supporting: "Cargo Protection • Industrial Compliance",
-      image: "/images/packing-labelling.png",
       href: "/services#warehousing",
     },
   ];
-
-  const calculateActiveIndex = () => {
-    const container = containerRef.current;
-    if (!container) return 0;
-    const offsetTop = container.offsetTop;
-    const scrollY = window.scrollY;
-
-    if (scrollY < offsetTop) return 0;
-
-    const scrolled = scrollY - offsetTop;
-    const scrolledVh = (scrolled / window.innerHeight) * 100;
-
-    const index = Math.min(
-      Math.max(Math.floor((scrolledVh + 50) / 100), 0),
-      services.length - 1
-    );
-
-    return index;
-  };
-
-  useEffect(() => {
-    const initialIdx = calculateActiveIndex();
-    setActiveIdx(initialIdx);
-    activeIdxRef.current = initialIdx;
-  }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -236,19 +198,6 @@ function ServicesSection() {
       );
     });
 
-    let resizeObserver: ResizeObserver | null = null;
-    if (typeof window !== "undefined" && "ResizeObserver" in window) {
-      resizeObserver = new ResizeObserver(() => {
-        ScrollTrigger.refresh();
-        const currentIdx = calculateActiveIndex();
-        if (currentIdx !== activeIdxRef.current) {
-          activeIdxRef.current = currentIdx;
-          setActiveIdx(currentIdx);
-        }
-      });
-      resizeObserver.observe(document.body);
-    }
-
     const refreshTimer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 200);
@@ -256,353 +205,94 @@ function ServicesSection() {
     return () => {
       ctx.revert();
       clearTimeout(refreshTimer);
-      if (resizeObserver) {
-        resizeObserver.disconnect();
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", handleResize, { passive: true });
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerWidth < 768) return;
-      const container = containerRef.current;
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-
-      if (window.scrollY === 0 || rect.top > 0) {
-        setActiveIdx(0);
-        activeIdxRef.current = 0;
-        isTransitioningRef.current = false;
-        accumulatedDeltaRef.current = 0;
-        return;
-      }
-
-      const offsetTop = container.offsetTop;
-      const height = container.offsetHeight;
-      const maxScroll = offsetTop + height - window.innerHeight;
-      const scrollY = window.scrollY;
-
-      if (scrollY > maxScroll + 5) {
-        setActiveIdx(services.length - 1);
-        activeIdxRef.current = services.length - 1;
-        isTransitioningRef.current = false;
-        return;
-      }
-
-      if (!isTransitioningRef.current) {
-        const targetIdx = calculateActiveIndex();
-        if (targetIdx !== activeIdxRef.current) {
-          activeIdxRef.current = targetIdx;
-          setActiveIdx(targetIdx);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const smoothScrollTo = (targetY: number, duration: number) => {
-      const startY = window.scrollY;
-      const difference = targetY - startY;
-      let startTime: number | null = null;
-
-      const step = (timestamp: number) => {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
-        const percent = Math.min(progress / duration, 1);
-        const ease = 1 - Math.pow(1 - percent, 4);
-        window.scrollTo(0, startY + difference * ease);
-        if (progress < duration) {
-          window.requestAnimationFrame(step);
-        }
-      };
-
-      window.requestAnimationFrame(step);
-    };
-
-    const triggerTransition = (nextIdx: number) => {
-      isTransitioningRef.current = true;
-      activeIdxRef.current = nextIdx;
-      setActiveIdx(nextIdx);
-
-      const container = containerRef.current;
-      if (container) {
-        const targetScrollY = container.offsetTop + nextIdx * window.innerHeight;
-        smoothScrollTo(targetScrollY, 900);
-      }
-
-      setTimeout(() => {
-        isTransitioningRef.current = false;
-        accumulatedDeltaRef.current = 0;
-      }, 950);
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      if (window.innerWidth < 768) return;
-      const container = containerRef.current;
-      if (!container) return;
-
-      const offsetTop = container.offsetTop;
-      const height = container.offsetHeight;
-      const maxScroll = offsetTop + height - window.innerHeight;
-      const scrollY = window.scrollY;
-
-      const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
-      if (!isInside) return;
-
-      if (isTransitioningRef.current) {
-        e.preventDefault();
-        return;
-      }
-
-      if (activeIdxRef.current === 0 && e.deltaY < 0 && scrollY <= offsetTop + 5) {
-        return;
-      }
-      if (activeIdxRef.current === services.length - 1 && e.deltaY > 0 && scrollY >= maxScroll - 5) {
-        return;
-      }
-
-      if (activeIdxRef.current === 0 && e.deltaY > 0 && scrollY < offsetTop) {
-        return;
-      }
-
-      e.preventDefault();
-
-      accumulatedDeltaRef.current += e.deltaY;
-      const threshold = 50;
-
-      if (Math.abs(accumulatedDeltaRef.current) >= threshold) {
-        const direction = accumulatedDeltaRef.current > 0 ? 1 : -1;
-        accumulatedDeltaRef.current = 0;
-
-        const nextIdx = activeIdxRef.current + direction;
-        if (nextIdx >= 0 && nextIdx < services.length) {
-          triggerTransition(nextIdx);
-        }
-      }
-    };
-
-    const onTouchStart = (e: TouchEvent) => {
-      if (window.innerWidth < 768) return;
-      touchStartYRef.current = e.touches[0].clientY;
-    };
-
-    const onTouchMove = (e: TouchEvent) => {
-      if (window.innerWidth < 768) return;
-      const container = containerRef.current;
-      if (!container) return;
-
-      const offsetTop = container.offsetTop;
-      const height = container.offsetHeight;
-      const maxScroll = offsetTop + height - window.innerHeight;
-      const scrollY = window.scrollY;
-
-      const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
-      if (!isInside) return;
-
-      if (isTransitioningRef.current) {
-        e.preventDefault();
-        return;
-      }
-
-      const touchY = e.touches[0].clientY;
-      const deltaY = touchStartYRef.current - touchY;
-
-      if (activeIdxRef.current === 0 && deltaY < 0 && scrollY <= offsetTop + 5) {
-        return;
-      }
-      if (activeIdxRef.current === services.length - 1 && deltaY > 0 && scrollY >= maxScroll - 5) {
-        return;
-      }
-
-      if (activeIdxRef.current === 0 && deltaY > 0 && scrollY < offsetTop) {
-        return;
-      }
-
-      e.preventDefault();
-
-      const touchThreshold = 50;
-      if (Math.abs(deltaY) >= touchThreshold) {
-        const direction = deltaY > 0 ? 1 : -1;
-        touchStartYRef.current = touchY;
-
-        const nextIdx = activeIdxRef.current + direction;
-        if (nextIdx >= 0 && nextIdx < services.length) {
-          triggerTransition(nextIdx);
-        }
-      }
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: false });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchmove", onTouchMove);
     };
   }, []);
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-auto md:h-[700vh] bg-background z-30 overflow-visible"
+      id="services-container"
+      className="relative w-full bg-background z-30 py-20 md:py-32 overflow-hidden border-t border-secondary-container"
     >
-      <div className="md:sticky md:top-0 w-full h-auto md:h-screen bg-background overflow-hidden flex items-center">
-        <div className="w-full h-full flex flex-col md:flex-row max-w-container-max mx-auto relative px-margin-mobile md:px-margin-desktop py-16 md:py-0 items-center justify-between gap-8 md:gap-16">
-          
-          {/* Left Column: Visual Panel */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center h-[50vh] md:h-[75vh] relative z-20">
-            <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-xl p-8 md:p-12 flex flex-col justify-between">
-              {services.map((service, idx) => (
-                <div
-                  key={idx}
-                  className="absolute inset-0 transition-all duration-1000 ease-out"
-                  style={{
-                    opacity: activeIdx === idx ? 1 : 0,
-                    transform: activeIdx === idx ? "scale(1.03)" : "scale(1.0)",
-                    transitionProperty: "opacity, transform",
-                  }}
-                >
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/60 z-10" />
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <span className="text-primary-container font-label-bold uppercase tracking-wider mb-2 block text-xs">Our Expertise</span>
+          <h2
+            ref={headingRef}
+            className="font-headline-display text-4xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none mb-6"
+            style={{ willChange: "transform, opacity, clip-path" }}
+          >
+            Our Services
+          </h2>
+          <p className="font-body-md text-sm md:text-base text-secondary max-w-xl mx-auto">
+            Precision in motion. Integrated global logistics solutions tailored for your cargo.
+          </p>
+        </div>
 
-              <h2
-                ref={headingRef}
-                className="relative z-20 font-headline-display text-4xl sm:text-5xl md:text-7xl text-white font-black uppercase tracking-tight leading-none"
-                style={{ willChange: "transform, opacity, clip-path" }}
+        {/* Grid of Services */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, idx) => {
+            const isEven = idx % 2 === 0;
+            const cardBgClass = isEven
+              ? "bg-white border border-secondary-container/40 text-primary-container"
+              : "bg-primary-container text-white";
+            const numColorClass = isEven
+              ? "text-black/10 group-hover:text-primary-container/10"
+              : "text-lime-400/30 group-hover:text-lime-400/40";
+            const titleColorClass = isEven ? "text-primary-container" : "text-white";
+            const descColorClass = isEven ? "text-neutral-600" : "text-white/95";
+            const suppColorClass = isEven ? "text-neutral-400" : "text-white/60";
+            const btnBgClass = isEven
+              ? "bg-primary-container text-white hover:bg-neutral-900"
+              : "bg-white text-primary-container hover:bg-neutral-100";
+            const spanColClass = idx === 6 ? "md:col-span-2 lg:col-span-1" : "";
+
+            return (
+              <div
+                key={idx}
+                className={`service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${cardBgClass} ${spanColClass}`}
               >
-                Our <br className="hidden md:inline" /> Services
-              </h2>
-
-              <div className="relative z-20 w-full mt-auto">
-                <div className="w-full h-[2.5px] bg-white/20 relative rounded-full overflow-hidden">
+                <div>
                   <div
-                    className="h-full bg-primary-container absolute left-0 top-0 transition-all"
-                    style={{
-                      width: `${((activeIdx + 1) / services.length) * 100}%`,
-                      transitionDuration: "800ms",
-                      transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-                    }}
-                  />
+                    className={`font-headline-display text-6xl md:text-7xl font-black tracking-tighter select-none leading-none mb-4 transition-all duration-300 ${numColorClass}`}
+                  >
+                    {service.num}
+                  </div>
+
+                  <div className="space-y-3">
+                    <span
+                      className={`text-[10px] md:text-xs font-label-bold uppercase tracking-wider block ${suppColorClass}`}
+                    >
+                      {service.supporting}
+                    </span>
+                    <h3
+                      className={`font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none ${titleColorClass}`}
+                    >
+                      {service.title}
+                    </h3>
+                    <p className={`font-body-md text-sm leading-relaxed ${descColorClass}`}>
+                      {service.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-8 flex justify-end">
+                  <Link
+                    href={service.href}
+                    className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 ${btnBgClass}`}
+                  >
+                    <span className="material-symbols-outlined text-xl font-black">
+                      add
+                    </span>
+                  </Link>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Right Column: Moving Content */}
-          <div className="w-full md:w-1/2 h-auto md:h-[75vh] relative overflow-visible md:overflow-hidden flex items-center">
-            <div
-              className={!isMobile ? "w-full h-full relative flex items-center" : "w-full flex flex-col space-y-8"}
-            >
-              {services.map((service, idx) => {
-                const isEven = idx % 2 === 0;
-                const cardBgClass = isEven
-                  ? "bg-white border border-secondary-container/40 text-primary-container"
-                  : "bg-primary-container text-white";
-                const numColorClass = isEven ? "text-black/15" : "text-lime-400";
-                const titleColorClass = isEven ? "text-primary-container" : "text-white";
-                const descColorClass = isEven ? "text-neutral-600" : "text-white/90";
-                const suppColorClass = isEven ? "text-neutral-400" : "text-white/60";
-                const btnBgClass = isEven ? "bg-primary-container text-white hover:bg-neutral-900" : "bg-white text-primary-container hover:bg-neutral-100";
-
-                return (
-                  <div
-                    key={idx}
-                    className={`w-full rounded-3xl p-8 md:p-14 flex flex-col justify-between shadow-lg relative group ${cardBgClass}`}
-                    style={
-                      !isMobile
-                        ? {
-                            position: "absolute",
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            opacity: activeIdx === idx ? 1 : 0,
-                            transform: activeIdx === idx
-                              ? "translateY(0) scale(1)"
-                              : (idx < activeIdx ? "translateY(-30px) scale(0.98)" : "translateY(40px) scale(0.98)"),
-                            pointerEvents: activeIdx === idx ? "auto" : "none",
-                            transition: "opacity 800ms, transform 800ms",
-                            transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-                            willChange: "opacity, transform",
-                          }
-                        : {}
-                    }
-                  >
-                    <div 
-                      className={`font-headline-display text-7xl md:text-9xl font-black tracking-tighter ${numColorClass} select-none leading-none mb-4 transition-all duration-700 delay-75`}
-                      style={!isMobile ? {
-                        opacity: activeIdx === idx ? 1 : 0,
-                        transform: activeIdx === idx ? "translateY(0)" : (idx < activeIdx ? "translateY(-15px)" : "translateY(20px)"),
-                        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-                      } : {}}
-                    >
-                      {service.num}
-                    </div>
-
-                    <div 
-                      className="space-y-4 md:space-y-6 flex-grow transition-all duration-700 delay-150"
-                      style={!isMobile ? {
-                        opacity: activeIdx === idx ? 1 : 0,
-                        transform: activeIdx === idx ? "translateY(0)" : (idx < activeIdx ? "translateY(-15px)" : "translateY(25px)"),
-                        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-                      } : {}}
-                    >
-                      <span className={`text-[10px] md:text-xs font-label-bold uppercase tracking-wider block ${suppColorClass}`}>
-                        {service.supporting}
-                      </span>
-                      <h3 className={`font-headline-md text-2xl md:text-4.5xl font-bold uppercase tracking-tight leading-none ${titleColorClass}`}>
-                        {service.title}
-                      </h3>
-                      <p className={`font-body-md text-sm md:text-base leading-relaxed ${descColorClass} max-w-md`}>
-                        {service.desc}
-                      </p>
-                    </div>
-
-                    <div 
-                      className="mt-6 flex justify-end transition-all duration-700 delay-200"
-                      style={!isMobile ? {
-                        opacity: activeIdx === idx ? 1 : 0,
-                        transform: activeIdx === idx ? "translateY(0)" : (idx < activeIdx ? "translateY(-10px)" : "translateY(20px)"),
-                        transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-                      } : {}}
-                    >
-                      <Link
-                        href={service.href}
-                        className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 ${btnBgClass}`}
-                      >
-                        <span className="material-symbols-outlined text-xl md:text-2xl font-black">
-                          add
-                        </span>
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
+            );
+          })}
         </div>
+
       </div>
     </section>
   );
