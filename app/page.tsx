@@ -225,7 +225,6 @@ function ServicesSection() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-          <span className="text-primary-container font-label-bold uppercase tracking-wider mb-2 block text-xs">Our Expertise</span>
           <h2
             ref={headingRef}
             className="font-headline-display text-3xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none mb-6"
