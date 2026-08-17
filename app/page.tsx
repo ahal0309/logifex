@@ -123,6 +123,7 @@ function ServicesSection() {
       title: "Air Freight",
       desc: "Fast, reliable, and secure air freight solutions for time-sensitive shipments.",
       supporting: "Global Air Transit • Priority Cargo",
+      image: "/images/air-freight.png",
       href: "/services#air",
     },
     {
@@ -130,6 +131,7 @@ function ServicesSection() {
       title: "Sea Freight",
       desc: "Reliable and economical ocean freight solutions for global cargo transportation.",
       supporting: "Ocean Carrier • FCL & LCL Consolidation",
+      image: "/images/sea-freight.png",
       href: "/services#sea",
     },
     {
@@ -137,6 +139,7 @@ function ServicesSection() {
       title: "Road Transport",
       desc: "Flexible cross-border and door-to-door road transportation solutions.",
       supporting: "GCC Linehaul • Overland Transport",
+      image: "/images/road-transport.png",
       href: "/services#road",
     },
     {
@@ -144,6 +147,7 @@ function ServicesSection() {
       title: "Intermodal Logistics",
       desc: "Seamless coordination across multiple transportation modes for efficient cargo movement.",
       supporting: "Rail & Multimodal Connectivity",
+      image: "/images/intermodal-logistics.png",
       href: "/services#road",
     },
     {
@@ -151,6 +155,7 @@ function ServicesSection() {
       title: "Customs Clearance",
       desc: "Efficient customs documentation and clearance support for smooth international shipments.",
       supporting: "Licensed Brokerage • HS Code Compliance",
+      image: "/images/customs-clearance.png",
       href: "/services#warehousing",
     },
     {
@@ -158,6 +163,7 @@ function ServicesSection() {
       title: "Warehousing",
       desc: "Secure and organized warehousing solutions for efficient inventory management.",
       supporting: "Bonded Facilities • WMS Inventory",
+      image: "/images/warehousing.png",
       href: "/services#warehousing",
     },
     {
@@ -165,6 +171,7 @@ function ServicesSection() {
       title: "Packing and Labelling",
       desc: "Professional packing and labelling solutions to ensure cargo protection and compliance.",
       supporting: "Cargo Protection • Industrial Compliance",
+      image: "/images/packing-labelling.png",
       href: "/services#warehousing",
     },
   ];
@@ -234,54 +241,51 @@ function ServicesSection() {
         {/* Grid of Services */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, idx) => {
-            const isEven = idx % 2 === 0;
-            const cardBgClass = isEven
-              ? "bg-white border border-secondary-container/40 text-primary-container"
-              : "bg-primary-container text-white";
-            const numColorClass = isEven
-              ? "text-black/10 group-hover:text-primary-container/10"
-              : "text-lime-400/30 group-hover:text-lime-400/40";
-            const titleColorClass = isEven ? "text-primary-container" : "text-white";
-            const descColorClass = isEven ? "text-neutral-600" : "text-white/95";
-            const suppColorClass = isEven ? "text-neutral-400" : "text-white/60";
-            const btnBgClass = isEven
-              ? "bg-primary-container text-white hover:bg-neutral-900"
-              : "bg-white text-primary-container hover:bg-neutral-100";
             const spanColClass = idx === 6 ? "md:col-span-2 lg:col-span-1" : "";
 
             return (
               <div
                 key={idx}
-                className={`service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${cardBgClass} ${spanColClass}`}
+                className={`service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
               >
-                <div>
+                {/* Background Image and Overlay */}
+                <div className="absolute inset-0 z-0">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/65 z-10 transition-opacity duration-300 group-hover:opacity-95" />
+                </div>
+
+                <div className="relative z-20">
                   <div
-                    className={`font-headline-display text-6xl md:text-7xl font-black tracking-tighter select-none leading-none mb-4 transition-all duration-300 ${numColorClass}`}
+                    className="font-headline-display text-6xl md:text-7xl font-black tracking-tighter select-none leading-none mb-4 transition-all duration-300 text-white/10 group-hover:text-lime-400/30"
                   >
                     {service.num}
                   </div>
 
                   <div className="space-y-3">
                     <span
-                      className={`text-[10px] md:text-xs font-label-bold uppercase tracking-wider block ${suppColorClass}`}
+                      className="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60"
                     >
                       {service.supporting}
                     </span>
                     <h3
-                      className={`font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none ${titleColorClass}`}
+                      className="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white"
                     >
                       {service.title}
                     </h3>
-                    <p className={`font-body-md text-sm leading-relaxed ${descColorClass}`}>
+                    <p className="font-body-md text-sm leading-relaxed text-white/80">
                       {service.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-8 flex justify-end">
+                <div className="relative z-20 mt-8 flex justify-end">
                   <Link
                     href={service.href}
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md group-hover:rotate-90 ${btnBgClass}`}
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md bg-white text-primary-container hover:bg-lime-400 hover:text-black group-hover:rotate-90"
                   >
                     <span className="material-symbols-outlined text-xl font-black">
                       add
