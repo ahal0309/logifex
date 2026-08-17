@@ -285,10 +285,10 @@ function ServicesSection() {
                 <div className="relative z-20 mt-8 flex justify-end">
                   <Link
                     href={service.href}
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md bg-white text-primary-container hover:bg-lime-400 hover:text-black group-hover:rotate-90"
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md bg-white text-primary-container hover:bg-lime-400 hover:text-black"
                   >
-                    <span className="material-symbols-outlined text-xl font-black">
-                      add
+                    <span className="material-symbols-outlined text-xl font-black transition-transform duration-300 group-hover:translate-x-1">
+                      arrow_forward
                     </span>
                   </Link>
                 </div>
