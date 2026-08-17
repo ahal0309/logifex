@@ -7,49 +7,30 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function CoreValuesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [translateVal, setTranslateVal] = useState(0);
-  const [hasScrolledIntoView, setHasScrolledIntoView] = useState(false);
-  const lockRef = useRef(false);
-  const activeIdxRef = useRef(0);
-  const accumulatedDeltaRef = useRef(0);
-  const touchStartYRef = useRef(0);
-  const isTransitioningRef = useRef(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const calculateActiveIndex = () => {
-    const container = containerRef.current;
-    if (!container) return 0;
-    const offsetTop = container.offsetTop;
-    const scrollY = window.scrollY;
 
-    if (scrollY < offsetTop) return 0;
-
-    const scrolled = scrollY - offsetTop;
-    const scrolledVh = (scrolled / window.innerHeight) * 100;
-
-    let index = 0;
-    if (scrolledVh < 50) index = 0;
-    else if (scrolledVh < 150) index = 1;
-    else if (scrolledVh < 250) index = 2;
-    else index = 3;
-
-    return index;
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (window.history.scrollRestoration) {
-        window.history.scrollRestoration = "manual";
-      }
-      
-      // Sync active index with actual scroll position on mount
-      const initialIdx = calculateActiveIndex();
-      setActiveIdx(initialIdx);
-      activeIdxRef.current = initialIdx;
-      setTranslateVal(initialIdx * 100);
-    }
-  }, []);
+  const values = [
+    {
+      num: "01.",
+      title: "Reliability",
+      desc: "Consistency in every shipment and operation",
+    },
+    {
+      num: "02.",
+      title: "Transparency",
+      desc: "Clear communication and process visibility",
+    },
+    {
+      num: "03.",
+      title: "Efficiency",
+      desc: "Optimized logistics for time and cost control",
+    },
+    {
+      num: "04.",
+      title: "Accountability",
+      desc: "Ownership at every stage of execution",
+    },
+  ];
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -80,22 +61,6 @@ function CoreValuesSection() {
       );
     });
 
-    let resizeObserver: ResizeObserver | null = null;
-    if (typeof window !== "undefined" && "ResizeObserver" in window) {
-      resizeObserver = new ResizeObserver(() => {
-        ScrollTrigger.refresh();
-        
-        // Sync active index after layout stabilizes
-        const currentIdx = calculateActiveIndex();
-        if (currentIdx !== activeIdxRef.current) {
-          activeIdxRef.current = currentIdx;
-          setActiveIdx(currentIdx);
-          setTranslateVal(currentIdx * 100);
-        }
-      });
-      resizeObserver.observe(document.body);
-    }
-
     const refreshTimer = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 200);
@@ -103,332 +68,43 @@ function CoreValuesSection() {
     return () => {
       ctx.revert();
       clearTimeout(refreshTimer);
-      if (resizeObserver) {
-        resizeObserver.disconnect();
-      }
     };
   }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", handleResize, { passive: true });
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerWidth < 768) return;
-      const container = containerRef.current;
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-
-      // Reset and stop calculations if at top of page or container is below viewport
-      if (window.scrollY === 0 || rect.top > 0) {
-        setTranslateVal(0);
-        setActiveIdx(0);
-        activeIdxRef.current = 0;
-        isTransitioningRef.current = false;
-        lockRef.current = false;
-        accumulatedDeltaRef.current = 0;
-        setHasScrolledIntoView(false);
-        return;
-      }
-
-      if (rect.top <= 0) {
-        setHasScrolledIntoView(true);
-      }
-
-      const offsetTop = container.offsetTop;
-      const height = container.offsetHeight;
-      const maxScroll = offsetTop + height - window.innerHeight;
-      const scrollY = window.scrollY;
-
-      // Sync active index to Card 03 if we scrolled natively past the section
-      if (scrollY > maxScroll + 5) {
-        setActiveIdx(3);
-        activeIdxRef.current = 3;
-        setTranslateVal(300);
-        isTransitioningRef.current = false;
-        accumulatedDeltaRef.current = 0;
-        return;
-      }
-
-      // Sync active index with actual scroll position if not transitioning
-      if (!isTransitioningRef.current) {
-        const targetIdx = calculateActiveIndex();
-        if (targetIdx !== activeIdxRef.current) {
-          activeIdxRef.current = targetIdx;
-          setActiveIdx(targetIdx);
-          setTranslateVal(targetIdx * 100);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const smoothScrollTo = (targetY: number, duration: number) => {
-      const startY = window.scrollY;
-      const difference = targetY - startY;
-      let startTime: number | null = null;
-
-      const step = (timestamp: number) => {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
-        const percent = Math.min(progress / duration, 1);
-        const ease = 1 - Math.pow(1 - percent, 4);
-        window.scrollTo(0, startY + difference * ease);
-        if (progress < duration) {
-          window.requestAnimationFrame(step);
-        }
-      };
-
-      window.requestAnimationFrame(step);
-    };
-
-    const triggerTransition = (nextIdx: number) => {
-      isTransitioningRef.current = true;
-      activeIdxRef.current = nextIdx;
-      setActiveIdx(nextIdx);
-      setTranslateVal(nextIdx * 100);
-
-      const container = containerRef.current;
-      if (container) {
-        const targetScrollY = container.offsetTop + nextIdx * window.innerHeight;
-        smoothScrollTo(targetScrollY, 1200);
-      }
-
-      setTimeout(() => {
-        isTransitioningRef.current = false;
-        accumulatedDeltaRef.current = 0;
-      }, 1250);
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      if (window.innerWidth < 768) return;
-      const container = containerRef.current;
-      if (!container) return;
-
-      const offsetTop = container.offsetTop;
-      const height = container.offsetHeight;
-      const maxScroll = offsetTop + height - window.innerHeight;
-      const scrollY = window.scrollY;
-
-      const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
-      if (!isInside) return;
-
-      if (isTransitioningRef.current) {
-        e.preventDefault();
-        return;
-      }
-
-      // Allow native scroll out at boundaries
-      if (activeIdxRef.current === 0 && e.deltaY < 0 && scrollY <= offsetTop + 5) {
-        return;
-      }
-      if (activeIdxRef.current === 3 && e.deltaY > 0 && scrollY >= maxScroll - 5) {
-        return;
-      }
-      
-      // Let the page scroll naturally to the top of the container before starting 01 -> 02 transition
-      if (activeIdxRef.current === 0 && e.deltaY > 0 && scrollY < offsetTop) {
-        return;
-      }
-
-      e.preventDefault();
-
-      accumulatedDeltaRef.current += e.deltaY;
-      const threshold = 50;
-
-      if (Math.abs(accumulatedDeltaRef.current) >= threshold) {
-        const direction = accumulatedDeltaRef.current > 0 ? 1 : -1;
-        accumulatedDeltaRef.current = 0;
-
-        const nextIdx = activeIdxRef.current + direction;
-        if (nextIdx >= 0 && nextIdx <= 3) {
-          triggerTransition(nextIdx);
-        }
-      }
-    };
-
-    const onTouchStart = (e: TouchEvent) => {
-      if (window.innerWidth < 768) return;
-      touchStartYRef.current = e.touches[0].clientY;
-    };
-
-    const onTouchMove = (e: TouchEvent) => {
-      if (window.innerWidth < 768) return;
-      const container = containerRef.current;
-      if (!container) return;
-
-      const offsetTop = container.offsetTop;
-      const height = container.offsetHeight;
-      const maxScroll = offsetTop + height - window.innerHeight;
-      const scrollY = window.scrollY;
-
-      const isInside = scrollY >= offsetTop - 5 && scrollY <= maxScroll + 5;
-      if (!isInside) return;
-
-      if (isTransitioningRef.current) {
-        e.preventDefault();
-        return;
-      }
-
-      const touchY = e.touches[0].clientY;
-      const deltaY = touchStartYRef.current - touchY;
-
-      if (activeIdxRef.current === 0 && deltaY < 0 && scrollY <= offsetTop + 5) {
-        return;
-      }
-      if (activeIdxRef.current === 3 && deltaY > 0 && scrollY >= maxScroll - 5) {
-        return;
-      }
-
-      // Let the page scroll naturally to the top of the container before starting 01 -> 02 transition
-      if (activeIdxRef.current === 0 && deltaY > 0 && scrollY < offsetTop) {
-        return;
-      }
-
-      e.preventDefault();
-
-      const touchThreshold = 50;
-      if (Math.abs(deltaY) >= touchThreshold) {
-        const direction = deltaY > 0 ? 1 : -1;
-        touchStartYRef.current = touchY;
-
-        const nextIdx = activeIdxRef.current + direction;
-        if (nextIdx >= 0 && nextIdx <= 3) {
-          triggerTransition(nextIdx);
-        }
-      }
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: false });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchmove", onTouchMove);
-    };
-  }, []);
-
-  const values = [
-    {
-      num: "01.",
-      title: "Reliability",
-      desc: "Consistency in every shipment and operation",
-      alignment: "self-start",
-    },
-    {
-      num: "02.",
-      title: "Transparency",
-      desc: "Clear communication and process visibility",
-      alignment: "self-end md:pl-24",
-    },
-    {
-      num: "03.",
-      title: "Efficiency",
-      desc: "Optimized logistics for time and cost control",
-      alignment: "self-start",
-    },
-    {
-      num: "04.",
-      title: "Accountability",
-      desc: "Ownership at every stage of execution",
-      alignment: "self-end md:pl-24",
-    },
-  ];
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-auto md:h-[400vh] bg-primary z-30 overflow-visible"
+      className="relative w-full bg-primary z-30 py-20 md:py-32 overflow-hidden"
     >
-      {/* Sticky / static wrapper */}
-      <div className="md:sticky md:top-0 w-full h-auto md:h-screen bg-primary overflow-hidden flex items-center">
-        <div className="w-full h-full flex flex-col md:flex-row max-w-container-max mx-auto relative px-margin-mobile md:px-margin-desktop py-16 md:py-0">
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div className="w-full flex flex-col md:flex-row gap-12 md:gap-16 items-start">
 
-          {/* Left Column: Sticky Title & Progress */}
-          <div className="w-full md:w-1/2 flex flex-col justify-between h-auto md:h-full py-0 md:py-24 z-20">
-            <div className="flex-grow flex items-center">
-              <h2
-                ref={headingRef}
-                className="font-headline-display text-4xl sm:text-5xl md:text-8xl text-white font-black uppercase tracking-tight leading-none"
-                style={{ willChange: "transform, opacity, clip-path" }}
-              >
-                Core <br className="hidden md:inline" /> Values
-              </h2>
-            </div>
-
-            {/* Progress line - hidden on mobile, visible on desktop */}
-            <div className="hidden md:block w-full max-w-md pt-8 border-t border-white/10 mt-auto">
-              <div className="flex justify-between text-white/50 text-[10px] md:text-xs font-mono mb-2">
-                <span>01 / RELIABILITY</span>
-                <span>04 / ACCOUNTABILITY</span>
-              </div>
-              <div className="w-full h-[2px] bg-white/20 relative">
-                <div
-                  className="h-full bg-lime-400 absolute left-0 top-0 transition-all"
-                  style={{
-                    width: `${(activeIdx / 3) * 100}%`,
-                    transitionDuration: "800ms",
-                    transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-                  }}
-                />
-              </div>
-            </div>
+          {/* Left Column: Title */}
+          <div className="w-full md:w-5/12">
+            <h2
+              ref={headingRef}
+              className="font-headline-display text-4xl sm:text-5xl md:text-8xl text-white font-black uppercase tracking-tight leading-none"
+              style={{ willChange: "transform, opacity, clip-path" }}
+            >
+              Core <br className="hidden md:inline" /> Values
+            </h2>
           </div>
 
-          {/* Right Column: Moving Content */}
-          <div className="w-full md:w-1/2 h-auto md:h-full relative overflow-visible md:overflow-hidden mt-12 md:mt-0">
-            <div
-              className={!isMobile ? "w-full h-full relative flex items-center" : "w-full flex flex-col space-y-16"}
-            >
-              {values.map((val, idx) => (
-                <div
-                  key={idx}
-                  className={`w-full h-auto md:h-screen flex flex-col justify-center md:justify-start px-0 md:px-12 ${val.alignment}`}
-                  style={
-                    !isMobile
-                      ? {
-                          position: "absolute",
-                          top: "50%",
-                          left: 0,
-                          right: 0,
-                          height: "auto",
-                          opacity: activeIdx === idx ? 1 : 0,
-                          transform: activeIdx === idx
-                            ? "translateY(-50%) scale(1)"
-                            : (idx < activeIdx ? "translateY(-50%) translateY(-30px) scale(0.97)" : "translateY(-50%) translateY(30px) scale(0.97)"),
-                          filter: activeIdx === idx ? "none" : "blur(4px)",
-                          pointerEvents: activeIdx === idx ? "auto" : "none",
-                          transition: "opacity 800ms, transform 800ms, filter 800ms",
-                          transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-                          willChange: "opacity, transform, filter",
-                        }
-                      : {}
-                  }
-                >
-                  <span className="font-headline-display text-5xl md:text-8xl font-black text-lime-400 block mb-3">
-                    {val.num}
-                  </span>
-                  <h3 className="font-headline-md text-2xl md:text-4xl text-white font-bold mb-3 uppercase tracking-tight">
-                    {val.title}
-                  </h3>
-                  <p className="font-body-md text-sm md:text-base text-white/80 max-w-md leading-relaxed">
-                    {val.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+          {/* Right Column: 4 Values Grid */}
+          <div className="w-full md:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16">
+            {values.map((val, idx) => (
+              <div key={idx}>
+                <span className="font-headline-display text-5xl md:text-8xl font-black text-lime-400 block mb-3">
+                  {val.num}
+                </span>
+                <h3 className="font-headline-md text-2xl md:text-3xl text-white font-bold mb-3 uppercase tracking-tight">
+                  {val.title}
+                </h3>
+                <p className="font-body-md text-sm md:text-base text-white/80 leading-relaxed">
+                  {val.desc}
+                </p>
+              </div>
+            ))}
           </div>
 
         </div>
