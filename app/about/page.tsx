@@ -45,12 +45,14 @@ export default function AboutPage() {
           <AnimatedParagraphs />
 
           <div className="w-full max-w-5xl">
-            <div className="rounded-2xl overflow-hidden border border-secondary-container shadow-lg">
-              <img
-                alt="Logifex Logistics Facilities"
-                className="w-full h-[300px] md:h-[500px] object-cover"
-                src="/images/cargo-process.png"
-              />
+            <div className="rounded-2xl overflow-hidden border border-secondary-container shadow-lg aspect-video relative">
+              <iframe
+                src="https://www.youtube.com/embed/gRne-B2lse8"
+                title="Logifex Logistics Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full border-0"
+              ></iframe>
             </div>
           </div>
         </section>
