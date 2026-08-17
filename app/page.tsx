@@ -359,7 +359,7 @@ export default function HomePage() {
           <div className="max-w-container-max mx-auto">
             {/* Enlarged About Us Card with Integrated Statistics Marquee */}
             <div
-              className="relative rounded-2xl overflow-hidden shadow-2xl p-8 md:p-20 min-h-[660px] md:min-h-[740px] flex flex-col justify-between"
+              className="relative rounded-2xl overflow-hidden shadow-2xl p-6 md:p-20 min-h-[550px] lg:min-h-[740px] flex flex-col justify-between"
               style={{ backgroundImage: "url('/images/warehouse.png')", backgroundSize: "cover", backgroundPosition: "center" }}
             >
               {/* Brand Red Overlay Tint */}
@@ -368,11 +368,11 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/35 z-0"></div>
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-16 w-full mb-8">
+              <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-16 w-full mb-8">
                 {/* Left: Heading & Action Button */}
                 <div className="w-full lg:w-5/12 flex flex-col justify-between self-stretch">
-                  <h2 className="font-headline-display text-3xl md:text-5xl text-white font-bold uppercase tracking-tight leading-tight mb-8">
-                    Built on Reliability.<br className="hidden lg:inline" />Driven by Logistics.
+                  <h2 className="font-headline-display text-2xl sm:text-3xl md:text-5xl text-white font-bold uppercase tracking-tight leading-tight mb-6 lg:mb-8">
+                    Built on Reliability. <br className="hidden lg:inline" />Driven by Logistics.
                   </h2>
                   <Link
                     href="/about"
@@ -423,7 +423,7 @@ export default function HomePage() {
               </div>
 
               {/* High-visibility horizontal scrolling statistics ticker at the bottom */}
-              <div className="relative z-10 stats-marquee-wrapper w-full overflow-hidden select-none border-t border-white/10 pt-10 mt-16 pb-2">
+              <div className="relative z-10 stats-marquee-wrapper w-full overflow-hidden select-none border-t border-white/10 pt-6 lg:pt-10 mt-10 lg:mt-16 pb-2">
                 <div className="stats-marquee-track flex">
                   {/* Group 1 */}
                   <div className="flex-shrink-0 flex items-center gap-16 md:gap-32 px-8 md:px-16 whitespace-nowrap">
