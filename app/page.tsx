@@ -422,8 +422,8 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* High-visibility horizontal scrolling statistics ticker at the bottom */}
-              <div className="relative z-10 stats-marquee-wrapper w-full overflow-hidden select-none border-t border-white/10 pt-6 lg:pt-10 mt-10 lg:mt-16 pb-2">
+              {/* High-visibility horizontal scrolling statistics ticker at the bottom (Desktop only) */}
+              <div className="hidden lg:block relative z-10 stats-marquee-wrapper w-full overflow-hidden select-none border-t border-white/10 pt-10 mt-16 pb-2">
                 <div className="stats-marquee-track flex">
                   {/* Group 1 */}
                   <div className="flex-shrink-0 flex items-center gap-16 md:gap-32 px-8 md:px-16 whitespace-nowrap">
@@ -472,6 +472,26 @@ export default function HomePage() {
                     </div>
                     <div className="text-white/20 text-xl font-light select-none">|</div>
                   </div>
+                </div>
+              </div>
+
+              {/* Static vertical stack with thin divider lines (Mobile/Tablet only) */}
+              <div className="lg:hidden relative z-10 w-full border-t border-white/10 pt-4 mt-8 flex flex-col divide-y divide-white/10">
+                <div className="py-5 flex flex-col items-center text-center first:pt-0 last:pb-0">
+                  <span className="font-headline-display text-4xl font-bold text-white mb-1">120+</span>
+                  <span className="text-xs font-label-bold text-white/85 uppercase tracking-wider">Global Destinations</span>
+                </div>
+                <div className="py-5 flex flex-col items-center text-center first:pt-0 last:pb-0">
+                  <span className="font-headline-display text-4xl font-bold text-white mb-1">99.4%</span>
+                  <span className="text-xs font-label-bold text-white/85 uppercase tracking-wider">On-Time Dispatches</span>
+                </div>
+                <div className="py-5 flex flex-col items-center text-center first:pt-0 last:pb-0">
+                  <span className="font-headline-display text-4xl font-bold text-white mb-1">3 Hubs</span>
+                  <span className="text-xs font-label-bold text-white/85 uppercase tracking-wider">UAE • India • UK</span>
+                </div>
+                <div className="py-5 flex flex-col items-center text-center first:pt-0 last:pb-0">
+                  <span className="font-headline-display text-4xl font-bold text-white mb-1">24 / 7</span>
+                  <span className="text-xs font-label-bold text-white/85 uppercase tracking-wider">Dedicated Support</span>
                 </div>
               </div>
             </div>
