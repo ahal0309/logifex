@@ -368,46 +368,46 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/35 z-0"></div>
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col space-y-8">
-                <div>
-                  <h2 className="font-headline-display text-3xl md:text-5xl text-white mb-6 font-bold uppercase tracking-tight leading-tight max-w-xl">
-                    Built on Reliability.<br />Driven by Logistics.
+              <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-16 w-full mb-8">
+                {/* Left: Heading & Action Button */}
+                <div className="w-full lg:w-5/12 flex flex-col justify-between self-stretch">
+                  <h2 className="font-headline-display text-3xl md:text-5xl text-white font-bold uppercase tracking-tight leading-tight mb-8">
+                    Built on Reliability.<br className="hidden lg:inline" />Driven by Logistics.
                   </h2>
-                  <div className="space-y-4 font-body-md text-white/95 text-sm md:text-base max-w-2xl leading-relaxed">
-                    <p>
-                      Logifex was established with a clear purpose — to bring structure,
-                      reliability, and clarity to logistics operations that are often
-                      complex and time-sensitive. With a commitment to precision and
-                      dependable service, we approach every shipment with careful planning
-                      and attention to detail.
-                    </p>
-                    <p>
-                      From the initial pickup to final delivery, every stage is managed
-                      with consistency and control. Our approach is built around
-                      understanding the requirements of each shipment, coordinating
-                      operations efficiently, and ensuring that goods move safely and
-                      smoothly through every step of the logistics process.
-                    </p>
-                    <p>
-                      At Logifex, we believe reliable logistics is more than simply
-                      moving cargo from one place to another. It is about creating a
-                      seamless, transparent, and dependable experience for every
-                      shipment, while delivering the efficiency and care our customers
-                      expect.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="pt-2">
                   <Link
                     href="/about"
-                    className="inline-flex items-center gap-2 bg-white text-primary-container px-8 py-3.5 rounded font-label-bold hover:bg-surface-container-high transition-colors shadow-lg text-sm w-fit"
+                    className="inline-flex items-center gap-2 bg-white text-primary-container px-8 py-3.5 rounded font-label-bold hover:bg-surface-container-high transition-colors shadow-lg text-sm w-fit mt-auto"
                   >
                     Learn More About Us
                     <span className="material-symbols-outlined text-sm font-bold">
                       arrow_forward
                     </span>
                   </Link>
+                </div>
+
+                {/* Right: Detailed Copy */}
+                <div className="w-full lg:w-7/12 space-y-4 font-body-md text-white/95 text-sm md:text-base leading-relaxed">
+                  <p>
+                    Logifex was established with a clear purpose — to bring structure,
+                    reliability, and clarity to logistics operations that are often
+                    complex and time-sensitive. With a commitment to precision and
+                    dependable service, we approach every shipment with careful planning
+                    and attention to detail.
+                  </p>
+                  <p>
+                    From the initial pickup to final delivery, every stage is managed
+                    with consistency and control. Our approach is built around
+                    understanding the requirements of each shipment, coordinating
+                    operations efficiently, and ensuring that goods move safely and
+                    smoothly through every step of the logistics process.
+                  </p>
+                  <p>
+                    At Logifex, we believe reliable logistics is more than simply
+                    moving cargo from one place to another. It is about creating a
+                    seamless, transparent, and dependable experience for every
+                    shipment, while delivering the efficiency and care our customers
+                    expect.
+                  </p>
                 </div>
               </div>
 
