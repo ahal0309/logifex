@@ -64,7 +64,7 @@ export default function AnimatedParagraphs() {
   }, []);
 
   return (
-    <div className="w-[92vw] max-w-[1400px] mx-auto">
+    <div className="w-full max-w-[1250px] mx-auto px-4 md:px-8">
       <p
         ref={p1Ref}
         className="text-center uppercase font-normal text-[clamp(32px,9vw,56px)] md:text-[clamp(42px,4.5vw,72px)] tracking-[0.005em]"
