@@ -74,16 +74,16 @@ function CoreValuesSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-primary z-30 py-20 md:py-32 overflow-hidden"
+      className="relative w-full bg-primary z-30 py-16 md:py-32 overflow-hidden"
     >
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-        <div className="w-full flex flex-col md:flex-row gap-12 md:gap-16 items-start">
+        <div className="w-full flex flex-col md:flex-row gap-8 md:gap-16 items-start">
 
           {/* Left Column: Title */}
           <div className="w-full md:w-5/12">
             <h2
               ref={headingRef}
-              className="font-headline-display text-4xl sm:text-5xl md:text-8xl text-white font-black uppercase tracking-tight leading-none"
+              className="font-headline-display text-3xl sm:text-5xl md:text-8xl text-white font-black uppercase tracking-tight leading-none"
               style={{ willChange: "transform, opacity, clip-path" }}
             >
               Core <br className="hidden md:inline" /> Values
@@ -91,13 +91,13 @@ function CoreValuesSection() {
           </div>
 
           {/* Right Column: 4 Values Grid */}
-          <div className="w-full md:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16">
+          <div className="w-full md:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 sm:gap-y-16">
             {values.map((val, idx) => (
               <div key={idx}>
-                <span className="font-headline-display text-5xl md:text-8xl font-black text-lime-400 block mb-3">
+                <span className="font-headline-display text-5xl md:text-8xl font-black text-lime-400 block mb-2 md:mb-3">
                   {val.num}
                 </span>
-                <h3 className="font-headline-md text-2xl md:text-3xl text-white font-bold mb-3 uppercase tracking-tight">
+                <h3 className="font-headline-md text-xl md:text-3xl text-white font-bold mb-2 md:mb-3 uppercase tracking-tight">
                   {val.title}
                 </h3>
                 <p className="font-body-md text-sm md:text-base text-white/80 leading-relaxed">
@@ -219,16 +219,16 @@ function ServicesSection() {
     <section
       ref={containerRef}
       id="services-container"
-      className="relative w-full bg-background z-30 py-20 md:py-32 overflow-hidden border-t border-secondary-container"
+      className="relative w-full bg-background z-30 py-16 md:py-32 overflow-hidden border-t border-secondary-container"
     >
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
           <span className="text-primary-container font-label-bold uppercase tracking-wider mb-2 block text-xs">Our Expertise</span>
           <h2
             ref={headingRef}
-            className="font-headline-display text-4xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none mb-6"
+            className="font-headline-display text-3xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none mb-6"
             style={{ willChange: "transform, opacity, clip-path" }}
           >
             Our Services
@@ -239,14 +239,14 @@ function ServicesSection() {
         </div>
 
         {/* Grid of Services */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, idx) => {
             const spanColClass = idx === 6 ? "md:col-span-2 lg:col-span-1" : "";
 
             return (
               <div
                 key={idx}
-                className={`service-card rounded-3xl p-8 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
+                className={`service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
               >
                 {/* Background Image and Overlay */}
                 <div className="absolute inset-0 z-0">
@@ -260,7 +260,7 @@ function ServicesSection() {
 
                 <div className="relative z-20">
                   <div
-                    className="font-headline-display text-6xl md:text-7xl font-black tracking-tighter select-none leading-none mb-4 transition-all duration-300 text-white/10 group-hover:text-lime-400/30"
+                    className="font-headline-display text-5xl md:text-7xl font-black tracking-tighter select-none leading-none mb-2 md:mb-4 transition-all duration-300 text-white/10 group-hover:text-lime-400/30"
                   >
                     {service.num}
                   </div>
