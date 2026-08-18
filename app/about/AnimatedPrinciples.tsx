@@ -75,16 +75,20 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
       </div>
 
       {/* Right Column: Statement & Animated Reveal */}
-      <div className="w-full lg:w-8/12 flex flex-col justify-center">
+      <div className="w-full lg:w-8/12 flex flex-col justify-center space-y-6 lg:space-y-10">
         {/* Top: Bold, static statement */}
-        <p className="text-lg sm:text-2xl lg:text-3xl font-headline-display font-extrabold uppercase text-on-background tracking-tight leading-snug mb-4 lg:mb-6">
+        <p
+          className="text-3xl sm:text-4xl lg:text-[52px] text-on-background uppercase tracking-normal"
+          style={{ fontFamily: bebasNeue.style.fontFamily, lineHeight: 0.95 }}
+        >
           {statement}
         </p>
 
         {/* Bottom: Animated reveal paragraph */}
         <p
           ref={revealRef}
-          className="text-base sm:text-xl lg:text-2xl font-headline-display font-extrabold uppercase tracking-tight leading-snug"
+          className="text-3xl sm:text-4xl lg:text-[52px] uppercase tracking-normal"
+          style={{ fontFamily: bebasNeue.style.fontFamily, lineHeight: 0.95 }}
         >
           {words.map((word, i) => (
             <span
