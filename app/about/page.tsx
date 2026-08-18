@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import AnimatedParagraphs from "./AnimatedParagraphs";
 import AnimatedPrinciples from "./AnimatedPrinciples";
 import IndustriesSection from "./IndustriesSection";
+import CertificatesSection from "./CertificatesSection";
 
 export const metadata: Metadata = {
   title: "About Us - Logifex Freight Services",
@@ -64,6 +65,9 @@ export default function AboutPage() {
 
         {/* Industries We Serve */}
         <IndustriesSection />
+
+        {/* Certificates & Accreditations */}
+        <CertificatesSection />
 
         {/* Global Hub Network */}
         <section className="space-y-8">
