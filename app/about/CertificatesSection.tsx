@@ -74,9 +74,6 @@ export default function CertificatesSection() {
         {/* Header with Navigation Controls */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-primary-container font-label-bold uppercase tracking-wider mb-2 block text-xs">
-              Compliance & Safety
-            </span>
             <h2 className="font-headline-display text-3xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none">
               Accreditations & Certificates
             </h2>
