@@ -174,6 +174,22 @@ function ServicesSection() {
       image: "/images/packing-labelling.png",
       href: "/services#warehousing",
     },
+    {
+      num: "08",
+      title: "Roro",
+      desc: "Specialized roll-on/roll-off shipping for wheeled cargo, vehicles, and heavy machinery.",
+      supporting: "Vehicle Logistics • Roll-On/Roll-Off",
+      image: "/images/roro.png",
+      href: "/services#sea",
+    },
+    {
+      num: "09",
+      title: "Breakbulk",
+      desc: "Tailored transport and lifting solutions for heavy, oversized, and non-containerized cargo.",
+      supporting: "Heavy Lift • Oversized Cargo",
+      image: "/images/breakbulk.png",
+      href: "/services#sea",
+    },
   ];
 
   useEffect(() => {
@@ -193,7 +209,7 @@ function ServicesSection() {
         {
           y: 0,
           opacity: 1,
-          clipPath: "inset(0% 0 0 0)",
+          duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
@@ -240,7 +256,7 @@ function ServicesSection() {
         {/* Grid of Services */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, idx) => {
-            const spanColClass = idx === 6 ? "md:col-span-2 lg:col-span-1" : "";
+            const spanColClass = idx === 8 ? "md:col-span-2 lg:col-span-1" : "";
 
             return (
               <div
