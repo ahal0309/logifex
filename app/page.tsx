@@ -261,7 +261,7 @@ function ServicesSection() {
             return (
               <div
                 key={idx}
-                className={`service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
+                className={`service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
               >
                 {/* Background Image and Overlay */}
                 <div className="absolute inset-0 z-0">
@@ -282,7 +282,7 @@ function ServicesSection() {
 
                   <div className="space-y-3">
                     <span
-                      className="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60"
+                      className="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60"
                     >
                       {service.supporting}
                     </span>
@@ -338,11 +338,11 @@ export default function HomePage() {
         <section className="relative z-20 w-full min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-112px)] flex items-center py-20">
           <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
             <div className="max-w-4xl">
-              <h1 className="font-headline-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-6 leading-tight font-black tracking-tight">
+              <h1 className="font-headline-display text-[clamp(38px,11vw,64px)] sm:text-6xl md:text-7xl lg:text-8xl text-white mb-6 leading-[0.95] md:leading-tight font-black tracking-tight">
                 Seamless Freight, <br />
                 <span className="text-primary-fixed">Seamless Solutions.</span>
               </h1>
-              <p className="font-body-lg text-body-lg text-surface-variant mb-10 max-w-xl leading-relaxed">
+              <p className="font-body-lg text-body-lg text-surface-variant mb-6 md:mb-10 max-w-xl leading-relaxed">
                 Trusted Freight. Tailored Solutions. We offer world-class Air,
                 Rail, Road, Sea, and specialized multimodal logistics – ensuring
                 fast, compliant, and reliable global transport.

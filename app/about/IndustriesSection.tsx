@@ -97,7 +97,7 @@ export default function IndustriesSection() {
           {industries.map((ind) => (
             <div
               key={ind.number}
-              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-secondary-container bg-surface-container flex flex-col justify-end min-h-[350px] md:min-h-[380px] p-6 md:p-8"
+              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-secondary-container bg-surface-container flex flex-col justify-end aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none p-6 md:p-8"
             >
               {/* Background Image */}
               <div
@@ -116,7 +116,7 @@ export default function IndustriesSection() {
               {/* Content Box */}
               <div className="relative z-20 flex flex-col items-start text-white">
                 {/* Category Tag */}
-                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-lime-400 mb-2">
+                <span className="text-[11px] md:text-xs font-bold uppercase tracking-wider text-lime-400 mb-2">
                   {ind.tag}
                 </span>
 
@@ -126,7 +126,7 @@ export default function IndustriesSection() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs md:text-sm text-white/80 leading-relaxed max-w-xs transition-colors duration-300 group-hover:text-white mb-6">
+                <p className="text-sm text-white/80 leading-relaxed max-w-xs transition-colors duration-300 group-hover:text-white mb-6">
                   {ind.description}
                 </p>
 

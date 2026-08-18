@@ -29,16 +29,34 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
     const ctx = gsap.context(() => {
       if (revealRef.current) {
         const targets = revealRef.current.querySelectorAll(`.reveal-word-${sectionIdx}`);
-        gsap.to(targets, {
-          color: "#141d23", // Solid dark color matching on-background
-          stagger: 0.05,
-          ease: "none",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 75%",
-            end: "bottom 45%",
-            scrub: 0.6,
-          },
+        const mm = gsap.matchMedia();
+
+        mm.add("(min-width: 1024px)", () => {
+          gsap.to(targets, {
+            color: "#141d23", // Solid dark color matching on-background
+            stagger: 0.05,
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 75%",
+              end: "bottom 45%",
+              scrub: 0.6,
+            },
+          });
+        });
+
+        mm.add("(max-width: 1023px)", () => {
+          gsap.to(targets, {
+            color: "#141d23",
+            stagger: 0.03,
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%",
+              end: "bottom 70%",
+              scrub: 0.6,
+            },
+          });
         });
       }
     });
@@ -58,12 +76,12 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
   return (
     <div
       ref={containerRef}
-      className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-center min-h-[80vh] lg:min-h-[90vh] py-16 lg:py-24 border-b border-secondary-container/50 last:border-b-0"
+      className="flex flex-col lg:flex-row gap-6 lg:gap-16 items-start lg:items-center justify-center min-h-0 lg:min-h-[90vh] py-12 lg:py-24 border-b border-secondary-container/50 last:border-b-0"
     >
       {/* Left Column: Bebas Neue Title */}
       <div className="w-full lg:w-4/12">
         <h2
-          className="font-normal text-4xl sm:text-6xl lg:text-[90px] text-on-background uppercase tracking-tight leading-none"
+          className="font-normal text-3xl sm:text-6xl lg:text-[90px] text-on-background uppercase tracking-tight leading-none"
           style={{ fontFamily: bebasNeue.style.fontFamily }}
         >
           {title.split(" ").map((word, i) => (
@@ -75,10 +93,10 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
       </div>
 
       {/* Right Column: Statement & Animated Reveal */}
-      <div className="w-full lg:w-8/12 flex flex-col justify-center space-y-6 lg:space-y-10">
+      <div className="w-full lg:w-8/12 flex flex-col justify-center space-y-4 lg:space-y-10">
         {/* Top: Bold, static statement */}
         <p
-          className="text-2xl xs:text-3xl sm:text-4xl lg:text-[52px] uppercase tracking-normal"
+          className="text-xl sm:text-3xl lg:text-[52px] uppercase tracking-normal"
           style={{ fontFamily: bebasNeue.style.fontFamily, lineHeight: 0.95, color: "#A90000" }}
         >
           {statement}
@@ -87,7 +105,7 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
         {/* Bottom: Animated reveal paragraph */}
         <p
           ref={revealRef}
-          className="text-2xl xs:text-3xl sm:text-4xl lg:text-[52px] uppercase tracking-normal"
+          className="text-lg sm:text-3xl lg:text-[52px] uppercase tracking-normal"
           style={{ fontFamily: bebasNeue.style.fontFamily, lineHeight: 0.95 }}
         >
           {words.map((word, i) => (

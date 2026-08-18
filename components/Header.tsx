@@ -90,7 +90,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-secondary p-2 hover:bg-surface-container rounded"
+            className="md:hidden text-secondary w-11 h-11 flex items-center justify-center hover:bg-surface-container rounded-lg"
             aria-label="Toggle navigation"
           >
             <span

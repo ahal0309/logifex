@@ -20,7 +20,7 @@ export default function ServicesPage() {
 
         <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
           <div className="max-w-3xl">
-            <h1 className="font-headline-display text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+            <h1 className="font-headline-display text-[clamp(32px,10vw,56px)] sm:text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
               Precision Freight & <br />
               <span className="text-primary-fixed">Supply Chain Solutions.</span>
             </h1>

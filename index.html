@@ -132,7 +132,7 @@
     <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-3.5 max-w-container-max mx-auto">
       <div class="flex items-center gap-4">
         <a class="flex items-center gap-2" href="index.html">
-          <img alt="Logifex Freight Services Logo" class="h-8 sm:h-10 w-auto max-w-[180px] sm:max-w-none object-contain" src="image_from_https_logifex.in_wp_content_uploads_2025_08_logifex_logo_png_new_1.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/aida/AP1WRLt5YBr8YnMnNfQ_-PpSA5k76MJ2Kr3f0G7SHLq0JN76O40b4HjtKIJB0VPbMXINKqGDUMTL9D5R2-6VKSXRMwa58OzjLHuMfD96IAJoFpYhfzTrZ84dWyM2QCu7nuMdbFrUxLP4OgrYoJeyhc1Dmj9eRyPJXXgtl4kTeNZ1hClvRhAxOzVxoODLJ9bbIEqZOmgWSDONTTH95mp-ZWVMFBMWZ32WvUjab1OuLEkEREFcRw32PoRSSiMHNbw'"/>
+          <img alt="Logifex Freight Services Logo" class="h-8 sm:h-10 w-auto max-w-[180px] xs:max-w-[220px] sm:max-w-none object-contain" src="image_from_https_logifex.in_wp_content_uploads_2025_08_logifex_logo_png_new_1.png" onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/aida/AP1WRLt5YBr8YnMnNfQ_-PpSA5k76MJ2Kr3f0G7SHLq0JN76O40b4HjtKIJB0VPbMXINKqGDUMTL9D5R2-6VKSXRMwa58OzjLHuMfD96IAJoFpYhfzTrZ84dWyM2QCu7nuMdbFrUxLP4OgrYoJeyhc1Dmj9eRyPJXXgtl4kTeNZ1hClvRhAxOzVxoODLJ9bbIEqZOmgWSDONTTH95mp-ZWVMFBMWZ32WvUjab1OuLEkEREFcRw32PoRSSiMHNbw'"/>
         </a>
       </div>
       <nav class="hidden md:flex items-center gap-7">
@@ -146,7 +146,7 @@
         <a href="quote.html" class="bg-primary-container text-white px-5 py-2.5 rounded font-label-bold hover:bg-primary transition-all duration-200 shadow-sm hover:shadow">Request Quote</a>
       </div>
       <!-- Mobile menu button -->
-      <button id="mobileMenuBtn" class="md:hidden text-secondary p-2 hover:bg-surface-container rounded" aria-label="Toggle navigation">
+      <button id="mobileMenuBtn" class="md:hidden text-secondary w-11 h-11 flex items-center justify-center hover:bg-surface-container rounded-lg" aria-label="Toggle navigation">
         <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">menu</span>
       </button>
     </div>
@@ -177,11 +177,11 @@
       <section class="relative z-20 w-full min-h-[80vh] flex items-center py-20">
         <div class="relative w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <div class="max-w-4xl">
-            <h1 class="font-headline-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white mb-6 leading-tight font-black tracking-tight">
+            <h1 class="font-headline-display text-[clamp(38px,11vw,64px)] sm:text-6xl md:text-7xl lg:text-8xl text-white mb-6 leading-[0.95] md:leading-tight font-black tracking-tight">
               Seamless Freight, <br/>
               <span class="text-primary-fixed">Seamless Solutions.</span>
             </h1>
-            <p class="font-body-lg text-body-lg text-surface-variant mb-10 max-w-xl">
+            <p class="font-body-lg text-body-lg text-surface-variant mb-6 md:mb-10 max-w-xl">
               Trusted Freight. Tailored Solutions. We offer world-class Air, Rail, Road, Sea, and specialized multimodal logistics – ensuring fast, compliant, and reliable global transport.
             </p>
 
@@ -384,7 +384,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           <!-- Card 01: Air Freight -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/air-freight.png" alt="Air Freight" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -394,7 +394,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">01</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Global Air Transit • Priority Cargo</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Global Air Transit • Priority Cargo</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Air Freight</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Fast, reliable, and secure air freight solutions for time-sensitive shipments.</p>
               </div>
@@ -407,7 +407,7 @@
           </div>
 
           <!-- Card 02: Sea Freight -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/sea-freight.png" alt="Sea Freight" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -417,7 +417,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">02</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Ocean Carrier • FCL & LCL Consolidation</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Ocean Carrier • FCL & LCL Consolidation</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Sea Freight</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Reliable and economical ocean freight solutions for global cargo transportation.</p>
               </div>
@@ -430,7 +430,7 @@
           </div>
 
           <!-- Card 03: Road Transport -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/road-transport.png" alt="Road Transport" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -440,7 +440,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">03</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">GCC Linehaul • Overland Transport</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">GCC Linehaul • Overland Transport</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Road Transport</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Flexible cross-border and door-to-door road transportation solutions.</p>
               </div>
@@ -453,7 +453,7 @@
           </div>
 
           <!-- Card 04: Intermodal Logistics -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/intermodal-logistics.png" alt="Intermodal Logistics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -463,7 +463,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">04</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Rail & Multimodal Connectivity</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Rail & Multimodal Connectivity</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Intermodal Logistics</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Seamless coordination across multiple transportation modes for efficient cargo movement.</p>
               </div>
@@ -476,7 +476,7 @@
           </div>
 
           <!-- Card 05: Customs Clearance -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/customs-clearance.png" alt="Customs Clearance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -486,7 +486,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">05</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Licensed Brokerage • HS Code Compliance</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Licensed Brokerage • HS Code Compliance</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Customs Clearance</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Efficient customs documentation and clearance support for smooth international shipments.</p>
               </div>
@@ -499,7 +499,7 @@
           </div>
 
           <!-- Card 06: Warehousing -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/warehousing.png" alt="Warehousing" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -509,7 +509,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">06</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Bonded Facilities • WMS Inventory</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Bonded Facilities • WMS Inventory</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Warehousing</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Secure and organized warehousing solutions for efficient inventory management.</p>
               </div>
@@ -522,7 +522,7 @@
           </div>
 
           <!-- Card 07: Packing and Labelling -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/packing-labelling.png" alt="Packing and Labelling" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -532,7 +532,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">07</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Cargo Protection • Industrial Compliance</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Cargo Protection • Industrial Compliance</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Packing and Labelling</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Professional packing and labelling solutions to ensure cargo protection and compliance.</p>
               </div>
@@ -545,7 +545,7 @@
           </div>
 
           <!-- Card 08: Roro -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/roro.png" alt="Roro" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -555,7 +555,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">08</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Vehicle Logistics • Roll-On/Roll-Off</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Vehicle Logistics • Roll-On/Roll-Off</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Roro</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Specialized roll-on/roll-off shipping for wheeled cargo, vehicles, and heavy machinery.</p>
               </div>
@@ -568,7 +568,7 @@
           </div>
 
           <!-- Card 09: Breakbulk -->
-          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:col-span-2 lg:col-span-1">
+          <div class="service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:col-span-2 lg:col-span-1">
             <!-- Background Image and Overlay -->
             <div class="absolute inset-0 z-0">
               <img src="public/images/breakbulk.png" alt="Breakbulk" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
@@ -578,7 +578,7 @@
             <div class="relative z-20">
               <div class="font-headline-display text-5xl md:text-7xl font-black tracking-tighter text-white/10 select-none leading-none mb-2 md:mb-4 transition-all duration-300 group-hover:text-lime-400/30">09</div>
               <div class="space-y-3">
-                <span class="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Heavy Lift • Oversized Cargo</span>
+                <span class="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60">Heavy Lift • Oversized Cargo</span>
                 <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white">Breakbulk</h3>
                 <p class="font-body-md text-sm leading-relaxed text-white/80">Tailored transport and lifting solutions for heavy, oversized, and non-containerized cargo.</p>
               </div>
