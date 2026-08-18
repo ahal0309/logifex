@@ -117,6 +117,11 @@ export default function AnimatedPrinciples() {
       statement: "To build a logistics ecosystem where movement is not just efficient, but predictable and dependable",
       revealText: "enabling businesses to operate with confidence across domestic and international markets.",
     },
+    {
+      title: "Our Values",
+      statement: "Precision in planning, relentless compliance standards, and transparent communication",
+      revealText: "and unwavering accountability for every kilogram of cargo under our care.",
+    },
   ];
 
   return (
