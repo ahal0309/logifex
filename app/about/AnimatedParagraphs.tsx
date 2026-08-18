@@ -56,10 +56,10 @@ export default function AnimatedParagraphs() {
         {words1.map((word, i) => (
           <span
             key={i}
-            className="reveal-word-1 inline mr-[0.2em] transition-colors duration-100"
+            className="reveal-word-1 inline transition-colors duration-100"
             style={{ color: "rgba(169, 0, 0, 0.10)" }}
           >
-            {word}
+            {word}{" "}
           </span>
         ))}
       </p>

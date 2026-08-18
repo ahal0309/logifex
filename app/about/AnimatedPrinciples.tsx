@@ -93,10 +93,10 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
           {words.map((word, i) => (
             <span
               key={i}
-              className={`reveal-word-${sectionIdx} inline mr-[0.22em] transition-colors duration-100`}
+              className={`reveal-word-${sectionIdx} inline transition-colors duration-100`}
               style={{ color: "rgba(20, 29, 35, 0.08)" }} // Very faint gray before reveal
             >
-              {word}
+              {word}{" "}
             </span>
           ))}
         </p>
