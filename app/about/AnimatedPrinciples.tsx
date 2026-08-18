@@ -114,9 +114,9 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
               className={`reveal-word-${sectionIdx} inline transition-colors duration-100`}
               style={{ color: "rgba(20, 29, 35, 0.08)" }} // Very faint gray before reveal
             >
-              {word}{" "}
+              {word}
             </span>
-          ))}
+          )).reduce((acc: any[], x, i) => (i === 0 ? [x] : [...acc, " ", x]), [])}
         </p>
       </div>
     </div>

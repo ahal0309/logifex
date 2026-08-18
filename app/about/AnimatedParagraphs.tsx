@@ -47,7 +47,7 @@ export default function AnimatedParagraphs() {
     <div className="w-full max-w-[1250px] mx-auto px-4 md:px-8">
       <p
         ref={p1Ref}
-        className="text-center uppercase font-normal text-[clamp(32px,9vw,56px)] md:text-[clamp(42px,4.5vw,72px)] tracking-[0.005em]"
+        className="text-left md:text-center uppercase font-normal text-[clamp(24px,7vw,40px)] md:text-[clamp(42px,4.5vw,72px)] tracking-[0.005em]"
         style={{
           fontFamily: bebasNeue.style.fontFamily,
           lineHeight: 0.95,
@@ -59,9 +59,9 @@ export default function AnimatedParagraphs() {
             className="reveal-word-1 inline transition-colors duration-100"
             style={{ color: "rgba(169, 0, 0, 0.10)" }}
           >
-            {word}{" "}
+            {word}
           </span>
-        ))}
+        )).reduce((acc: any[], x, i) => (i === 0 ? [x] : [...acc, " ", x]), [])}
       </p>
     </div>
   );
