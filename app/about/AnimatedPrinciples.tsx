@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { Bebas_Neue } from "next/font/google";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -93,7 +93,7 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
           {words.map((word, i) => (
             <span
               key={i}
-              className={`reveal-word-${sectionIdx} inline-block mr-[0.22em] transition-colors duration-100`}
+              className={`reveal-word-${sectionIdx} inline mr-[0.22em] transition-colors duration-100`}
               style={{ color: "rgba(20, 29, 35, 0.08)" }} // Very faint gray before reveal
             >
               {word}
