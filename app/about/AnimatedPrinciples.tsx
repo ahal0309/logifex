@@ -58,7 +58,7 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
   return (
     <div
       ref={containerRef}
-      className="flex flex-col lg:flex-row gap-4 lg:gap-16 items-start py-6 lg:py-12 border-b border-secondary-container/50 last:border-b-0"
+      className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start py-16 lg:py-24 border-b border-secondary-container/50 last:border-b-0"
     >
       {/* Left Column: Bebas Neue Title */}
       <div className="w-full lg:w-4/12">
@@ -121,19 +121,9 @@ export default function AnimatedPrinciples() {
   ];
 
   return (
-    <section className="w-full max-w-[1250px] mx-auto bg-surface-container-lowest p-6 md:p-14 rounded-2xl border border-secondary-container shadow-sm space-y-4">
-      {/* Header */}
-      <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="text-primary-container font-label-bold text-xs uppercase tracking-wider block mb-1">
-          Guiding Principles
-        </span>
-        <h2 className="font-headline-md text-2xl md:text-3xl font-bold text-on-background">
-          Our Mission, Vision & Values
-        </h2>
-      </div>
-
+    <section className="w-full max-w-[1250px] mx-auto px-4 md:px-8">
       {/* Principles List */}
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col">
         {principles.map((p, idx) => (
           <PrincipleSection
             key={idx}
