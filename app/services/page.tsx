@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full overflow-hidden">
       {/* Hero Banner */}
       <section
         className="relative w-full min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-112px)] flex items-center bg-inverse-surface bg-cover bg-center text-white py-20 overflow-hidden"

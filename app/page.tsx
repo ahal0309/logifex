@@ -319,7 +319,7 @@ function ServicesSection() {
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full overflow-hidden">
       {/* Video Background Container (covers Hero and About card) */}
       <div className="relative w-full bg-inverse-surface overflow-hidden">
         {/* Background Video */}

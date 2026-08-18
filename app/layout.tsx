@@ -27,9 +27,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col font-body-md bg-background text-on-background overflow-x-hidden">
+      <body className="min-h-screen flex flex-col font-body-md bg-background text-on-background overflow-x-hidden w-full max-w-full">
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow w-full max-w-full overflow-x-hidden">{children}</main>
         <Footer />
       </body>
     </html>

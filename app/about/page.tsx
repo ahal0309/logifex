@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full overflow-hidden">
       <section
         className="relative w-full min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-112px)] flex items-start pt-12 md:pt-20 bg-inverse-surface bg-cover bg-center text-white py-20 overflow-hidden"
         style={{ backgroundImage: "url('/images/warehouse.png')" }}
@@ -42,7 +42,7 @@ export default function AboutPage() {
 
 
       {/* Main Content Area */}
-      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 space-y-24">
+      <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 space-y-24">
         {/* Company Story & Overview */}
         <section className="w-full flex flex-col gap-12 items-center text-center">
           <AnimatedParagraphs />

@@ -43,7 +43,7 @@ export default function QuotePage() {
   };
 
   return (
-    <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+    <div className="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-10 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-gutter">
       {/* Sidebar - Why Logifex? (4 columns on lg) */}
       <aside className="lg:col-span-4 order-2 lg:order-1 flex flex-col gap-6">
         <div className="bg-surface-container-lowest p-8 border border-secondary-container rounded-xl shadow-sm relative overflow-hidden">
