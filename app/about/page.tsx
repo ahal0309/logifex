@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import AnimatedParagraphs from "./AnimatedParagraphs";
+import AnimatedPrinciples from "./AnimatedPrinciples";
 
 export const metadata: Metadata = {
   title: "About Us - Logifex Freight Services",
@@ -58,60 +59,7 @@ export default function AboutPage() {
         </section>
 
         {/* Mission, Vision & Core Values */}
-        <section className="bg-surface-container-lowest p-8 md:p-14 rounded-2xl border border-secondary-container shadow-sm">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-primary-container font-label-bold text-xs uppercase tracking-wider block mb-1">
-              Guiding Principles
-            </span>
-            <h2 className="font-headline-md text-2xl md:text-3xl font-bold text-on-background">
-              Our Mission, Vision & Values
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-surface rounded-xl border border-secondary-container space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-primary-container text-white flex items-center justify-center shadow-sm">
-                <span className="material-symbols-outlined text-2xl">flag</span>
-              </div>
-              <h3 className="font-headline-md text-xl font-bold text-on-background">
-                Our Mission
-              </h3>
-              <p className="text-secondary text-sm leading-relaxed">
-                To deliver cost-effective, dependable, and swift freight forwarding
-                services that eliminate supply chain bottlenecks and accelerate client
-                growth across international borders.
-              </p>
-            </div>
-
-            <div className="p-8 bg-surface rounded-xl border border-secondary-container space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-tertiary text-white flex items-center justify-center shadow-sm">
-                <span className="material-symbols-outlined text-2xl">visibility</span>
-              </div>
-              <h3 className="font-headline-md text-xl font-bold text-on-background">
-                Our Vision
-              </h3>
-              <p className="text-secondary text-sm leading-relaxed">
-                To be the most reliable and technologically integrated freight partner in
-                the Middle East and South Asian trade corridor, recognized globally for
-                operational integrity and excellence.
-              </p>
-            </div>
-
-            <div className="p-8 bg-surface rounded-xl border border-secondary-container space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-primary text-white flex items-center justify-center shadow-sm">
-                <span className="material-symbols-outlined text-2xl">verified_user</span>
-              </div>
-              <h3 className="font-headline-md text-xl font-bold text-on-background">
-                Our Values
-              </h3>
-              <p className="text-secondary text-sm leading-relaxed">
-                Precision in planning, relentless compliance standards, transparent
-                communication, and unwavering accountability for every kilogram of cargo
-                under our care.
-              </p>
-            </div>
-          </div>
-        </section>
+        <AnimatedPrinciples />
 
         {/* Global Hub Network */}
         <section className="space-y-8">
