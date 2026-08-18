@@ -58,7 +58,7 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
   return (
     <div
       ref={containerRef}
-      className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start py-16 lg:py-24 border-b border-secondary-container/50 last:border-b-0"
+      className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center justify-center min-h-[80vh] lg:min-h-[90vh] py-16 lg:py-24 border-b border-secondary-container/50 last:border-b-0"
     >
       {/* Left Column: Bebas Neue Title */}
       <div className="w-full lg:w-4/12">
