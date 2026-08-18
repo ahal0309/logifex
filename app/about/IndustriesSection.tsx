@@ -97,7 +97,7 @@ export default function IndustriesSection() {
           {industries.map((ind) => (
             <div
               key={ind.number}
-              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-secondary-container bg-surface-container flex flex-col justify-end aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none p-6 md:p-8"
+              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-secondary-container bg-surface-container flex flex-col justify-end min-h-[350px] md:min-h-[380px] p-6 md:p-8"
             >
               {/* Background Image */}
               <div

@@ -261,7 +261,7 @@ function ServicesSection() {
             return (
               <div
                 key={idx}
-                className={`service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden aspect-[1.35/1] min-h-[300px] md:min-h-[380px] md:aspect-none text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
+                className={`service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
               >
                 {/* Background Image and Overlay */}
                 <div className="absolute inset-0 z-0">
