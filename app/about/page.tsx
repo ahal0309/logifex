@@ -44,7 +44,7 @@ export default function AboutPage() {
       {/* Main Content Area */}
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 space-y-24">
         {/* Company Story & Overview */}
-        <section className="flex flex-col gap-12 items-center text-center">
+        <section className="w-full flex flex-col gap-12 items-center text-center">
           <AnimatedParagraphs />
 
           <div className="w-full max-w-3xl mx-auto">
