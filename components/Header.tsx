@@ -46,7 +46,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-2">
               <img
                 alt="Logifex Freight Services Logo"
-                className="h-10 w-auto object-contain"
+                className="h-8 sm:h-10 w-auto max-w-[180px] xs:max-w-[220px] sm:max-w-none object-contain"
                 src="/images/logo.png"
               />
             </Link>

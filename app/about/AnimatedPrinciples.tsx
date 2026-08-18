@@ -78,7 +78,7 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
       <div className="w-full lg:w-8/12 flex flex-col justify-center space-y-6 lg:space-y-10">
         {/* Top: Bold, static statement */}
         <p
-          className="text-3xl sm:text-4xl lg:text-[52px] uppercase tracking-normal"
+          className="text-2xl xs:text-3xl sm:text-4xl lg:text-[52px] uppercase tracking-normal"
           style={{ fontFamily: bebasNeue.style.fontFamily, lineHeight: 0.95, color: "#A90000" }}
         >
           {statement}
@@ -87,7 +87,7 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
         {/* Bottom: Animated reveal paragraph */}
         <p
           ref={revealRef}
-          className="text-3xl sm:text-4xl lg:text-[52px] uppercase tracking-normal"
+          className="text-2xl xs:text-3xl sm:text-4xl lg:text-[52px] uppercase tracking-normal"
           style={{ fontFamily: bebasNeue.style.fontFamily, lineHeight: 0.95 }}
         >
           {words.map((word, i) => (
