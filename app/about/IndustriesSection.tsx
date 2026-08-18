@@ -97,7 +97,7 @@ export default function IndustriesSection() {
           {industries.map((ind) => (
             <div
               key={ind.number}
-              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-secondary-container bg-surface-container flex flex-col justify-end min-h-[350px] md:min-h-[380px] p-6 md:p-8"
+              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-secondary-container bg-surface-container flex flex-col justify-end min-h-[220px] xs:min-h-[240px] md:min-h-[380px] p-5 md:p-8"
             >
               {/* Background Image */}
               <div
@@ -109,30 +109,30 @@ export default function IndustriesSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/60 z-10 transition-opacity duration-500 group-hover:opacity-95"></div>
 
               {/* Large Card Number */}
-              <span className="absolute top-4 left-6 text-5xl md:text-7xl font-headline-display font-black text-white/10 select-none z-20 transition-colors duration-500 group-hover:text-lime-400/20">
+              <span className="absolute top-4 left-6 text-3xl xs:text-4xl md:text-7xl font-headline-display font-black text-white/10 select-none z-20 transition-colors duration-500 group-hover:text-lime-400/20">
                 {ind.number}
               </span>
 
               {/* Content Box */}
               <div className="relative z-20 flex flex-col items-start text-white">
                 {/* Category Tag */}
-                <span className="text-[11px] md:text-xs font-bold uppercase tracking-wider text-lime-400 mb-2">
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-lime-400 mb-1">
                   {ind.tag}
                 </span>
 
                 {/* Title */}
-                <h3 className="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight mb-2 leading-none">
+                <h3 className="font-headline-md text-base xs:text-lg md:text-2xl font-bold uppercase tracking-tight mb-1.5 leading-none">
                   {ind.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-white/80 leading-relaxed max-w-xs transition-colors duration-300 group-hover:text-white mb-6">
+                <p className="text-[11px] xs:text-xs md:text-sm text-white/80 leading-relaxed max-w-xs transition-colors duration-300 group-hover:text-white mb-4">
                   {ind.description}
                 </p>
 
                 {/* Arrow Action Button */}
-                <div className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110">
-                  <span className="material-symbols-outlined text-xl transition-transform duration-300 group-hover:translate-x-1">
+                <div className="w-8 h-8 xs:w-9 xs:h-9 md:w-10 md:h-10 rounded-full bg-white text-primary flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110">
+                  <span className="material-symbols-outlined text-sm xs:text-base md:text-xl transition-transform duration-300 group-hover:translate-x-1">
                     arrow_forward
                   </span>
                 </div>

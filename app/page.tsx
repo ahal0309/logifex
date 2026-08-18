@@ -261,7 +261,7 @@ function ServicesSection() {
             return (
               <div
                 key={idx}
-                className={`service-card rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[350px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
+                className={`service-card rounded-3xl p-5 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[220px] xs:min-h-[240px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
               >
                 {/* Background Image and Overlay */}
                 <div className="absolute inset-0 z-0">
@@ -275,34 +275,34 @@ function ServicesSection() {
 
                 <div className="relative z-20">
                   <div
-                    className="font-headline-display text-5xl md:text-7xl font-black tracking-tighter select-none leading-none mb-2 md:mb-4 transition-all duration-300 text-white/10 group-hover:text-lime-400/30"
+                    className="font-headline-display text-3xl xs:text-4xl md:text-7xl font-black tracking-tighter select-none leading-none mb-1 md:mb-4 transition-all duration-300 text-white/10 group-hover:text-lime-400/30"
                   >
                     {service.num}
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-1.5 md:space-y-3">
                     <span
-                      className="text-[11px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60"
+                      className="text-[10px] md:text-xs font-label-bold uppercase tracking-wider block text-white/60"
                     >
                       {service.supporting}
                     </span>
                     <h3
-                      className="font-headline-md text-xl md:text-2xl font-bold uppercase tracking-tight leading-none text-white"
+                      className="font-headline-md text-base xs:text-lg md:text-2xl font-bold uppercase tracking-tight leading-none text-white"
                     >
                       {service.title}
                     </h3>
-                    <p className="font-body-md text-sm leading-relaxed text-white/80">
+                    <p className="font-body-md text-[11px] xs:text-xs md:text-sm leading-relaxed text-white/80">
                       {service.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="relative z-20 mt-8 flex justify-end">
+                <div className="relative z-20 mt-4 md:mt-8 flex justify-end">
                   <Link
                     href={service.href}
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md bg-white text-primary-container hover:bg-lime-400 hover:text-black"
+                    className="w-9 h-9 xs:w-10 xs:h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl flex items-center justify-center transition-all duration-300 shadow-md bg-white text-primary-container hover:bg-lime-400 hover:text-black"
                   >
-                    <span className="material-symbols-outlined text-xl font-black transition-transform duration-300 group-hover:translate-x-1">
+                    <span className="material-symbols-outlined text-base xs:text-lg md:text-xl font-black transition-transform duration-300 group-hover:translate-x-1">
                       arrow_forward
                     </span>
                   </Link>
