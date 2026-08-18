@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { Bebas_Neue } from "next/font/google";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
