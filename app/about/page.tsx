@@ -47,7 +47,7 @@ export default function AboutPage() {
         <section className="flex flex-col gap-12 items-center text-center">
           <AnimatedParagraphs />
 
-          <div className="w-full max-w-5xl">
+          <div className="w-full max-w-3xl mx-auto">
             <div className="rounded-2xl overflow-hidden border border-secondary-container shadow-lg aspect-video relative">
               <iframe
                 src="https://www.youtube.com/embed/gRne-B2lse8"
