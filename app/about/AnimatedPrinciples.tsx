@@ -105,18 +105,8 @@ export default function AnimatedPrinciples() {
   const principles = [
     {
       title: "Our Mission",
-      statement: "To deliver cost-effective, dependable, and swift freight forwarding services.",
-      revealText: "We eliminate supply chain bottlenecks and accelerate client growth across international borders.",
-    },
-    {
-      title: "Our Vision",
-      statement: "To be the most reliable and technologically integrated freight partner.",
-      revealText: "We operate in the Middle East and South Asian trade corridor, recognized globally for operational integrity and excellence.",
-    },
-    {
-      title: "Our Values",
-      statement: "Precision in planning, relentless compliance standards, and transparent communication.",
-      revealText: "We maintain unwavering accountability for every kilogram of cargo under our care.",
+      statement: "To build reliable, long-term partnerships focused on each client's needs.",
+      revealText: "We implement new technologies, expand our international network and consistently raise global logistics standards.",
     },
   ];
 
