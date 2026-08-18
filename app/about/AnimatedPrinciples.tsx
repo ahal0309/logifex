@@ -109,8 +109,8 @@ export default function AnimatedPrinciples() {
   const principles = [
     {
       title: "Our Mission",
-      statement: "To build reliable, long-term partnerships focused on each client's needs.",
-      revealText: "We implement new technologies, expand our international network and consistently raise global logistics standards.",
+      statement: "Making Every Shipment More Predictable, Precise, and Reliable",
+      revealText: "Our mission is to deliver logistics solutions that keep businesses moving with confidence. We combine careful planning, operational precision, clear communication, and accountability to ensure every shipment is managed efficiently from origin to destination.",
     },
   ];
 
