@@ -112,6 +112,11 @@ export default function AnimatedPrinciples() {
       statement: "Making Every Shipment More Predictable, Precise, and Reliable",
       revealText: "Our mission is to deliver logistics solutions that keep businesses moving with confidence. We combine careful planning, operational precision, clear communication, and accountability to ensure every shipment is managed efficiently from origin to destination.",
     },
+    {
+      title: "Our Vision",
+      statement: "To build a logistics ecosystem where movement is not just efficient, but predictable and dependable",
+      revealText: "enabling businesses to operate with confidence across domestic and international markets.",
+    },
   ];
 
   return (
