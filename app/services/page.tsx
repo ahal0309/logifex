@@ -153,7 +153,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Road & Multimodal Section */}
+        {/* Road Section */}
         <section
           id="road"
           className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center scroll-mt-24"
@@ -163,10 +163,10 @@ export default function ServicesPage() {
               <span className="material-symbols-outlined text-sm">
                 local_shipping
               </span>{" "}
-              Modality: Overland & Intermodal
+              Modality: Overland Transport
             </div>
             <h2 className="font-headline-md text-2xl md:text-3xl font-bold text-on-background">
-              Road Transportation & Rail Intermodal
+              Road Transportation & GCC Linehaul
             </h2>
             <p className="text-secondary font-body-md text-sm leading-relaxed">
               Seamless land connectivity across the GCC corridor, Indian
@@ -197,7 +197,7 @@ export default function ServicesPage() {
                 href="/quote"
                 className="inline-flex items-center gap-2 bg-primary-container text-white px-5 py-2.5 rounded font-label-bold text-sm hover:bg-primary transition-colors"
               >
-                Book Overland Transport{" "}
+                Book Road Transport{" "}
                 <span className="material-symbols-outlined text-sm">
                   arrow_forward
                 </span>
@@ -206,10 +206,70 @@ export default function ServicesPage() {
           </div>
           <div className="lg:col-span-6 rounded-2xl overflow-hidden border border-secondary-container shadow-md">
             <img
-              alt="Logistics Process"
+              alt="Road Transport"
               className="w-full h-80 object-cover"
               src="/images/road-transport.png"
             />
+          </div>
+        </section>
+
+        {/* Intermodal Logistics Section */}
+        <section
+          id="intermodal"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center scroll-mt-24"
+        >
+          <div className="lg:col-span-6 order-2 lg:order-1 rounded-2xl overflow-hidden border border-secondary-container shadow-md">
+            <img
+              alt="Intermodal Logistics"
+              className="w-full h-80 object-cover"
+              src="/images/intermodal-logistics.png"
+            />
+          </div>
+          <div className="lg:col-span-6 order-1 lg:order-2 space-y-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded text-xs font-label-bold text-tertiary">
+              <span className="material-symbols-outlined text-sm">
+                schema
+              </span>{" "}
+              Modality: Multimodal Integration
+            </div>
+            <h2 className="font-headline-md text-2xl md:text-3xl font-bold text-on-background">
+              Intermodal Logistics
+            </h2>
+            <p className="text-secondary font-body-md text-sm leading-relaxed">
+              Managing logistics across different modes can be complex, but we simplify it through our integrated logistics services. We handle everything from planning to final delivery, combining air, sea, and road transport as needed.
+            </p>
+            <p className="text-secondary font-body-md text-sm leading-relaxed">
+              This helps in reducing delays and improving overall efficiency. Our team keeps track of every movement, ensuring better coordination and control. By bringing everything under one system, we help businesses save time, reduce effort, and focus on their core operations while we manage the complete logistics process smoothly.
+            </p>
+            <div className="grid grid-cols-2 gap-3 pt-2">
+              <div className="p-3 bg-surface rounded-lg border border-secondary-container text-xs">
+                <span className="font-bold text-on-surface block mb-0.5">
+                  Unified Coordination
+                </span>
+                <span className="text-secondary">
+                  Combining air, ocean, and road freight seamlessly under a single consignment note.
+                </span>
+              </div>
+              <div className="p-3 bg-surface rounded-lg border border-secondary-container text-xs">
+                <span className="font-bold text-on-surface block mb-0.5">
+                  Efficiency Optimization
+                </span>
+                <span className="text-secondary">
+                  Direct routing transfers at major global hubs to reduce transit times and minimize double handling.
+                </span>
+              </div>
+            </div>
+            <div>
+              <Link
+                href="/quote"
+                className="inline-flex items-center gap-2 bg-tertiary text-white px-5 py-2.5 rounded font-label-bold text-sm hover:bg-black transition-colors"
+              >
+                Book Intermodal Logistics{" "}
+                <span className="material-symbols-outlined text-sm">
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
           </div>
         </section>
 
