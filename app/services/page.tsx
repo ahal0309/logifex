@@ -88,7 +88,7 @@ export default function ServicesPage() {
             <img
               alt="Air Cargo"
               className="w-full h-80 object-cover"
-              src="/images/air-cargo.png"
+              src="/images/air-freight.png"
             />
           </div>
         </section>
@@ -208,7 +208,7 @@ export default function ServicesPage() {
             <img
               alt="Logistics Process"
               className="w-full h-80 object-cover"
-              src="/images/cargo-process.png"
+              src="/images/road-transport.png"
             />
           </div>
         </section>
