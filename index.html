@@ -646,6 +646,105 @@
       </div>
     </section>
 
+    <!-- Direct Operational Inquiry Form -->
+    <section class="py-16 bg-surface-container-low border-t border-secondary-container">
+      <div class="max-w-3xl mx-auto px-margin-mobile">
+        <div class="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-secondary-container shadow-sm">
+          <h3 class="font-headline-md text-xl font-bold text-on-background mb-1">
+            Send a Direct Operational Inquiry
+          </h3>
+          <p class="text-xs text-secondary mb-6">
+            Our forwarders reply within 1 hour during active business hours.
+          </p>
+
+          <div id="contactSent" class="hidden p-6 bg-emerald-50 border border-emerald-200 rounded-xl text-center space-y-2 mb-4">
+            <span class="material-symbols-outlined text-emerald-600 text-3xl">check_circle</span>
+            <h4 class="font-bold text-emerald-800 text-sm">Inquiry Submitted Successfully</h4>
+            <p class="text-xs text-emerald-700">Thank you. An operations desk representative will contact you shortly.</p>
+          </div>
+
+          <form id="contactForm" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="font-label-bold text-xs text-on-surface">
+                  Your Name *
+                </label>
+                <input
+                  required
+                  id="nameInput"
+                  class="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm"
+                  placeholder="Full Name"
+                  type="text"
+                />
+              </div>
+              <div class="space-y-1">
+                <label class="font-label-bold text-xs text-on-surface">
+                  Email Address *
+                </label>
+                <input
+                  required
+                  id="emailInput"
+                  class="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm"
+                  placeholder="email@company.com"
+                  type="email"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <label class="font-label-bold text-xs text-on-surface">
+                  Phone / Mobile
+                </label>
+                <input
+                  id="phoneInput"
+                  class="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm"
+                  placeholder="+971 50 123 4567"
+                  type="tel"
+                />
+              </div>
+              <div class="space-y-1">
+                <label class="font-label-bold text-xs text-on-surface">
+                  Inquiry Subject
+                </label>
+                <select
+                  id="subjectSelect"
+                  class="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm"
+                >
+                  <option>Commercial Rates & Quotations</option>
+                  <option>Active Consignment Tracking Support</option>
+                  <option>Customs Clearance & HS Tariff Advisory</option>
+                  <option>Contract Logistics & Bonded Warehousing</option>
+                  <option>Carrier & Airline Vendor Partnership</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="font-label-bold text-xs text-on-surface">
+                Message Details *
+              </label>
+              <textarea
+                required
+                id="messageInput"
+                rows="4"
+                class="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm resize-none"
+                placeholder="Provide consignment details, dates, or specific requirements..."
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="bg-primary-container text-white px-6 py-2.5 rounded font-label-bold text-sm hover:bg-primary transition-all flex items-center gap-2 shadow-md w-full sm:w-auto"
+            >
+              Send Message
+              <span class="material-symbols-outlined text-sm">send</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <!-- Call to Action Banner -->
     <section class="py-16 bg-primary text-white text-center">
       <div class="max-w-3xl mx-auto px-margin-mobile">
@@ -790,6 +889,19 @@
             }
           });
         }
+      }
+    })();
+
+    // Homepage Operational Inquiry Form Handler
+    (function() {
+      const form = document.getElementById('contactForm');
+      const sentBox = document.getElementById('contactSent');
+      if (form && sentBox) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          sentBox.classList.remove('hidden');
+          form.reset();
+        });
       }
     })();
   </script>

@@ -318,6 +318,22 @@ function ServicesSection() {
 }
 
 export default function HomePage() {
+  const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [subject, setSubject] = useState("Commercial Rates & Quotations");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setName("");
+    setEmail("");
+    setPhone("");
+    setMessage("");
+  };
+
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Video Background Container (covers Hero and About card) */}
@@ -639,7 +655,111 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Call to Action Banner */}
+      {/* Direct Operational Inquiry Form */}
+      <section className="py-16 bg-surface-container-low border-t border-secondary-container">
+        <div className="max-w-3xl mx-auto px-margin-mobile">
+          <div className="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-secondary-container shadow-sm">
+            <h3 className="font-headline-md text-xl font-bold text-on-background mb-1">
+              Send a Direct Operational Inquiry
+            </h3>
+            <p className="text-xs text-secondary mb-6">
+              Our forwarders reply within 1 hour during active business hours.
+            </p>
+
+            {submitted ? (
+              <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-xl text-center space-y-2">
+                <span className="material-symbols-outlined text-emerald-600 text-3xl">check_circle</span>
+                <h4 className="font-bold text-emerald-800 text-sm">Inquiry Submitted Successfully</h4>
+                <p className="text-xs text-emerald-700">Thank you. An operations desk representative will contact you shortly.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="font-label-bold text-xs text-on-surface">
+                      Your Name *
+                    </label>
+                    <input
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm"
+                      placeholder="Full Name"
+                      type="text"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="font-label-bold text-xs text-on-surface">
+                      Email Address *
+                    </label>
+                    <input
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm"
+                      placeholder="email@company.com"
+                      type="email"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="font-label-bold text-xs text-on-surface">
+                      Phone / Mobile
+                    </label>
+                    <input
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm"
+                      placeholder="+971 50 123 4567"
+                      type="tel"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="font-label-bold text-xs text-on-surface">
+                      Inquiry Subject
+                    </label>
+                    <select
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      className="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm"
+                    >
+                      <option>Commercial Rates & Quotations</option>
+                      <option>Active Consignment Tracking Support</option>
+                      <option>Customs Clearance & HS Tariff Advisory</option>
+                      <option>Contract Logistics & Bonded Warehousing</option>
+                      <option>Carrier & Airline Vendor Partnership</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="font-label-bold text-xs text-on-surface">
+                    Message Details *
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="w-full px-3 py-2 border border-secondary-container rounded-lg bg-surface text-sm resize-none"
+                    placeholder="Provide consignment details, dates, or specific requirements..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-primary-container text-white px-6 py-2.5 rounded font-label-bold text-sm hover:bg-primary transition-all flex items-center gap-2 shadow-md w-full sm:w-auto"
+                >
+                  Send Message
+                  <span className="material-symbols-outlined text-sm">send</span>
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
       <section className="py-16 bg-primary text-white text-center">
         <div className="max-w-3xl mx-auto px-margin-mobile">
           <h2 className="font-headline-display text-3xl md:text-4xl font-bold mb-4">
