@@ -23,7 +23,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1">
               <span className="material-symbols-outlined text-sm">phone</span>
-              UAE: +971 45752307 | India: +91 484 277 8899
+              UAE: +971 45752307 | India: +91 484 277 8899 | UK: +44 20 7946 0912
             </span>
             <span className="hidden lg:inline-flex items-center gap-1">
               <span className="material-symbols-outlined text-sm">mail</span>

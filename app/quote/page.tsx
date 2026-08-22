@@ -118,6 +118,13 @@ export default function QuotePage() {
               </a>
               <a
                 className="flex items-center gap-2 text-primary hover:text-primary-container transition-colors"
+                href="tel:+442079460912"
+              >
+                <span className="material-symbols-outlined text-base">call</span>
+                UK: +44 20 7946 0912
+              </a>
+              <a
+                className="flex items-center gap-2 text-primary hover:text-primary-container transition-colors"
                 href="mailto:info@logifexgroup.com"
               >
                 <span className="material-symbols-outlined text-base">mail</span>

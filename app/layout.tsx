@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingCTAs from "@/components/FloatingCTAs";
 
 export const metadata: Metadata = {
   title: "Logifex Freight Services - Precision in Motion",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow w-full max-w-full overflow-x-hidden">{children}</main>
         <Footer />
+        <FloatingCTAs />
       </body>
     </html>
   );
