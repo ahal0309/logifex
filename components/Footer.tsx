@@ -28,7 +28,7 @@ export default function Footer() {
             <li>
               <Link
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="/services#air"
+                href="/services/air-freight"
               >
                 Air Freight & Express
               </Link>
@@ -36,7 +36,7 @@ export default function Footer() {
             <li>
               <Link
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="/services#sea"
+                href="/services/sea-freight"
               >
                 Ocean & Sea Freight (FCL/LCL)
               </Link>
@@ -44,7 +44,7 @@ export default function Footer() {
             <li>
               <Link
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="/services#road"
+                href="/services/road-transport"
               >
                 Road & Overland Transport
               </Link>
@@ -52,7 +52,7 @@ export default function Footer() {
             <li>
               <Link
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="/services#road"
+                href="/services/intermodal"
               >
                 Multimodal & Rail Logistics
               </Link>
@@ -60,7 +60,7 @@ export default function Footer() {
             <li>
               <Link
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="/services#warehousing"
+                href="/services/warehousing"
               >
                 Warehousing & 3PL
               </Link>
@@ -94,7 +94,7 @@ export default function Footer() {
                 className="hover:text-primary-fixed-dim transition-colors"
                 href="/contact#uk"
               >
-                UK Hub: London
+                UK Hub: +44 20 7946 0912
               </Link>
             </li>
             <li>

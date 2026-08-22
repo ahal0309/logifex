@@ -124,7 +124,7 @@ function ServicesSection() {
       desc: "Fast, reliable, and secure air freight solutions for time-sensitive shipments.",
       supporting: "Global Air Transit • Priority Cargo",
       image: "/images/air-freight.png",
-      href: "/services#air",
+      href: "/services/air-freight",
     },
     {
       num: "02",
@@ -132,7 +132,7 @@ function ServicesSection() {
       desc: "Reliable and economical ocean freight solutions for global cargo transportation.",
       supporting: "Ocean Carrier • FCL & LCL Consolidation",
       image: "/images/sea-freight.png",
-      href: "/services#sea",
+      href: "/services/sea-freight",
     },
     {
       num: "03",
@@ -140,7 +140,7 @@ function ServicesSection() {
       desc: "Flexible cross-border and door-to-door road transportation solutions.",
       supporting: "GCC Linehaul • Overland Transport",
       image: "/images/road-transport.png",
-      href: "/services#road",
+      href: "/services/road-transport",
     },
     {
       num: "04",
@@ -148,7 +148,7 @@ function ServicesSection() {
       desc: "Seamless coordination across multiple transportation modes for efficient cargo movement.",
       supporting: "Rail & Multimodal Connectivity",
       image: "/images/intermodal-logistics.png",
-      href: "/services#road",
+      href: "/services/intermodal",
     },
     {
       num: "05",
@@ -156,7 +156,7 @@ function ServicesSection() {
       desc: "Efficient customs documentation and clearance support for smooth international shipments.",
       supporting: "Licensed Brokerage • HS Code Compliance",
       image: "/images/customs-clearance.png",
-      href: "/services#warehousing",
+      href: "/services/customs-clearance",
     },
     {
       num: "06",
@@ -164,7 +164,7 @@ function ServicesSection() {
       desc: "Secure and organized warehousing solutions for efficient inventory management.",
       supporting: "Bonded Facilities • WMS Inventory",
       image: "/images/warehousing.png",
-      href: "/services#warehousing",
+      href: "/services/warehousing",
     },
     {
       num: "07",
@@ -172,7 +172,7 @@ function ServicesSection() {
       desc: "Professional packing and labelling solutions to ensure cargo protection and compliance.",
       supporting: "Cargo Protection • Industrial Compliance",
       image: "/images/packing-labelling.png",
-      href: "/services#warehousing",
+      href: "/services/packing-labelling",
     },
     {
       num: "08",
@@ -180,7 +180,7 @@ function ServicesSection() {
       desc: "Specialized roll-on/roll-off shipping for wheeled cargo, vehicles, and heavy machinery.",
       supporting: "Vehicle Logistics • Roll-On/Roll-Off",
       image: "/images/roro.png",
-      href: "/services#sea",
+      href: "/services/roro",
     },
     {
       num: "09",
@@ -188,7 +188,7 @@ function ServicesSection() {
       desc: "Tailored transport and lifting solutions for heavy, oversized, and non-containerized cargo.",
       supporting: "Heavy Lift • Oversized Cargo",
       image: "/images/breakbulk.png",
-      href: "/services#sea",
+      href: "/services/breakbulk",
     },
   ];
 
@@ -204,7 +204,6 @@ function ServicesSection() {
         {
           y: startY,
           opacity: 0,
-          clipPath: "inset(100% 0 0 0)",
         },
         {
           y: 0,
@@ -213,9 +212,8 @@ function ServicesSection() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 75%",
-            end: "top 25%",
-            scrub: true,
+            start: "top 80%",
+            toggleActions: "play none none none",
           },
         }
       );
@@ -244,9 +242,9 @@ function ServicesSection() {
           <h2
             ref={headingRef}
             className="font-headline-display text-3xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none mb-6"
-            style={{ willChange: "transform, opacity, clip-path" }}
+            style={{ willChange: "transform, opacity" }}
           >
-            Our Services
+            Services We Provide
           </h2>
           <p className="font-body-md text-sm md:text-base text-secondary max-w-xl mx-auto">
             Precision in motion. Integrated global logistics solutions tailored for your cargo.

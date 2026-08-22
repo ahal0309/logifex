@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Bebas_Neue } from "next/font/google";
+import localFont from "next/font/local";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
+const bebasNeue = localFont({
+  src: "../../public/fonts/BebasNeue-Regular.ttf",
+  display: "swap",
 });
 
 const text1 =

@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Bebas_Neue } from "next/font/google";
+import localFont from "next/font/local";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
+const bebasNeue = localFont({
+  src: "../../public/fonts/BebasNeue-Regular.ttf",
+  display: "swap",
 });
 
 interface PrincipleProps {
@@ -38,9 +38,9 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
             ease: "none",
             scrollTrigger: {
               trigger: containerRef.current,
-              start: "top 75%",
-              end: "bottom 45%",
-              scrub: 0.6,
+              start: "top 70%",
+              end: "bottom 75%",
+              scrub: 0.3,
             },
           });
         });
@@ -53,8 +53,8 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
             scrollTrigger: {
               trigger: containerRef.current,
               start: "top 85%",
-              end: "bottom 70%",
-              scrub: 0.6,
+              end: "bottom 90%",
+              scrub: 0.3,
             },
           });
         });
@@ -76,7 +76,7 @@ function PrincipleSection({ title, statement, revealText, sectionIdx }: Principl
   return (
     <div
       ref={containerRef}
-      className="flex flex-col lg:flex-row gap-6 lg:gap-16 items-start lg:items-center justify-center min-h-0 lg:min-h-[90vh] py-12 lg:py-24 border-b border-secondary-container/50 last:border-b-0"
+      className="flex flex-col lg:flex-row gap-6 lg:gap-16 items-start lg:items-center justify-center py-8 lg:py-12 border-b border-secondary-container/50 last:border-b-0"
     >
       {/* Left Column: Bebas Neue Title */}
       <div className="w-full lg:w-4/12">

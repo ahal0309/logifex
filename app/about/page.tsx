@@ -26,15 +26,20 @@ export default function AboutPage() {
             <h1 className="font-headline-display text-5xl sm:text-6xl md:text-8xl font-black mb-8 leading-none text-white uppercase tracking-tight">
               About Us
             </h1>
-            <p className="text-surface-variant font-body-lg text-lg sm:text-xl md:text-2xl leading-relaxed">
-              Logifex was established with a clear intent —
-              to bring structure, reliability, and clarity into
-              logistics operations that are often complex and
-              time-sensitive. Every shipment is approached
-              with careful planning, ensuring that each stage,
-              from pickup to final delivery, is managed with
-              consistency and control.
-            </p>
+            <div className="text-surface-variant font-body-lg text-base sm:text-lg md:text-xl leading-relaxed space-y-6">
+              <p>
+                Connecting Businesses. Moving Possibilities.
+              </p>
+              <p>
+                Logifex Freight Services is a growing global logistics and freight forwarding company providing reliable, flexible, and end-to-end logistics solutions worldwide. With strategic locations across India, the UK, and the UAE, we connect businesses across major international trade lanes through a trusted global network.
+              </p>
+              <p>
+                From Air Freight, Sea Freight, and Road Freight to Customs Clearance, Courier Services, Project Cargo, RORO, Break Bulk, Warehousing, Packing &amp; Labelling, we handle every shipment with care, precision, and clear communication.
+              </p>
+              <p>
+                Whether it’s a single shipment or a long-term supply chain requirement, Logifex delivers practical, cost-effective, and dependable logistics solutions from origin to destination.
+              </p>
+            </div>
           </div>
         </div>
       </section>
