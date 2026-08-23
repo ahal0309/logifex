@@ -4,41 +4,19 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function QuotePage() {
-  const [service, setService] = useState("Air Freight");
-  const [origin, setOrigin] = useState("Dubai, UAE");
-  const [dest, setDest] = useState("Cochin (COK), India");
-  const [weight, setWeight] = useState<number>(1250);
-  const [dimL, setDimL] = useState<number>(120);
-  const [dimW, setDimW] = useState<number>(80);
-  const [dimH, setDimH] = useState<number>(100);
-  const [cargoType, setCargoType] = useState("General Cargo (Palletized)");
-  const [commodity, setCommodity] = useState("Industrial Electrical Parts");
-  const [fullName, setFullName] = useState("Rashid Al Mansoori");
-  const [company, setCompany] = useState("Apex Engineering Trading LLC");
-  const [email, setEmail] = useState("logistics@apexeng.ae");
-  const [phone, setPhone] = useState("+971 50 882 1920");
+  const [fullName, setFullName] = useState("");
+  const [company, setCompany] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalRefId, setModalRefId] = useState("");
-  const [priceEstimate, setPriceEstimate] = useState("");
-
-  const cbm = ((dimL * dimW * dimH) / 1000000).toFixed(2);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const ref = "LGFX-Q" + Math.floor(10000 + Math.random() * 90000);
+    const ref = "LGFX-ENQ" + Math.floor(10000 + Math.random() * 90000);
     setModalRefId(ref);
-
-    let estBase = 0;
-    if (service.includes("Air")) estBase = weight * 1.6;
-    else if (service.includes("Sea"))
-      estBase = Math.max(weight * 0.4, parseFloat(cbm) * 180);
-    else estBase = weight * 0.85;
-
-    const low = Math.round(estBase);
-    const high = Math.round(estBase * 1.25);
-    setPriceEstimate(`$${low.toLocaleString()} - $${high.toLocaleString()} USD`);
-
     setModalOpen(true);
   };
 
@@ -153,299 +131,94 @@ export default function QuotePage() {
       <section className="lg:col-span-8 order-1 lg:order-2">
         <div className="mb-6">
           <span className="text-primary-container font-label-bold text-xs uppercase tracking-wider block mb-1">
-            Instant Estimation & Booking
+            Contact Us
           </span>
           <h1 className="font-headline-lg-mobile md:font-headline-lg text-2xl md:text-3xl text-on-surface font-bold mb-2">
-            Request Freight Rate Quote
+            Customer Enquiry
           </h1>
           <p className="text-secondary font-body-md text-sm">
-            Provide your shipment parameters below to receive a customized rate
-            and transit breakdown.
+            Please fill out the form below with your details and message, and our team will get back to you shortly.
           </p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-surface-container-lowest border border-secondary-container rounded-xl p-6 md:p-10 shadow-sm flex flex-col gap-8"
+          className="bg-surface-container-lowest border border-secondary-container rounded-xl p-6 md:p-10 shadow-sm flex flex-col gap-6"
         >
-          {/* Step 1: Service Type */}
-          <div>
-            <h3 className="font-headline-md text-lg text-on-surface mb-4 flex items-center gap-3 font-bold">
-              <span className="w-7 h-7 rounded-full bg-primary-container text-white flex items-center justify-center font-label-bold text-xs">
-                1
-              </span>
-              Select Transport Modality
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {[
-                {
-                  id: "Air Freight",
-                  label: "Air Freight",
-                  time: "1-4 Days",
-                  icon: "flight_takeoff",
-                },
-                {
-                  id: "Sea Freight",
-                  label: "Ocean / Sea",
-                  time: "12-30 Days",
-                  icon: "directions_boat",
-                },
-                {
-                  id: "Road Freight",
-                  label: "Road / Overland",
-                  time: "Door-to-Door",
-                  icon: "local_shipping",
-                },
-                {
-                  id: "Multimodal",
-                  label: "Multimodal",
-                  time: "Optimized",
-                  icon: "hub",
-                },
-              ].map((item) => (
-                <label key={item.id} className="cursor-pointer relative">
-                  <input
-                    type="radio"
-                    name="service"
-                    value={item.id}
-                    checked={service === item.id}
-                    onChange={(e) => setService(e.target.value)}
-                    className="peer sr-only"
-                  />
-                  <div className="border-2 border-secondary-container rounded-xl p-4 flex flex-col items-center gap-2 hover:border-primary-container transition-all peer-checked:border-primary-container peer-checked:bg-surface-container-low text-center">
-                    <span className="material-symbols-outlined text-secondary peer-checked:text-primary-container text-3xl">
-                      {item.icon}
-                    </span>
-                    <span className="font-label-bold text-xs text-on-surface">
-                      {item.label}
-                    </span>
-                    <span className="text-[10px] text-secondary">
-                      {item.time}
-                    </span>
-                  </div>
-                </label>
-              ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col gap-2">
+              <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
+                Customer Name *
+              </label>
+              <input
+                required
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="w-full px-4 py-3 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm"
+                placeholder="Your full name"
+                type="text"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
+                Company Name
+              </label>
+              <input
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                className="w-full px-4 py-3 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm"
+                placeholder="Your company name"
+                type="text"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
+                Email Address *
+              </label>
+              <input
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm"
+                placeholder="name@company.com"
+                type="email"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
+                Contact Number / WhatsApp Number *
+              </label>
+              <input
+                required
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full px-4 py-3 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm"
+                placeholder="+971 50 123 4567"
+                type="tel"
+              />
             </div>
           </div>
 
-          <hr className="border-secondary-container" />
-
-          {/* Step 2: Routing */}
-          <div>
-            <h3 className="font-headline-md text-lg text-on-surface mb-4 flex items-center gap-3 font-bold">
-              <span className="w-7 h-7 rounded-full bg-primary-container text-white flex items-center justify-center font-label-bold text-xs">
-                2
-              </span>
-              Origin & Destination Routing
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
-              <div className="flex flex-col gap-1.5">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Origin Location / Port *
-                </label>
-                <div className="relative">
-                  <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">
-                    location_on
-                  </span>
-                  <input
-                    required
-                    value={origin}
-                    onChange={(e) => setOrigin(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm"
-                    placeholder="e.g. Dubai Port (DXB / Jebel Ali)"
-                    type="text"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Destination Location / Port *
-                </label>
-                <div className="relative">
-                  <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-lg">
-                    pin_drop
-                  </span>
-                  <input
-                    required
-                    value={dest}
-                    onChange={(e) => setDest(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm"
-                    placeholder="e.g. Cochin Port (COK), India"
-                    type="text"
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="flex flex-col gap-2">
+            <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
+              Message / Enquiry *
+            </label>
+            <textarea
+              required
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full px-4 py-3 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm resize-y"
+              placeholder="How can we help you today?"
+              rows={5}
+            ></textarea>
           </div>
 
-          <hr className="border-secondary-container" />
-
-          {/* Step 3: Shipment Details */}
-          <div>
-            <h3 className="font-headline-md text-lg text-on-surface mb-4 flex items-center gap-3 font-bold">
-              <span className="w-7 h-7 rounded-full bg-primary-container text-white flex items-center justify-center font-label-bold text-xs">
-                3
-              </span>
-              Payload & Dimension Specifications
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Total Gross Weight (KG) *
-                </label>
-                <input
-                  required
-                  min={1}
-                  value={weight}
-                  onChange={(e) => setWeight(parseFloat(e.target.value) || 0)}
-                  className="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary transition-colors text-on-surface text-sm"
-                  placeholder="e.g. 1500"
-                  type="number"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5 md:col-span-2">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Dimensions (L × W × H in cm) — Volume:{" "}
-                  <span className="text-primary font-bold">{cbm} CBM</span>
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    value={dimL}
-                    onChange={(e) => setDimL(parseFloat(e.target.value) || 0)}
-                    className="w-full px-3 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-center text-sm"
-                    placeholder="Length"
-                    type="number"
-                  />
-                  <span className="text-secondary text-sm">×</span>
-                  <input
-                    value={dimW}
-                    onChange={(e) => setDimW(parseFloat(e.target.value) || 0)}
-                    className="w-full px-3 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-center text-sm"
-                    placeholder="Width"
-                    type="number"
-                  />
-                  <span className="text-secondary text-sm">×</span>
-                  <input
-                    value={dimH}
-                    onChange={(e) => setDimH(parseFloat(e.target.value) || 0)}
-                    className="w-full px-3 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-center text-sm"
-                    placeholder="Height"
-                    type="number"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Container / Cargo Type
-                </label>
-                <select
-                  value={cargoType}
-                  onChange={(e) => setCargoType(e.target.value)}
-                  className="w-full px-3 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm text-on-surface"
-                >
-                  <option>General Cargo (Palletized)</option>
-                  <option>FCL 20ft Standard Container</option>
-                  <option>FCL 40ft High Cube Container</option>
-                  <option>LCL Consolidated Cargo</option>
-                  <option>Temperature Controlled / Pharma</option>
-                  <option>Dangerous Goods (DG / IMO)</option>
-                </select>
-              </div>
-
-              <div className="flex flex-col gap-1.5 md:col-span-2">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Commodity & Special Handling Notes
-                </label>
-                <input
-                  value={commodity}
-                  onChange={(e) => setCommodity(e.target.value)}
-                  className="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm"
-                  placeholder="e.g. Industrial Machinery, Fragile, Stackable"
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
-
-          <hr className="border-secondary-container" />
-
-          {/* Step 4: Contact Info */}
-          <div>
-            <h3 className="font-headline-md text-lg text-on-surface mb-4 flex items-center gap-3 font-bold">
-              <span className="w-7 h-7 rounded-full bg-primary-container text-white flex items-center justify-center font-label-bold text-xs">
-                4
-              </span>
-              Client & Dispatch Contact Details
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Full Name *
-                </label>
-                <input
-                  required
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm"
-                  placeholder="John Doe"
-                  type="text"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Company Name
-                </label>
-                <input
-                  value={company}
-                  onChange={(e) => setCompany(e.target.value)}
-                  className="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm"
-                  placeholder="Logistics Corp"
-                  type="text"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Work Email Address *
-                </label>
-                <input
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm"
-                  placeholder="name@company.com"
-                  type="email"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="font-label-bold text-xs text-on-surface uppercase tracking-wider">
-                  Phone / WhatsApp Number *
-                </label>
-                <input
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-4 py-2.5 border border-secondary-container rounded-lg bg-surface focus:ring-1 focus:ring-primary text-sm"
-                  placeholder="+971 50 123 4567"
-                  type="tel"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-secondary-container">
-            <span className="text-xs text-secondary flex items-center gap-1">
-              <span className="material-symbols-outlined text-sm text-emerald-600">
-                lock
-              </span>
-              Data encrypted. Instant quotation dispatch.
-            </span>
+          <div className="flex items-center justify-start pt-4 border-t border-secondary-container">
             <button
               type="submit"
               className="w-full sm:w-auto bg-primary-container text-white hover:bg-primary transition-all duration-200 px-8 py-3.5 rounded-lg font-label-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg text-sm"
             >
-              Calculate & Request Quote
+              Submit Enquiry
               <span className="material-symbols-outlined text-sm">send</span>
             </button>
           </div>
@@ -454,66 +227,32 @@ export default function QuotePage() {
         {/* Confirmation Modal */}
         {modalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-6 md:p-8 border border-secondary-container shadow-2xl relative">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
-                <span className="material-symbols-outlined text-2xl">
+            <div className="bg-surface-container-lowest rounded-2xl max-w-sm w-full p-6 md:p-8 border border-secondary-container shadow-2xl relative text-center">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-4">
+                <span className="material-symbols-outlined text-3xl">
                   check_circle
                 </span>
               </div>
-              <h3 className="font-headline-md text-xl font-bold text-on-background mb-1">
-                Quote Request Generated!
+              <h3 className="font-headline-md text-xl font-bold text-on-background mb-2">
+                Enquiry Submitted!
               </h3>
-              <p className="text-xs text-secondary mb-4">
-                Reference ID:{" "}
-                <span className="font-mono font-bold text-primary">
-                  {modalRefId}
-                </span>{" "}
-                • Dispatched to Freight Engine
+              <p className="text-sm text-secondary mb-6 leading-relaxed">
+                Thank you for reaching out, {fullName}. We have received your message and our team will get back to you shortly at {email}.
               </p>
 
-              <div className="bg-surface p-4 rounded-xl border border-secondary-container text-xs space-y-2 mb-6">
-                <div className="flex justify-between pb-1 border-b border-secondary-container">
-                  <span className="text-secondary">Selected Modality:</span>
-                  <span className="font-bold text-on-surface">{service}</span>
-                </div>
-                <div className="flex justify-between pb-1 border-b border-secondary-container">
-                  <span className="text-secondary">Route:</span>
-                  <span className="font-bold text-on-surface">
-                    {origin} &rarr; {dest}
-                  </span>
-                </div>
-                <div className="flex justify-between pb-1 border-b border-secondary-container">
-                  <span className="text-secondary">Weight & Volume:</span>
-                  <span className="font-bold text-on-surface">
-                    {weight.toLocaleString()} KG ({cbm} CBM)
-                  </span>
-                </div>
-                <div className="flex justify-between pt-1 font-bold text-sm text-primary">
-                  <span>Estimated Rate Bracket:</span>
-                  <span>{priceEstimate}</span>
-                </div>
-              </div>
-
-              <p className="text-xs text-secondary mb-6 leading-relaxed">
-                Our global trade desk has logged your request. A formal rate
-                breakdown and proforma terms have been dispatched to{" "}
-                <span className="font-bold text-on-surface">{email}</span>.
-              </p>
-
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setModalOpen(false)}
-                  className="flex-1 bg-primary-container text-white py-2.5 rounded-lg font-label-bold text-sm hover:bg-primary transition-colors"
-                >
-                  Done
-                </button>
-                <Link
-                  href="/contact"
-                  className="flex-1 border border-secondary-container text-center py-2.5 rounded-lg font-label-bold text-sm hover:bg-surface transition-colors"
-                >
-                  Contact Trade Desk
-                </Link>
-              </div>
+              <button
+                onClick={() => {
+                  setModalOpen(false);
+                  setFullName("");
+                  setCompany("");
+                  setEmail("");
+                  setPhone("");
+                  setMessage("");
+                }}
+                className="w-full bg-primary-container text-white py-3 rounded-lg font-label-bold text-sm hover:bg-primary transition-colors"
+              >
+                Close
+              </button>
             </div>
           </div>
         )}
