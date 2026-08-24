@@ -622,32 +622,12 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative bg-surface rounded-2xl border border-secondary-container p-6 overflow-hidden flex flex-col justify-between shadow-sm">
-              <div className="flex items-center justify-between pb-4 border-b border-secondary-container">
-                <span className="font-label-bold text-xs uppercase tracking-wider text-secondary">
-                  Active Corridor Activity
-                </span>
-                <span className="flex items-center gap-1.5 text-xs text-emerald-700 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  Ports & Air Terminals Active
-                </span>
-              </div>
-              <div className="py-8 text-center my-auto">
+            <div className="relative bg-surface rounded-2xl border border-secondary-container p-2 overflow-hidden flex flex-col justify-center shadow-sm h-full">
                 <img
-                  alt="Logistics Warehouse Operations"
-                  className="w-full max-h-64 object-cover rounded-lg shadow-sm"
-                  src="/images/warehouse.png"
+                  alt="Global Network Map showing active shipping lanes"
+                  className="w-full h-full object-cover rounded-xl"
+                  src="/images/global_network_map.jpg"
                 />
-              </div>
-              <div className="pt-4 border-t border-secondary-container flex justify-between items-center text-xs text-secondary">
-                <span>Middle East • South Asia • Europe • Americas</span>
-                <Link
-                  href="/contact"
-                  className="text-primary font-label-bold hover:underline"
-                >
-                  View Office Directory &rarr;
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -772,13 +752,7 @@ export default function HomePage() {
               href="/quote"
               className="bg-white text-primary px-8 py-3.5 rounded font-label-bold hover:bg-surface-container-high transition-colors shadow-lg text-sm"
             >
-              Request an Estimate Now
-            </Link>
-            <Link
-              href="/contact"
-              className="border border-white/50 text-white px-8 py-3.5 rounded font-label-bold hover:bg-white/10 transition-colors text-sm"
-            >
-              Speak to a Specialist
+              Request Now
             </Link>
           </div>
         </div>
