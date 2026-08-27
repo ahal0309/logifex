@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import VideoScrollIntro from "@/components/VideoScrollIntro";
 
 function CoreValuesSection({ getVal }: { getVal: (key: string, fb: string) => string }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -244,6 +245,8 @@ export default function HomeClient({ content, services }: { content: any[], serv
   const getVal = (key: string, fallback: string) => 
     content?.find(c => c.content_key === key)?.content_value || fallback;
 
+  const [introFinished, setIntroFinished] = useState(false);
+
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -261,8 +264,13 @@ export default function HomeClient({ content, services }: { content: any[], serv
   };
 
   return (
-    <div className="flex flex-col w-full overflow-hidden">
-      {/* Video/Image Background Container (covers Hero and About card) */}
+    <>
+      {!introFinished && <VideoScrollIntro onComplete={() => {
+        setIntroFinished(true);
+        window.scrollTo(0, 0); // Ensure they start at the top of the normal page
+      }} />}
+      <div className="flex flex-col w-full overflow-hidden">
+        {/* Video/Image Background Container (covers Hero and About card) */}
       <div className="relative w-full bg-inverse-surface overflow-hidden">
         {/* Background */}
         {getVal('hero_video', '') ? (
@@ -693,5 +701,6 @@ export default function HomeClient({ content, services }: { content: any[], serv
         </div>
       </section>
     </div>
+    </>
   );
 }
