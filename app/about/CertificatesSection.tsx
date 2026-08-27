@@ -75,7 +75,7 @@ export default function CertificatesSection() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
           <div className="max-w-2xl">
             <h2 className="font-headline-display text-3xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none">
-              Accreditations & Certificates
+              Memberships
             </h2>
           </div>
           
@@ -126,15 +126,7 @@ export default function CertificatesSection() {
                 </div>
               </div>
 
-              {/* Text details */}
-              <div className="mt-4 px-2">
-                <h3 className="font-headline-md text-base sm:text-lg font-bold text-on-background uppercase tracking-tight">
-                  {cert.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-secondary leading-snug">
-                  {cert.subtitle}
-                </p>
-              </div>
+
             </div>
           ))}
         </div>

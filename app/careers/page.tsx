@@ -1,40 +1,23 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Careers | Logifex Freight Services",
   description: "Join our team at Logifex Freight Services. Explore current job openings.",
 };
 
-const jobs = [
-  {
-    id: 1,
-    title: "Logistics Coordinator",
-    location: "UAE HQ (Dubai)",
-    type: "Full-Time",
-    department: "Operations",
-    description: "Coordinate and monitor supply chain operations, ensure effective communication with clients and suppliers, and resolve any arising problems or complaints.",
-  },
-  {
-    id: 2,
-    title: "Sales Executive - Freight Forwarding",
-    location: "India Hub (Cochin)",
-    type: "Full-Time",
-    department: "Sales",
-    description: "Drive new business acquisition and maintain relationships with existing clients to promote our comprehensive freight solutions.",
-  },
-  {
-    id: 3,
-    title: "Customs Brokerage Specialist",
-    location: "UK Hub (London)",
-    type: "Full-Time",
-    department: "Compliance",
-    description: "Ensure compliance with international customs regulations and facilitate the smooth clearance of goods for our clients.",
-  }
-];
+export const revalidate = 0;
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const supabase = createClient();
+  const { data: jobs, error } = await supabase
+    .from("careers")
+    .select("*")
+    .eq("is_active", true)
+    .order("display_order", { ascending: true });
+
   return (
     <div className="bg-background min-h-screen">
       {/* Hero Section */}
@@ -64,42 +47,48 @@ export default function CareersPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {jobs.map((job) => (
-              <div 
-                key={job.id} 
-                className="bg-surface border border-secondary-container rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col h-full"
-              >
-                <div className="mb-4">
-                  <span className="inline-block bg-primary-container/10 text-primary px-3 py-1 rounded-full text-xs font-label-bold mb-3 uppercase tracking-wider">
-                    {job.department}
-                  </span>
-                  <h3 className="font-headline-display text-xl font-bold text-on-surface mb-2">
-                    {job.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-3 text-sm text-secondary font-medium">
-                    <span className="flex items-center gap-1">
-                      <span className="material-symbols-outlined text-[18px]">location_on</span>
-                      {job.location}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="material-symbols-outlined text-[18px]">work</span>
-                      {job.type}
-                    </span>
-                  </div>
-                </div>
-                
-                <p className="text-secondary text-sm mb-6 flex-grow leading-relaxed">
-                  {job.description}
-                </p>
-                
-                <a 
-                  href={`mailto:info@logifexgroup.com?subject=Application for ${job.title} - ${job.location}`}
-                  className="mt-auto block text-center bg-primary text-white font-label-bold py-2.5 rounded-lg hover:bg-primary-container transition-colors w-full"
+            {jobs && jobs.length > 0 ? (
+              jobs.map((job) => (
+                <div 
+                  key={job.id} 
+                  className="bg-surface border border-secondary-container rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col h-full"
                 >
-                  Apply Now
-                </a>
+                  <div className="mb-4">
+                    <span className="inline-block bg-primary-container/10 text-primary px-3 py-1 rounded-full text-xs font-label-bold mb-3 uppercase tracking-wider">
+                      {job.department}
+                    </span>
+                    <h3 className="font-headline-display text-xl font-bold text-on-surface mb-2">
+                      {job.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-3 text-sm text-secondary font-medium">
+                      <span className="flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[18px]">location_on</span>
+                        {job.location}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <span className="material-symbols-outlined text-[18px]">work</span>
+                        {job.type}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-secondary text-sm mb-6 flex-grow leading-relaxed">
+                    {job.description}
+                  </p>
+                  
+                  <a 
+                    href={`mailto:info@logifexgroup.com?subject=Application for ${job.title} - ${job.location}`}
+                    className="mt-auto block text-center bg-primary text-white font-label-bold py-2.5 rounded-lg hover:bg-primary-container transition-colors w-full"
+                  >
+                    Apply Now
+                  </a>
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full py-12 text-center text-secondary">
+                No open positions at the moment. Please check back later.
               </div>
-            ))}
+            )}
           </div>
 
           <div className="mt-16 bg-surface-container-low border border-secondary-container rounded-xl p-8 text-center max-w-3xl mx-auto">

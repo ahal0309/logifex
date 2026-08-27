@@ -1,22 +1,33 @@
 import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
 
-export default function Footer() {
+export default async function Footer() {
+  const supabase = createClient();
+  const { data: content } = await supabase
+    .from("site_content")
+    .select("*")
+    .eq("page", "global")
+    .eq("section", "footer");
+
+  const getVal = (key: string, fallback: string) => 
+    content?.find(c => c.content_key === key)?.content_value || fallback;
+
   return (
     <footer className="bg-inverse-surface w-full mt-auto text-surface-variant">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-14 max-w-container-max mx-auto">
         <div className="md:col-span-1">
           <div className="flex items-center gap-2 mb-4">
             <img
-              alt="Logifex Logo"
+              alt={getVal("logo_text", "Logifex Logo")}
               className="h-8 w-auto brightness-0 invert"
-              src="/images/logo.png"
+              src={getVal("logo_image", "/images/logo.png")}
             />
           </div>
           <p className="font-body-md text-sm text-surface-variant mb-4 leading-relaxed">
-            Precision in Motion. Comprehensive air, ocean, road, and multimodal freight solutions with global compliance.
+            {getVal("about_text", "Precision in Motion. Comprehensive air, ocean, road, and multimodal freight solutions with global compliance.")}
           </p>
           <p className="text-xs text-neutral-400 mb-6">
-            Licensed Global Freight Forwarder & Customs Broker.
+            {getVal("licensed_text", "Licensed Global Freight Forwarder & Customs Broker.")}
           </p>
           <div className="flex items-center gap-4">
             <a href="https://www.instagram.com/logifexfreight?igsi=MTU2bWs3c2V1aXBxMQ==" target="_blank" rel="noopener noreferrer" className="text-surface-variant hover:text-white transition-colors" aria-label="Instagram">
@@ -100,7 +111,7 @@ export default function Footer() {
                 className="hover:text-primary-fixed-dim transition-colors"
                 href="/contact#uae"
               >
-                UAE HQ: +971 45752307
+                {getVal("uae_address", "UAE HQ: +971 45752307")}
               </Link>
             </li>
             <li>
@@ -108,7 +119,7 @@ export default function Footer() {
                 className="hover:text-primary-fixed-dim transition-colors"
                 href="/contact#india"
               >
-                India Hub: +91 484 277 8899
+                {getVal("india_address", "India Hub: +91 484 277 8899")}
               </Link>
             </li>
             <li>
@@ -116,15 +127,15 @@ export default function Footer() {
                 className="hover:text-primary-fixed-dim transition-colors"
                 href="/contact#uk"
               >
-                UK Hub: +44 20 7946 0912
+                {getVal("uk_address", "UK Hub: +44 20 7946 0912")}
               </Link>
             </li>
             <li>
               <a
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="mailto:info@logifexgroup.com"
+                href={`mailto:${getVal("email", "info@logifexgroup.com")}`}
               >
-                info@logifexgroup.com
+                {getVal("email", "info@logifexgroup.com")}
               </a>
             </li>
           </ul>

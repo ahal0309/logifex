@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Services & Solutions - Logifex Freight Services",
@@ -7,100 +8,41 @@ export const metadata: Metadata = {
     "Comprehensive Air, Ocean, Overland, Multimodal, Warehousing and Customs Brokerage services with global transit coverage.",
 };
 
-export default function ServicesPage() {
-  const services = [
-    {
-      num: "01",
-      title: "Air Freight",
-      desc: "Fast, reliable, and secure air freight solutions for time-sensitive shipments.",
-      supporting: "Global Air Transit • Priority Cargo",
-      image: "/images/air-freight.png",
-      href: "/services/air-freight",
-    },
-    {
-      num: "02",
-      title: "Sea Freight",
-      desc: "Reliable and economical ocean freight solutions for global cargo transportation.",
-      supporting: "Ocean Carrier • FCL & LCL Consolidation",
-      image: "/images/sea-freight.png",
-      href: "/services/sea-freight",
-    },
-    {
-      num: "03",
-      title: "Road Transport",
-      desc: "Flexible cross-border and door-to-door road transportation solutions.",
-      supporting: "GCC Linehaul • Overland Transport",
-      image: "/images/road-transport.png",
-      href: "/services/road-transport",
-    },
-    {
-      num: "04",
-      title: "Intermodal Logistics",
-      desc: "Seamless coordination across multiple transportation modes for efficient cargo movement.",
-      supporting: "Rail & Multimodal Connectivity",
-      image: "/images/intermodal-logistics.png",
-      href: "/services/intermodal",
-    },
-    {
-      num: "05",
-      title: "Customs Clearance",
-      desc: "Efficient customs documentation and clearance support for smooth international shipments.",
-      supporting: "Licensed Brokerage • HS Code Compliance",
-      image: "/images/customs-clearance.png",
-      href: "/services/customs-clearance",
-    },
-    {
-      num: "06",
-      title: "Warehousing",
-      desc: "Secure and organized warehousing solutions for efficient inventory management.",
-      supporting: "Bonded Facilities • WMS Inventory",
-      image: "/images/warehousing.png",
-      href: "/services/warehousing",
-    },
-    {
-      num: "07",
-      title: "Packing and Labelling",
-      desc: "Professional packing and labelling solutions to ensure cargo protection and compliance.",
-      supporting: "Cargo Protection • Industrial Compliance",
-      image: "/images/packing-labelling.png",
-      href: "/services/packing-labelling",
-    },
-    {
-      num: "08",
-      title: "Roro",
-      desc: "Specialized roll-on/roll-off shipping for wheeled cargo, vehicles, and heavy machinery.",
-      supporting: "Vehicle Logistics • Roll-On/Roll-Off",
-      image: "/images/roro.png",
-      href: "/services/roro",
-    },
-    {
-      num: "09",
-      title: "Breakbulk",
-      desc: "Tailored transport and lifting solutions for heavy, oversized, and non-containerized cargo.",
-      supporting: "Heavy Lift • Oversized Cargo",
-      image: "/images/breakbulk.png",
-      href: "/services/breakbulk",
-    },
-  ];
+export const revalidate = 0;
+
+export default async function ServicesPage() {
+  const supabase = createClient();
+  const { data: content } = await supabase
+    .from("site_content")
+    .select("*")
+    .eq("page", "services");
+
+  const { data: services } = await supabase
+    .from("services")
+    .select("*")
+    .eq("is_active", true)
+    .order("display_order", { ascending: true });
+
+  const getVal = (key: string, fallback: string) => 
+    content?.find(c => c.content_key === key)?.content_value || fallback;
 
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Hero Banner */}
       <section
-        className="relative w-full min-h-[50vh] flex items-center bg-inverse-surface bg-cover bg-center text-white py-20 overflow-hidden"
-        style={{ backgroundImage: "url('/images/sea-freight.png')" }}
+        className="relative w-full min-h-screen flex items-center bg-inverse-surface bg-cover bg-center text-white py-20 overflow-hidden"
+        style={{ backgroundImage: `url('${getVal("hero_image", "/images/sea-freight.png")}')` }}
       >
         <div className="absolute inset-0 hero-overlay"></div>
         <div className="absolute inset-0 opacity-15 chevron-pattern pointer-events-none"></div>
 
         <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
           <div className="max-w-3xl">
-            <h1 className="font-headline-display text-[clamp(32px,10vw,56px)] sm:text-4xl md:text-6xl font-bold mb-6 leading-tight text-white uppercase tracking-tight">
-              Our Services & <br />
-              <span className="text-primary-fixed">Supply Chain Solutions.</span>
+            <h1 className="font-headline-display text-5xl sm:text-6xl md:text-8xl font-black mb-8 leading-none text-white uppercase tracking-tight">
+              {getVal("title", "Our Services & Supply Chain Solutions.")}
             </h1>
             <p className="text-surface-variant font-body-lg text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
-              From chartered cargo flights and global container vessels to temperature-controlled road linehauls and bonded warehousing, Logifex synchronizes world commerce.
+              {getVal("subtitle", "From chartered cargo flights and global container vessels to temperature-controlled road linehauls and bonded warehousing, Logifex synchronizes world commerce.")}
             </p>
           </div>
         </div>
@@ -123,7 +65,7 @@ export default function ServicesPage() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((svc, i) => (
+            {(services || []).map((svc, i) => (
               <div
                 key={i}
                 className="group relative bg-surface-container-lowest rounded-2xl overflow-hidden border border-secondary-container shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
@@ -131,12 +73,12 @@ export default function ServicesPage() {
                 {/* Image */}
                 <div className="relative w-full h-52 overflow-hidden bg-neutral-200">
                   <img
-                    src={svc.image}
+                    src={svc.image_url || svc.image}
                     alt={svc.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 bg-lime-400 text-black font-headline-display text-lg font-black px-3 py-1 rounded-md">
-                    {svc.num}
+                    {String(i + 1).padStart(2, '0')}
                   </div>
                 </div>
 
@@ -144,13 +86,13 @@ export default function ServicesPage() {
                 <div className="p-6 flex flex-col flex-grow justify-between space-y-4">
                   <div className="space-y-2">
                     <span className="text-[10px] uppercase tracking-wider font-label-bold text-primary block">
-                      {svc.supporting}
+                      {svc.supporting_text || svc.supporting}
                     </span>
                     <h3 className="font-headline-md text-xl font-bold text-on-background group-hover:text-primary-container transition-colors">
                       {svc.title}
                     </h3>
                     <p className="text-secondary text-xs leading-relaxed font-body-md">
-                      {svc.desc}
+                      {svc.description || svc.desc}
                     </p>
                   </div>
 

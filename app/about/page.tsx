@@ -4,6 +4,8 @@ import AnimatedParagraphs from "./AnimatedParagraphs";
 import AnimatedPrinciples from "./AnimatedPrinciples";
 import IndustriesSection from "./IndustriesSection";
 import CertificatesSection from "./CertificatesSection";
+import RealCertificatesSection from "./RealCertificatesSection";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "About Us - Logifex Freight Services",
@@ -11,12 +13,27 @@ export const metadata: Metadata = {
     "Learn about Logifex Freight Services: our mission, values, global logistics network, and commitment to precision in motion across the UAE, India, and UK.",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const supabase = createClient();
+  const { data: content } = await supabase
+    .from("site_content")
+    .select("*")
+    .eq("page", "about");
+    
+  const { data: industries } = await supabase
+    .from("industries")
+    .select("*")
+    .eq("is_active", true)
+    .order("display_order", { ascending: true });
+
+  const getVal = (key: string, fallback: string) => 
+    content?.find(c => c.content_key === key)?.content_value || fallback;
+
   return (
     <div className="flex flex-col w-full overflow-hidden">
       <section
         className="relative w-full min-h-[calc(100vh-100px)] md:min-h-[calc(100vh-112px)] flex items-start pt-12 md:pt-20 bg-inverse-surface bg-cover bg-center text-white py-20 overflow-hidden"
-        style={{ backgroundImage: "url('/images/about_hero_logistics.jpg')" }}
+        style={{ backgroundImage: `url('${getVal("hero_image", "/images/about_hero_logistics.jpg")}')` }}
       >
         <div className="absolute inset-0 hero-overlay"></div>
         <div className="absolute inset-0 opacity-15 chevron-pattern pointer-events-none"></div>
@@ -24,20 +41,20 @@ export default function AboutPage() {
         <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
           <div className="max-w-3xl">
             <h1 className="font-headline-display text-5xl sm:text-6xl md:text-8xl font-black mb-8 leading-none text-white uppercase tracking-tight">
-              About Us
+              {getVal("hero_title", "About Us")}
             </h1>
             <div className="text-surface-variant font-body-lg text-base sm:text-lg md:text-xl leading-relaxed space-y-6">
               <p>
-                Connecting Businesses. Moving Possibilities.
+                {getVal("hero_tagline", "Connecting Businesses. Moving Possibilities.")}
               </p>
               <p>
-                Logifex Freight Services is a growing global logistics and freight forwarding company providing reliable, flexible, and end-to-end logistics solutions worldwide. With strategic locations across India, the UK, and the UAE, we connect businesses across major international trade lanes through a trusted global network.
+                {getVal("hero_p1", "Logifex Freight Services is a growing global logistics and freight forwarding company providing reliable, flexible, and end-to-end logistics solutions worldwide. With strategic locations across India, the UK, and the UAE, we connect businesses across major international trade lanes through a trusted global network.")}
               </p>
               <p>
-                From Air Freight, Sea Freight, and Road Freight to Customs Clearance, Courier Services, Project Cargo, RORO, Break Bulk, Warehousing, Packing &amp; Labelling, we handle every shipment with care, precision, and clear communication.
+                {getVal("hero_p2", "From Air Freight, Sea Freight, and Road Freight to Customs Clearance, Courier Services, Project Cargo, RORO, Break Bulk, Warehousing, Packing & Labelling, we handle every shipment with care, precision, and clear communication.")}
               </p>
               <p>
-                Whether it’s a single shipment or a long-term supply chain requirement, Logifex delivers practical, cost-effective, and dependable logistics solutions from origin to destination.
+                {getVal("hero_p3", "Whether it’s a single shipment or a long-term supply chain requirement, Logifex delivers practical, cost-effective, and dependable logistics solutions from origin to destination.")}
               </p>
             </div>
           </div>
@@ -69,76 +86,13 @@ export default function AboutPage() {
         <AnimatedPrinciples />
 
         {/* Industries We Serve */}
-        <IndustriesSection />
+        <IndustriesSection industries={industries || []} />
 
-        {/* Certificates & Accreditations */}
+        {/* Certificates & Accreditations (Now Memberships) */}
         <CertificatesSection />
 
-        {/* Global Hub Network */}
-        <section className="space-y-8">
-          <div className="max-w-2xl">
-            <span className="text-primary-container font-label-bold text-xs uppercase tracking-wider block mb-1">
-              Infrastructure
-            </span>
-            <h2 className="font-headline-md text-2xl md:text-3xl font-bold text-on-background">
-              Strategic Regional Hubs
-            </h2>
-            <p className="text-secondary text-sm leading-relaxed">
-              Our direct presence in primary global trade gateways guarantees local
-              regulatory compliance and rapid customs turnaround.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 bg-surface rounded-2xl border border-secondary-container space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-base text-primary">Dubai, UAE</span>
-                <span className="text-xs bg-primary/10 text-primary px-2.5 py-0.5 rounded font-bold">
-                  Global HQ
-                </span>
-              </div>
-              <p className="text-xs text-secondary leading-relaxed">
-                Al Qusais 2, Dubai. Central air cargo consolidation, cross-docking, and
-                bonded GCC overland road linehaul hub.
-              </p>
-              <div className="text-xs font-medium text-on-surface pt-2 border-t border-secondary-container/50">
-                Direct: +971 45752307
-              </div>
-            </div>
-
-            <div className="p-6 bg-surface rounded-2xl border border-secondary-container space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-base text-primary">Cochin, India</span>
-                <span className="text-xs bg-surface-container text-secondary px-2.5 py-0.5 rounded font-bold">
-                  South Asia Hub
-                </span>
-              </div>
-              <p className="text-xs text-secondary leading-relaxed">
-                Tripunithura, Kerala. Port container logistics, sea-air transit
-                consolidation, and export clearance processing.
-              </p>
-              <div className="text-xs font-medium text-on-surface pt-2 border-t border-secondary-container/50">
-                Direct: +91 484 277 8899
-              </div>
-            </div>
-
-            <div className="p-6 bg-surface rounded-2xl border border-secondary-container space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="font-bold text-base text-primary">London, UK</span>
-                <span className="text-xs bg-surface-container text-secondary px-2.5 py-0.5 rounded font-bold">
-                  European Gateway
-                </span>
-              </div>
-              <p className="text-xs text-secondary leading-relaxed">
-                London Logistics Corridor. European distribution, air cargo charters,
-                and bonded warehousing solutions.
-              </p>
-              <div className="text-xs font-medium text-on-surface pt-2 border-t border-secondary-container/50">
-                Direct: +44 20 7946 0912
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Real Certificates */}
+        <RealCertificatesSection />
 
         {/* CTA Banner */}
         <section className="py-16 bg-primary text-white text-center rounded-2xl shadow-xl">

@@ -8,73 +8,7 @@ interface Industry {
   image: string;
 }
 
-const industries: Industry[] = [
-  {
-    number: "01",
-    tag: "Industrial Logistics",
-    title: "Manufacturing",
-    description: "High-volume assembly logistics, industrial raw materials, and finished goods distribution.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_of_a_modern_manufacturing.png",
-  },
-  {
-    number: "02",
-    tag: "Omnichannel Retail",
-    title: "Retail & E-commerce",
-    description: "End-to-end warehousing, order fulfillment, and swift last-mile delivery networks.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_for_retail_e_commerce._a_person.png",
-  },
-  {
-    number: "03",
-    tag: "Healthcare Logistics",
-    title: "Pharmaceuticals",
-    description: "Strict temperature-controlled cold chains, GDP compliance, and medical equipment transport.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_for_the_pharmaceuticals.png",
-  },
-  {
-    number: "04",
-    tag: "Fast-Moving Goods",
-    title: "FMCG",
-    description: "Rapid inventory turnaround, grocery distribution, and high-frequency supply chains.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_for_the_fmcg_fast_moving.png",
-  },
-  {
-    number: "05",
-    tag: "Energy & Resources",
-    title: "Oil And Gas",
-    description: "Heavy machinery linehaul, hazardous material compliance, and remote site supply support.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_for_the_oil_and_gas_industry..png",
-  },
-  {
-    number: "06",
-    tag: "Advanced Tech",
-    title: "Automation",
-    description: "Precision electronics transport, high-tech robotics component supply, and cleanroom handling.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_for_the_automation_industry..png",
-  },
-  {
-    number: "07",
-    tag: "Cold Chain",
-    title: "Food Stuff",
-    description: "Perishable grocery logistics, food safety standards compliance, and temperature-monitored shipping.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_for_the_food_industry._a.png",
-  },
-  {
-    number: "08",
-    tag: "Automotive Logistics",
-    title: "Automobile",
-    description: "Just-in-time auto parts sequencing, finished vehicle shipping, and spare parts distribution.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_for_the_automobile_industry._a.png",
-  },
-  {
-    number: "09",
-    tag: "Aerospace",
-    title: "Aviation",
-    description: "Critical AOG (Aircraft on Ground) logistics support, engine transport, and custom chartering.",
-    image: "/images/industries/professional_high_quality_full_frame_photograph_for_the_aviation_industry._a.png",
-  },
-];
-
-export default function IndustriesSection() {
+export default function IndustriesSection({ industries }: { industries: any[] }) {
   return (
     <section className="relative w-full bg-background py-16 md:py-32 overflow-hidden border-t border-secondary-container">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
@@ -94,15 +28,15 @@ export default function IndustriesSection() {
 
         {/* Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((ind) => (
+          {(industries || []).map((ind, i) => (
             <div
-              key={ind.number}
+              key={ind.id || i}
               className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-secondary-container bg-surface-container flex flex-col justify-end min-h-[220px] xs:min-h-[240px] md:min-h-[380px] p-5 md:p-8"
             >
               {/* Background Image */}
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ backgroundImage: `url('${ind.image}')` }}
+                style={{ backgroundImage: `url('${ind.image_url || ind.image}')` }}
               ></div>
 
               {/* Dark Gradient Overlay */}
@@ -110,7 +44,7 @@ export default function IndustriesSection() {
 
               {/* Large Card Number */}
               <span className="absolute top-4 left-6 text-3xl xs:text-4xl md:text-7xl font-headline-display font-black text-white/10 select-none z-20 transition-colors duration-500 group-hover:text-lime-400/20">
-                {ind.number}
+                {String(i + 1).padStart(2, '0')}
               </span>
 
               {/* Content Box */}
