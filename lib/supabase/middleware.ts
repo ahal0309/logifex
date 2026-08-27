@@ -47,71 +47,80 @@ export function clearFailedAttempts(ip: string) {
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll()
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({ request })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
-        },
-      },
+  try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error('Missing Supabase environment variables in middleware')
+      return supabaseResponse
     }
-  )
 
-  const { data: { user } } = await supabase.auth.getUser()
+    const supabase = createServerClient(
+      supabaseUrl,
+      supabaseAnonKey,
+      {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll()
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+            supabaseResponse = NextResponse.next({ request })
+            cookiesToSet.forEach(({ name, value, options }) =>
+              supabaseResponse.cookies.set(name, value, options)
+            )
+          },
+        },
+      }
+    )
 
-  const isAdminRoute = request.nextUrl.pathname.startsWith('/admin')
-  const isLoginPage = request.nextUrl.pathname === '/admin/login'
+    const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user && isAdminRoute && !isLoginPage) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/admin/login'
-    return NextResponse.redirect(url)
-  }
+    const isAdminRoute = request.nextUrl.pathname.startsWith('/admin')
+    const isLoginPage = request.nextUrl.pathname === '/admin/login'
 
-  // Server-side activity timeout check using last-active cookie
-  if (user && isAdminRoute && !isLoginPage) {
-    const lastActive = request.cookies.get('admin_last_active')?.value
-    const now = Date.now()
-
-    if (!lastActive) {
-      // No activity cookie — this is a stale/old session with no tracked activity.
-      // Force sign out and re-login for security.
-      await supabase.auth.signOut()
+    if (!user && isAdminRoute && !isLoginPage) {
       const url = request.nextUrl.clone()
       url.pathname = '/admin/login'
-      url.searchParams.set('message', 'Please log in to continue.')
-      const redirectResponse = NextResponse.redirect(url)
-      return redirectResponse
+      return NextResponse.redirect(url)
     }
 
-    const elapsed = now - parseInt(lastActive, 10)
-    if (elapsed > SESSION_TIMEOUT_MS) {
-      // Session expired due to inactivity — sign out and redirect
-      await supabase.auth.signOut()
-      const url = request.nextUrl.clone()
-      url.pathname = '/admin/login'
-      url.searchParams.set('message', 'Session expired due to inactivity. Please log in again.')
-      const redirectResponse = NextResponse.redirect(url)
-      redirectResponse.cookies.delete('admin_last_active')
-      return redirectResponse
-    }
+    // Server-side activity timeout check using last-active cookie
+    if (user && isAdminRoute && !isLoginPage) {
+      const lastActive = request.cookies.get('admin_last_active')?.value
+      const now = Date.now()
 
-    // Refresh the last-active timestamp on every request
-    supabaseResponse.cookies.set('admin_last_active', String(now), {
-      httpOnly: true,
-      sameSite: 'lax',
-      path: '/admin',
-      maxAge: 60 * 60, // 1 hour max cookie lifetime
-    })
+      if (!lastActive) {
+        await supabase.auth.signOut()
+        const url = request.nextUrl.clone()
+        url.pathname = '/admin/login'
+        url.searchParams.set('message', 'Please log in to continue.')
+        return NextResponse.redirect(url)
+      }
+
+      const elapsed = now - parseInt(lastActive, 10)
+      if (elapsed > SESSION_TIMEOUT_MS) {
+        await supabase.auth.signOut()
+        const url = request.nextUrl.clone()
+        url.pathname = '/admin/login'
+        url.searchParams.set('message', 'Session expired due to inactivity. Please log in again.')
+        const redirectResponse = NextResponse.redirect(url)
+        redirectResponse.cookies.delete('admin_last_active')
+        return redirectResponse
+      }
+
+      supabaseResponse.cookies.set('admin_last_active', String(now), {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/admin',
+        maxAge: 60 * 60,
+      })
+    }
+  } catch (error) {
+    console.error('Middleware error:', error)
+    // On error, just allow the request to proceed instead of crashing the site
+    return NextResponse.next({ request })
   }
 
   return supabaseResponse
