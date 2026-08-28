@@ -69,7 +69,7 @@ export default async function Footer() {
             <li>
               <Link
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="/services/sea-freight"
+                href="/services/ocean-freight"
               >
                 Ocean & Sea Freight (FCL/LCL)
               </Link>
@@ -77,7 +77,7 @@ export default async function Footer() {
             <li>
               <Link
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="/services/road-transport"
+                href="/services/overland-freight"
               >
                 Road & Overland Transport
               </Link>
@@ -85,7 +85,7 @@ export default async function Footer() {
             <li>
               <Link
                 className="hover:text-primary-fixed-dim transition-colors"
-                href="/services/intermodal"
+                href="/services/multimodal"
               >
                 Multimodal & Rail Logistics
               </Link>
