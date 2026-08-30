@@ -117,6 +117,22 @@ function CoreValuesSection({ getVal }: { getVal: (key: string, fb: string) => st
 function ServicesSection({ services }: { services: any[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollToValue =
+        direction === "left"
+          ? scrollLeft - clientWidth * 0.75
+          : scrollLeft + clientWidth * 0.75;
+      
+      scrollRef.current.scrollTo({
+        left: scrollToValue,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -164,28 +180,50 @@ function ServicesSection({ services }: { services: any[] }) {
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-24">
-          <h2
-            ref={headingRef}
-            className="font-headline-display text-3xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none mb-6"
-            style={{ willChange: "transform, opacity" }}
-          >
-            Services We Provide
-          </h2>
-          <p className="font-body-md text-sm md:text-base text-secondary max-w-xl mx-auto">
-            Precision in motion. Integrated global logistics solutions tailored for your cargo.
-          </p>
+        <div className="text-left mb-12 md:mb-16">
+          <div className="max-w-3xl">
+            <h2
+              ref={headingRef}
+              className="font-headline-display text-3xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none mb-6"
+              style={{ willChange: "transform, opacity" }}
+            >
+              Services We Provide
+            </h2>
+            <p className="font-body-md text-sm md:text-base text-secondary max-w-xl">
+              Precision in motion. Integrated global logistics solutions tailored for your cargo.
+            </p>
+          </div>
         </div>
 
-        {/* Grid of Services */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, idx) => {
-            const spanColClass = idx === 8 ? "md:col-span-2 lg:col-span-1" : "";
+        {/* Carousel Container */}
+        <div className="relative group">
+          {/* Navigation Controls */}
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-2xl border border-secondary-container bg-white text-on-surface flex items-center justify-center shadow-lg hover:bg-surface-container-low transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 focus:opacity-100"
+            aria-label="Scroll left"
+          >
+            <span className="material-symbols-outlined">arrow_back</span>
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-2xl border border-secondary-container bg-white text-on-surface flex items-center justify-center shadow-lg hover:bg-surface-container-low transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 focus:opacity-100"
+            aria-label="Scroll right"
+          >
+            <span className="material-symbols-outlined">arrow_forward</span>
+          </button>
 
+          {/* Sliding Carousel Track */}
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-6"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+          {services.map((service, idx) => {
             return (
               <div
                 key={idx}
-                className={`service-card rounded-3xl p-5 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[220px] xs:min-h-[240px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${spanColClass}`}
+                className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[380px] snap-start service-card rounded-3xl p-5 md:p-10 flex flex-col justify-between shadow-lg relative group overflow-hidden min-h-[320px] md:min-h-[380px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 {/* Background Image and Overlay */}
                 <div className="absolute inset-0 z-0">
@@ -235,7 +273,51 @@ function ServicesSection({ services }: { services: any[] }) {
             );
           })}
         </div>
+        </div>
 
+      </div>
+    </section>
+  );
+}
+
+function AchievementsSection() {
+  const stats = [
+    { title: "1", subtitle: "Year of Excellence", desc: "Successfully completed our first year of delivering reliable logistics solutions." },
+    { title: "5,000+", subtitle: "Shipments Delivered", desc: "Ensured timely and secure delivery across various global trade lanes." },
+    { title: "50+", subtitle: "Trusted Partners", desc: "Built a strong worldwide network of carriers and supply chain experts." },
+    { title: "99%", subtitle: "Client Retention", desc: "Maintained an exceptional standard of service and continuous customer support." },
+  ];
+
+  return (
+    <section className="relative py-16 md:py-24 bg-surface-container-lowest border-t border-secondary-container overflow-hidden">
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <span className="text-primary-container font-label-bold uppercase tracking-wider mb-2 block text-xs">
+            Our Journey So Far
+          </span>
+          <h2 className="font-headline-display text-3xl sm:text-4xl md:text-5xl text-on-background font-black uppercase tracking-tight leading-none mb-6">
+            1 Year of Rapid Growth
+          </h2>
+          <p className="font-body-md text-sm md:text-base text-secondary max-w-xl mx-auto">
+            In just one year of operation, we have rapidly established a strong foundation of reliability, transparency, and efficiency in the global logistics landscape.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {stats.map((stat, idx) => (
+            <div key={idx} className="bg-surface p-6 md:p-8 rounded-3xl border border-secondary-container shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 text-center flex flex-col items-center">
+              <span className="font-headline-display text-5xl md:text-6xl font-black text-primary mb-3 bg-clip-text text-transparent bg-gradient-to-br from-primary to-primary-container">
+                {stat.title}
+              </span>
+              <h3 className="font-headline-md text-lg font-bold text-on-background uppercase tracking-tight mb-3">
+                {stat.subtitle}
+              </h3>
+              <p className="font-body-md text-sm text-secondary leading-relaxed">
+                {stat.desc}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -475,106 +557,7 @@ export default function HomeClient({ content, services }: { content: any[], serv
 
       <ServicesSection services={services} />
 
-
-      {/* Global Reach Map Section */}
-      <section className="py-24 bg-surface-container-lowest border-t border-secondary-container">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-primary-container font-label-bold uppercase tracking-wider mb-2 block text-xs">
-                Global Network
-              </span>
-              <h2 className="font-headline-md text-headline-lg-mobile md:text-headline-lg text-on-background mb-6 font-bold">
-                Strategic Locations. Global Reach.
-              </h2>
-              <p className="font-body-md text-body-md text-secondary mb-8">
-                We operate key regional hubs in the UAE, India, and the United
-                Kingdom, ensuring localized customs knowledge backed by a
-                worldwide partner grid.
-              </p>
-
-              <div className="space-y-4">
-                <Link
-                  href="/contact#uae"
-                  className="flex gap-4 items-start p-4 rounded-lg bg-surface hover:bg-surface-container-low transition-colors border border-secondary-container block"
-                >
-                  <div className="text-primary-container mt-1 bg-white p-2 rounded shadow-sm">
-                    <span
-                      className="material-symbols-outlined"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      location_on
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-headline-md text-base font-bold text-on-background mb-0.5">
-                      UAE Headquarters - Dubai
-                    </h4>
-                    <p className="font-body-md text-xs text-secondary">
-                      Al Qusais 2, Dubai, United Arab Emirates • Phone: +971
-                      45752307
-                    </p>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/contact#india"
-                  className="flex gap-4 items-start p-4 rounded-lg bg-surface hover:bg-surface-container-low transition-colors border border-secondary-container block"
-                >
-                  <div className="text-tertiary mt-1 bg-white p-2 rounded shadow-sm">
-                    <span
-                      className="material-symbols-outlined"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      location_on
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-headline-md text-base font-bold text-on-background mb-0.5">
-                      India Regional Operations - Kerala
-                    </h4>
-                    <p className="font-body-md text-xs text-secondary">
-                      Tripunithura, Cochin, Kerala, India • Phone: +91 484 277
-                      8899
-                    </p>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/contact#uk"
-                  className="flex gap-4 items-start p-4 rounded-lg bg-surface hover:bg-surface-container-low transition-colors border border-secondary-container block"
-                >
-                  <div className="text-tertiary mt-1 bg-white p-2 rounded shadow-sm">
-                    <span
-                      className="material-symbols-outlined"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      location_on
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-headline-md text-base font-bold text-on-background mb-0.5">
-                      United Kingdom Operations - London
-                    </h4>
-                    <p className="font-body-md text-xs text-secondary">
-                      London Logistics Hub, United Kingdom • Phone: +44 20 7946
-                      0912
-                    </p>
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative bg-surface rounded-2xl border border-secondary-container p-2 overflow-hidden flex flex-col justify-center shadow-sm h-full">
-                <img
-                  alt="Global Network Map showing active shipping lanes"
-                  className="w-full h-full object-cover rounded-xl"
-                  src="/images/global_network_map.jpg"
-                />
-            </div>
-          </div>
-        </div>
-      </section>
+      <AchievementsSection />
 
       {/* Direct Operational Inquiry Form */}
       <section className="py-16 bg-surface-container-low border-t border-secondary-container">

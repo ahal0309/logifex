@@ -12,22 +12,22 @@ const certificates: Certificate[] = [
   {
     id: 1,
     title: "ISO 9001:2015",
-    image: "/images/cer/FINAL Logifex Freight Servic 9001 (2)_page-0001.jpg",
+    image: "/images/certificates/iso-1.jpeg",
   },
   {
     id: 2,
     title: "ISO 14001:2015",
-    image: "/images/cer/FINAL Logifex Freight Servic 14001 (1)_page-0001.jpg",
+    image: "/images/certificates/iso-2.jpeg",
   },
   {
     id: 3,
     title: "ISO 45001:2018",
-    image: "/images/cer/FINAL Logifex Freight Servic 45001 (1)_page-0001.jpg",
+    image: "/images/certificates/iso-3.jpeg",
   },
   {
     id: 4,
     title: "Logifex Freight Service",
-    image: "/images/cer/FINAL Logifex Freight Servic (1)_page-0001.jpg",
+    image: "/images/certificates/iso-4.jpeg",
   },
 ];
 
@@ -54,39 +54,39 @@ export default function RealCertificatesSection() {
     <section className="relative w-full bg-background py-16 md:py-32 overflow-hidden border-t border-secondary-container">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         
-        {/* Header with Navigation Controls */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
-          <div className="max-w-2xl">
+        {/* Header */}
+        <div className="mb-12 md:mb-16">
+          <div className="max-w-2xl text-left">
             <h2 className="font-headline-display text-3xl sm:text-5xl md:text-7xl text-on-background font-black uppercase tracking-tight leading-none">
               Certificates
             </h2>
           </div>
-          
-          {/* Navigation Controls */}
-          <div className="flex gap-4">
-            <button
-              onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full border border-secondary-container bg-surface text-on-surface flex items-center justify-center shadow-sm hover:bg-secondary-container/30 transition-colors"
-              aria-label="Scroll left"
-            >
-              <span className="material-symbols-outlined">arrow_back</span>
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full border border-secondary-container bg-surface text-on-surface flex items-center justify-center shadow-sm hover:bg-secondary-container/30 transition-colors"
-              aria-label="Scroll right"
-            >
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </button>
-          </div>
         </div>
 
-        {/* Sliding Carousel Track */}
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-6"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
+        {/* Carousel Container */}
+        <div className="relative group">
+          {/* Navigation Controls */}
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-2xl border border-secondary-container bg-white text-on-surface flex items-center justify-center shadow-lg hover:bg-surface-container-low transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 focus:opacity-100"
+            aria-label="Scroll left"
+          >
+            <span className="material-symbols-outlined">arrow_back</span>
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-2xl border border-secondary-container bg-white text-on-surface flex items-center justify-center shadow-lg hover:bg-surface-container-low transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100 focus:opacity-100"
+            aria-label="Scroll right"
+          >
+            <span className="material-symbols-outlined">arrow_forward</span>
+          </button>
+
+          {/* Sliding Carousel Track */}
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-6"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
           {certificates.map((cert) => (
             <div
               key={cert.id}
@@ -112,6 +112,7 @@ export default function RealCertificatesSection() {
 
             </div>
           ))}
+        </div>
         </div>
 
       </div>
