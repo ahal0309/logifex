@@ -282,10 +282,10 @@ function ServicesSection({ services }: { services: any[] }) {
 
 function AchievementsSection() {
   const stats = [
-    { title: "1", subtitle: "Year of Excellence", desc: "Successfully completed our first year of delivering reliable logistics solutions." },
+    { title: "193+", subtitle: "Global Destinations", desc: "Extensive worldwide coverage connecting all major commercial trade hubs." },
     { title: "5,000+", subtitle: "Shipments Delivered", desc: "Ensured timely and secure delivery across various global trade lanes." },
     { title: "50+", subtitle: "Trusted Partners", desc: "Built a strong worldwide network of carriers and supply chain experts." },
-    { title: "99%", subtitle: "Client Retention", desc: "Maintained an exceptional standard of service and continuous customer support." },
+    { title: "100%", subtitle: "Client Retention", desc: "Maintained an exceptional standard of service and continuous customer support." },
   ];
 
   return (
@@ -296,10 +296,10 @@ function AchievementsSection() {
             Our Journey So Far
           </span>
           <h2 className="font-headline-display text-3xl sm:text-4xl md:text-5xl text-on-background font-black uppercase tracking-tight leading-none mb-6">
-            1 Year of Rapid Growth
+            Rapid Growth
           </h2>
           <p className="font-body-md text-sm md:text-base text-secondary max-w-xl mx-auto">
-            In just one year of operation, we have rapidly established a strong foundation of reliability, transparency, and efficiency in the global logistics landscape.
+            We have rapidly established a strong foundation of reliability, transparency, and efficiency in the global logistics landscape.
           </p>
         </div>
 

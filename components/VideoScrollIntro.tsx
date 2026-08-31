@@ -25,7 +25,7 @@ export default function VideoScrollIntro({ onComplete }: { onComplete: () => voi
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    const frameCount = 240;
+    const frameCount = 120;
     const currentFrame = (index: number) => 
       `/video-frames/frame_${index.toString().padStart(3, "0")}.jpg`;
 
@@ -73,7 +73,7 @@ export default function VideoScrollIntro({ onComplete }: { onComplete: () => voi
       canvas.style.width = `${windowWidth}px`;
       canvas.style.height = `${windowHeight}px`;
 
-      const imgRatio = 1280 / 720;
+      const imgRatio = 16 / 9; // The extracted frames are 16:9
       const winRatio = windowWidth / windowHeight;
 
       if (winRatio > imgRatio) {
@@ -100,15 +100,15 @@ export default function VideoScrollIntro({ onComplete }: { onComplete: () => voi
     const handleScroll = (deltaY: number) => {
       if (isComplete) return;
       
-      // Adjust sensitivity here. Smaller = takes more scrolling.
-      const sensitivity = 0.03; 
+      // Sensitivity tuned for 120 frames
+      const sensitivity = 0.05; 
       targetFrame += deltaY * sensitivity;
       targetFrame = Math.max(1, Math.min(frameCount, targetFrame));
 
       // GSAP tween to animate smoothly to the target frame
       gsap.to(obj, {
         frame: targetFrame,
-        duration: 0.5, // 0.5s butter smooth catch-up
+        duration: 0.5, // Quick, snappy 0.5s duration since canvas paints instantly
         ease: "power2.out",
         onUpdate: () => render(Math.round(obj.frame)),
         onComplete: () => {
