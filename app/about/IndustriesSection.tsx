@@ -64,12 +64,7 @@ export default function IndustriesSection({ industries }: { industries: any[] })
                   {ind.description}
                 </p>
 
-                {/* Arrow Action Button */}
-                <div className="w-8 h-8 xs:w-9 xs:h-9 md:w-10 md:h-10 rounded-full bg-white text-primary flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110">
-                  <span className="material-symbols-outlined text-sm xs:text-base md:text-xl transition-transform duration-300 group-hover:translate-x-1">
-                    arrow_forward
-                  </span>
-                </div>
+
               </div>
             </div>
           ))}

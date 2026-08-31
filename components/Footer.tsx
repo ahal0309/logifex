@@ -15,7 +15,7 @@ export default async function Footer() {
   return (
     <footer className="bg-inverse-surface w-full mt-auto text-surface-variant">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-14 max-w-container-max mx-auto">
-        <div className="md:col-span-1">
+        <div className="md:col-span-2">
           <div className="flex items-center gap-2 mb-4">
             <img
               alt={getVal("logo_text", "Logifex Logo")}
@@ -55,50 +55,54 @@ export default async function Footer() {
 
         <div>
           <h4 className="font-label-bold text-sm text-surface-bright mb-4 uppercase tracking-wider">
-            Services
+            Quick Links
           </h4>
-          <ul className="space-y-2.5 text-sm">
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/services/air-freight"
-              >
-                Air Freight & Express
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/services/ocean-freight"
-              >
-                Ocean & Sea Freight (FCL/LCL)
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/services/overland-freight"
-              >
-                Road & Overland Transport
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/services/multimodal"
-              >
-                Multimodal & Rail Logistics
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/services/warehousing"
-              >
-                Warehousing & 3PL
-              </Link>
-            </li>
-          </ul>
+          <div className="flex gap-16 text-sm">
+            <ul className="space-y-2.5">
+              <li>
+                <Link
+                  className="hover:text-primary-fixed-dim transition-colors"
+                  href="/"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="hover:text-primary-fixed-dim transition-colors"
+                  href="/about"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="hover:text-primary-fixed-dim transition-colors"
+                  href="/services"
+                >
+                  Services
+                </Link>
+              </li>
+            </ul>
+            <ul className="space-y-2.5">
+              <li>
+                <Link
+                  className="hover:text-primary-fixed-dim transition-colors"
+                  href="/careers"
+                >
+                  Careers
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="hover:text-primary-fixed-dim transition-colors"
+                  href="/contact"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div>
@@ -137,54 +141,6 @@ export default async function Footer() {
               >
                 {getVal("email", "info@logifexgroup.com")}
               </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-label-bold text-sm text-surface-bright mb-4 uppercase tracking-wider">
-            Quick Links
-          </h4>
-          <ul className="space-y-2.5 text-sm">
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/about"
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/quote"
-              >
-                Request a Quote
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/services"
-              >
-                Explore Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/services#compliance"
-              >
-                Compliance & Terms
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="hover:text-primary-fixed-dim transition-colors"
-                href="/contact"
-              >
-                Customer Support
-              </Link>
             </li>
           </ul>
         </div>

@@ -11,18 +11,6 @@ interface Certificate {
 
 const certificates: Certificate[] = [
   {
-    id: 1,
-    title: "ISO 9001:2015",
-    subtitle: "Quality Management System",
-    image: "/images/certificates/cert-2.jpg",
-  },
-  {
-    id: 2,
-    title: "ISO 14001:2015",
-    subtitle: "Environmental Management System",
-    image: "/images/certificates/cert-4.jpg",
-  },
-  {
     id: 3,
     title: "ISO 45001:2018",
     subtitle: "Occupational Health & Safety System",
