@@ -11,23 +11,23 @@ interface Certificate {
 const certificates: Certificate[] = [
   {
     id: 1,
-    title: "ISO 9001:2015",
-    image: "/images/certificates/iso-1.jpeg",
+    title: "ISO 28000:2022",
+    image: "/images/certificates/iso-new-1.jpeg",
   },
   {
     id: 2,
-    title: "ISO 14001:2015",
-    image: "/images/certificates/iso-2.jpeg",
+    title: "ISO 45001:2018",
+    image: "/images/certificates/iso-new-2.jpeg",
   },
   {
     id: 3,
-    title: "ISO 45001:2018",
-    image: "/images/certificates/iso-3.jpeg",
+    title: "ISO 14001:2015",
+    image: "/images/certificates/iso-new-3.jpeg",
   },
   {
     id: 4,
-    title: "Logifex Freight Service",
-    image: "/images/certificates/iso-4.jpeg",
+    title: "Certification",
+    image: "/images/certificates/iso-new-4.jpeg",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function RealCertificatesSection() {
   };
 
   return (
-    <section className="relative w-full bg-background py-16 md:py-32 overflow-hidden border-t border-secondary-container">
+    <section className="relative w-full bg-background pt-4 md:pt-6 pb-8 md:pb-12 overflow-hidden border-t border-secondary-container">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         
         {/* Header */}
@@ -91,7 +91,7 @@ export default function RealCertificatesSection() {
             <div
               key={cert.id}
               onClick={() => setActiveImage(cert.image)}
-              className="flex-shrink-0 w-[280px] sm:w-[320px] snap-start group cursor-zoom-in"
+              className="flex-shrink-0 w-[220px] sm:w-[260px] snap-start group cursor-zoom-in"
             >
               {/* Image Box */}
               <div className="relative rounded-2xl overflow-hidden border border-secondary-container bg-white aspect-[3/4] shadow-sm group-hover:shadow-md transition-all duration-300 flex items-center justify-center p-4">
