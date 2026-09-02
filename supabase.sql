@@ -126,3 +126,22 @@ INSERT INTO public.site_content (page, section, content_key, content_value, cont
 ('about', 'hero', 'image_url', '/images/about_hero_logistics.jpg', 'image_url'),
 ('about', 'hero', 'tagline', 'Connecting Businesses. Moving Possibilities.', 'text')
 ON CONFLICT DO NOTHING;
+
+-- 7. Insights Table
+CREATE TABLE IF NOT EXISTS public.insights (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    date_published DATE NOT NULL,
+    image_url TEXT NOT NULL,
+    description TEXT,
+    gallery_urls JSONB DEFAULT '[]'::jsonb,
+    is_active BOOLEAN DEFAULT true,
+    display_order INTEGER DEFAULT 0,
+    created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- RLS for insights
+ALTER TABLE public.insights ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public can view active insights" ON public.insights FOR SELECT USING (is_active = true);
+CREATE POLICY "Admins can do everything on insights" ON public.insights FOR ALL USING (auth.role() = 'authenticated');

@@ -31,7 +31,7 @@ export default async function ServicesPage() {
       {/* Hero Banner */}
       <section
         className="relative w-full min-h-screen flex items-center bg-inverse-surface bg-cover bg-center text-white py-20 overflow-hidden"
-        style={{ backgroundImage: `url('${getVal("hero_image", "/images/sea-freight.png")}')` }}
+        style={{ backgroundImage: `url('${getVal("hero_image", "/images/sea-freight.webp")}')` }}
       >
         <div className="absolute inset-0 hero-overlay"></div>
         <div className="absolute inset-0 opacity-15 chevron-pattern pointer-events-none"></div>

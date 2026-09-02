@@ -13,7 +13,7 @@ envContent.split('\n').forEach(line => {
 const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = env.SUPABASE_SERVICE_ROLE_KEY;
 
-fetch(`${supabaseUrl}/rest/v1/services?select=id,title,display_order`, {
+fetch(`${supabaseUrl}/rest/v1/services?limit=1`, {
   method: 'GET',
   headers: {
     'apikey': supabaseKey,
@@ -22,6 +22,5 @@ fetch(`${supabaseUrl}/rest/v1/services?select=id,title,display_order`, {
 })
 .then(res => res.json())
 .then(data => {
-  console.log('Services:', data.length);
-  console.log(data.map(d => `${d.display_order}: ${d.title}`).sort());
+  console.log('Single Service:', JSON.stringify(data[0], null, 2));
 });

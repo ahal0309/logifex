@@ -5,6 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import VideoScrollIntro from "@/components/VideoScrollIntro";
+import { toast } from "react-hot-toast";
 
 function CoreValuesSection({ getVal }: { getVal: (key: string, fb: string) => string }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -330,19 +331,41 @@ export default function HomeClient({ content, services }: { content: any[], serv
   const [introFinished, setIntroFinished] = useState(false);
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [subject, setSubject] = useState("Commercial Rates & Quotations");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setName("");
-    setEmail("");
-    setPhone("");
-    setMessage("");
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, subject, message }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit inquiry");
+      }
+
+      setSubmitted(true);
+      toast.success("Inquiry sent successfully!");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } catch (error: any) {
+      toast.error(error.message || "An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -414,7 +437,7 @@ export default function HomeClient({ content, services }: { content: any[], serv
             {/* Enlarged About Us Card with Integrated Statistics Marquee */}
             <div
               className="relative rounded-2xl overflow-hidden shadow-2xl p-6 md:p-20 min-h-[550px] lg:min-h-[740px] flex flex-col justify-between"
-              style={{ backgroundImage: `url('${getVal("about_bg_image", "/images/warehouse.png")}')`, backgroundSize: "cover", backgroundPosition: "center" }}
+              style={{ backgroundImage: `url('${getVal("about_bg_image", "/images/warehouse.webp")}')`, backgroundSize: "cover", backgroundPosition: "center" }}
             >
               {/* Brand Red Overlay Tint */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-container/95 via-primary-container/80 to-primary/65 mix-blend-multiply z-0"></div>
@@ -564,7 +587,7 @@ export default function HomeClient({ content, services }: { content: any[], serv
         <div className="max-w-3xl mx-auto px-margin-mobile">
           <div className="bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-secondary-container shadow-sm">
             <h3 className="font-headline-md text-xl font-bold text-on-background mb-1">
-              Send a Direct Operational Inquiry
+              Send a Direct Sales Inquiry
             </h3>
             <p className="text-xs text-secondary mb-6">
               Our forwarders reply within 1 hour during active business hours.
@@ -654,10 +677,11 @@ export default function HomeClient({ content, services }: { content: any[], serv
 
                 <button
                   type="submit"
-                  className="bg-primary-container text-white px-6 py-2.5 rounded font-label-bold text-sm hover:bg-primary transition-all flex items-center gap-2 shadow-md w-full sm:w-auto"
+                  disabled={isSubmitting}
+                  className="bg-primary-container text-white px-6 py-2.5 rounded font-label-bold text-sm hover:bg-primary transition-all flex items-center gap-2 shadow-md w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send Message
-                  <span className="material-symbols-outlined text-sm">send</span>
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {!isSubmitting && <span className="material-symbols-outlined text-sm">send</span>}
                 </button>
               </form>
             )}

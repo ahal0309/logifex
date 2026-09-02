@@ -376,3 +376,108 @@ export async function uploadHeroMedia(formData: FormData) {
   revalidatePath('/admin/media')
   return { success: true, url: newUrl }
 }
+
+export async function addInsight(formData: FormData) {
+  const supabase = createClient()
+  
+  const title = formData.get('title') as string
+  const category = formData.get('category') as string
+  const date_published = formData.get('date_published') as string
+  const description = formData.get('description') as string
+  const imageFile = formData.get('image') as File
+  const galleryFiles = formData.getAll('gallery') as File[]
+  const is_active = formData.get('is_active') === 'true'
+  const display_order = parseInt(formData.get('display_order') as string) || 0
+
+  if (!title || !category || !date_published || !imageFile || imageFile.size === 0) {
+    throw new Error('All required fields must be provided')
+  }
+
+  // Upload main image
+  const fileExt = imageFile.name.split('.').pop()
+  const fileName = `insight_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
+
+  const { error: uploadError } = await supabase.storage
+    .from('public-assets')
+    .upload(fileName, imageFile)
+
+  if (uploadError) {
+    throw new Error(uploadError.message)
+  }
+
+  const { data: publicUrlData } = supabase.storage
+    .from('public-assets')
+    .getPublicUrl(fileName)
+
+  const image_url = publicUrlData.publicUrl
+
+  // Upload gallery images
+  const gallery_urls: string[] = []
+  if (galleryFiles && galleryFiles.length > 0) {
+    for (const file of galleryFiles) {
+      if (file.size === 0) continue // Skip empty file inputs
+      
+      const ext = file.name.split('.').pop()
+      const gName = `gallery_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${ext}`
+      
+      const { error: gError } = await supabase.storage
+        .from('public-assets')
+        .upload(gName, file)
+        
+      if (!gError) {
+        const { data: gUrl } = supabase.storage
+          .from('public-assets')
+          .getPublicUrl(gName)
+        gallery_urls.push(gUrl.publicUrl)
+      }
+    }
+  }
+
+  const { error } = await supabase
+    .from('insights')
+    .insert([{ 
+      title, 
+      category, 
+      date_published, 
+      image_url, 
+      description,
+      gallery_urls: JSON.stringify(gallery_urls),
+      is_active, 
+      display_order 
+    }])
+
+  if (error) {
+    console.error(error)
+    throw new Error(error.message)
+  }
+
+  revalidatePath('/insights')
+  revalidatePath('/admin/insights')
+  redirect('/admin/insights')
+}
+
+export async function deleteInsight(id: string) {
+  const supabase = createClient()
+  const { error } = await supabase
+    .from('insights')
+    .delete()
+    .eq('id', id)
+    
+  if (error) return { error: error.message }
+  revalidatePath('/insights')
+  revalidatePath('/admin/insights')
+  return { success: true }
+}
+
+export async function toggleInsightStatus(id: string, currentStatus: boolean) {
+  const supabase = createClient()
+  const { error } = await supabase
+    .from('insights')
+    .update({ is_active: !currentStatus })
+    .eq('id', id)
+    
+  if (error) return { error: error.message }
+  revalidatePath('/insights')
+  revalidatePath('/admin/insights')
+  return { success: true }
+}

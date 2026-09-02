@@ -27,7 +27,7 @@ export default function VideoScrollIntro({ onComplete }: { onComplete: () => voi
 
     const frameCount = 120;
     const currentFrame = (index: number) => 
-      `/video-frames/frame_${index.toString().padStart(3, "0")}.jpg`;
+      `/video-frames/frame_${index.toString().padStart(3, "0")}.webp`;
 
     const images: HTMLImageElement[] = [];
     

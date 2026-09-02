@@ -2,25 +2,48 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { toast } from "react-hot-toast";
 
 export default function ContactClient({ content }: { content: any[] }) {
   const getVal = (key: string, fallback: string) => 
     content?.find(c => c.content_key === key)?.content_value || fallback;
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [subject, setSubject] = useState("Commercial Rates & Quotations");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setName("");
-    setEmail("");
-    setPhone("");
-    setMessage("");
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, subject, message }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit inquiry");
+      }
+
+      setSubmitted(true);
+      toast.success("Inquiry sent successfully!");
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
+    } catch (error: any) {
+      toast.error(error.message || "An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -227,7 +250,7 @@ export default function ContactClient({ content }: { content: any[] }) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <div className="lg:col-span-7 bg-surface-container-lowest p-6 md:p-8 rounded-2xl border border-secondary-container shadow-sm">
           <h3 className="font-headline-md text-xl font-bold text-on-background mb-1">
-            Send a Direct Operational Inquiry
+            Send a Direct Sales Inquiry
           </h3>
           <p className="text-xs text-secondary mb-6">
             Our forwarders reply within 1 hour during active business hours.
@@ -310,10 +333,11 @@ export default function ContactClient({ content }: { content: any[] }) {
 
             <button
               type="submit"
-              className="bg-primary-container text-white px-7 py-3 rounded-lg font-label-bold text-sm hover:bg-primary transition-colors flex items-center gap-2"
+              disabled={isSubmitting}
+              className="bg-primary-container text-white px-7 py-3 rounded-lg font-label-bold text-sm hover:bg-primary transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
-              <span className="material-symbols-outlined text-sm">send</span>
+              {isSubmitting ? "Sending..." : "Send Message"}
+              {!isSubmitting && <span className="material-symbols-outlined text-sm">send</span>}
             </button>
           </form>
 
@@ -344,7 +368,7 @@ export default function ContactClient({ content }: { content: any[] }) {
             <img
               alt="Logifex Logistics Operations"
               className="w-full h-48 object-cover"
-              src="/images/sea-freight.png"
+              src="/images/sea-freight.webp"
             />
           </div>
         </div>

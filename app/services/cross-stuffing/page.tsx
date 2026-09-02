@@ -13,7 +13,7 @@ export default function CrossStuffingPage() {
       {/* Hero Banner */}
       <section
         className="relative w-full min-h-[40vh] flex items-center bg-inverse-surface bg-cover bg-center text-white py-16 overflow-hidden"
-        style={{ backgroundImage: "url('/images/services/cross-stuffing.jpeg')" }}
+        style={{ backgroundImage: "url('/images/services/cross-stuffing.webp')" }}
       >
         <div className="absolute inset-0 hero-overlay"></div>
         <div className="absolute inset-0 opacity-15 chevron-pattern pointer-events-none"></div>

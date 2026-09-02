@@ -20,7 +20,7 @@ export default async function Footer() {
             <img
               alt={getVal("logo_text", "Logifex Logo")}
               className="h-8 w-auto brightness-0 invert"
-              src={getVal("logo_image", "/images/logo.png")}
+              src={getVal("logo_image", "/images/logo.webp")}
             />
           </div>
           <p className="font-body-md text-sm text-surface-variant mb-4 leading-relaxed">

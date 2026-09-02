@@ -32,7 +32,7 @@ export default function AddServicePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">Image URL *</label>
-              <input type="text" name="image_url" required className="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none shadow-sm transition-colors" placeholder="/images/air-freight.png" />
+              <input type="text" name="image_url" required className="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg text-gray-900 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none shadow-sm transition-colors" placeholder="/images/air-freight.webp" />
               <p className="text-xs text-gray-500 mt-1">Upload the image in the Images library first and paste the URL here.</p>
             </div>
             <div>

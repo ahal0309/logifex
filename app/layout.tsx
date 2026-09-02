@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCTAs from "@/components/FloatingCTAs";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Logifex Freight Services - Precision in Motion",
@@ -29,6 +30,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col font-body-md bg-background text-on-background overflow-x-hidden w-full max-w-full">
+        <Toaster position="bottom-center" />
         <Header />
         <main className="flex-grow w-full max-w-full overflow-x-hidden">{children}</main>
         <Footer />

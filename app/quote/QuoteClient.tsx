@@ -119,7 +119,7 @@ export default function QuoteClient({ content }: { content: any[] }) {
           <img
             alt="Logistics Warehouse"
             className="w-full h-52 object-cover"
-            src="/images/warehouse.png"
+            src="/images/warehouse.webp"
           />
           <div className="p-4 bg-surface-container-lowest border-t border-secondary-container text-xs text-secondary">
             <span className="font-bold text-on-surface">

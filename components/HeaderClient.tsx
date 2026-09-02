@@ -15,6 +15,7 @@ export default function HeaderClient({ content }: { content: any[] }) {
     { name: getVal("nav_home", "Home"), href: "/" },
     { name: getVal("nav_about", "About Us"), href: "/about" },
     { name: getVal("nav_services", "Services"), href: "/services" },
+    { name: getVal("nav_insights", "Insights"), href: "/insights" },
     { name: getVal("nav_careers", "Careers"), href: "/careers" },
     { name: getVal("nav_contact", "Contact"), href: "/contact" },
   ];
@@ -51,7 +52,7 @@ export default function HeaderClient({ content }: { content: any[] }) {
               <img
                 alt={getVal("logo_text", "Logifex Freight Services Logo")}
                 className="h-8 sm:h-10 w-auto max-w-[180px] xs:max-w-[220px] sm:max-w-none object-contain"
-                src={getVal("logo_image", "/images/logo.png")}
+                src={getVal("logo_image", "/images/logo.webp")}
               />
             </Link>
           </div>

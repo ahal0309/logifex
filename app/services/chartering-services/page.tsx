@@ -13,7 +13,7 @@ export default function CharteringServicesPage() {
       {/* Hero Banner */}
       <section
         className="relative w-full min-h-[40vh] flex items-center bg-inverse-surface bg-cover bg-center text-white py-16 overflow-hidden"
-        style={{ backgroundImage: "url('/images/services/chartering_services_1788179565123.jpg')" }}
+        style={{ backgroundImage: "url('/images/services/chartering_services_1788179565123.webp')" }}
       >
         <div className="absolute inset-0 hero-overlay"></div>
         <div className="absolute inset-0 opacity-15 chevron-pattern pointer-events-none"></div>
