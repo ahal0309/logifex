@@ -50,6 +50,9 @@ export default async function AdminLayout({
           <Link href="/admin/insights" className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
             Insights
           </Link>
+          <Link href="/admin/gallery" className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
+            Gallery
+          </Link>
           <Link href="/admin/images" className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors">
             Images
           </Link>

@@ -145,3 +145,19 @@ CREATE TABLE IF NOT EXISTS public.insights (
 ALTER TABLE public.insights ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Public can view active insights" ON public.insights FOR SELECT USING (is_active = true);
 CREATE POLICY "Admins can do everything on insights" ON public.insights FOR ALL USING (auth.role() = 'authenticated');
+
+-- 8. Galleries Table
+CREATE TABLE IF NOT EXISTS public.galleries (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    title TEXT NOT NULL,
+    media_url TEXT NOT NULL,
+    media_type TEXT NOT NULL,
+    is_active BOOLEAN DEFAULT true,
+    display_order INTEGER DEFAULT 0,
+    created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- RLS for galleries
+ALTER TABLE public.galleries ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public can view active galleries" ON public.galleries FOR SELECT USING (is_active = true);
+CREATE POLICY "Admins can do everything on galleries" ON public.galleries FOR ALL USING (auth.role() = 'authenticated');

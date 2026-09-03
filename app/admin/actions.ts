@@ -138,10 +138,11 @@ export async function uploadImage(formData: FormData) {
   // Generate a unique filename
   const fileExt = file.name.split('.').pop()
   const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
+  const buffer = await file.arrayBuffer()
   
   const { data, error } = await supabase.storage
     .from('public-assets')
-    .upload(fileName, file)
+    .upload(fileName, buffer, { contentType: file.type })
     
   if (error) return { error: error.message }
   
@@ -312,10 +313,11 @@ export async function uploadHeroMedia(formData: FormData) {
   // Generate unique filename
   const fileExt = file.name.split('.').pop()
   const fileName = `hero_${page}_${content_key}_${Date.now()}.${fileExt}`
+  const buffer = await file.arrayBuffer()
 
   const { error: uploadError } = await supabase.storage
     .from('public-assets')
-    .upload(fileName, file)
+    .upload(fileName, buffer, { contentType: file.type })
 
   if (uploadError) {
     return { error: uploadError.message }
@@ -396,10 +398,11 @@ export async function addInsight(formData: FormData) {
   // Upload main image
   const fileExt = imageFile.name.split('.').pop()
   const fileName = `insight_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
+  const buffer = await imageFile.arrayBuffer()
 
   const { error: uploadError } = await supabase.storage
     .from('public-assets')
-    .upload(fileName, imageFile)
+    .upload(fileName, buffer, { contentType: imageFile.type })
 
   if (uploadError) {
     throw new Error(uploadError.message)
@@ -419,10 +422,11 @@ export async function addInsight(formData: FormData) {
       
       const ext = file.name.split('.').pop()
       const gName = `gallery_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${ext}`
+      const gBuffer = await file.arrayBuffer()
       
       const { error: gError } = await supabase.storage
         .from('public-assets')
-        .upload(gName, file)
+        .upload(gName, gBuffer, { contentType: file.type })
         
       if (!gError) {
         const { data: gUrl } = supabase.storage
@@ -479,5 +483,91 @@ export async function toggleInsightStatus(id: string, currentStatus: boolean) {
   if (error) return { error: error.message }
   revalidatePath('/insights')
   revalidatePath('/admin/insights')
+  return { success: true }
+}
+
+export async function addGalleryMedia(formData: FormData) {
+  const supabase = createClient()
+  
+  const title = formData.get('title') as string
+  let mediaType = formData.get('media_type') as string
+  const file = formData.get('media') as File
+  const is_active = formData.get('is_active') === 'true'
+  const display_order = parseInt(formData.get('display_order') as string) || 0
+
+  if (file && file.type) {
+    if (file.type.startsWith('video/')) {
+      mediaType = 'video'
+    } else if (file.type.startsWith('image/')) {
+      mediaType = 'image'
+    }
+  }
+
+  if (!mediaType || !file || file.size === 0) {
+    throw new Error('All required fields must be provided')
+  }
+
+  // Upload file
+  const fileExt = file.name.split('.').pop()
+  const fileName = `gallery_${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`
+  const buffer = await file.arrayBuffer()
+
+  const { error: uploadError } = await supabase.storage
+    .from('public-assets')
+    .upload(fileName, buffer, { contentType: file.type })
+
+  if (uploadError) {
+    throw new Error(uploadError.message)
+  }
+
+  const { data: publicUrlData } = supabase.storage
+    .from('public-assets')
+    .getPublicUrl(fileName)
+
+  const media_url = publicUrlData.publicUrl
+
+  const { error } = await supabase
+    .from('galleries')
+    .insert([{ 
+      title: title || '', 
+      media_type: mediaType, 
+      media_url, 
+      is_active, 
+      display_order 
+    }])
+
+  if (error) {
+    console.error(error)
+    throw new Error(error.message)
+  }
+
+  revalidatePath('/insights')
+  revalidatePath('/admin/gallery')
+  redirect('/admin/gallery')
+}
+
+export async function deleteGalleryMedia(id: string) {
+  const supabase = createClient()
+  const { error } = await supabase
+    .from('galleries')
+    .delete()
+    .eq('id', id)
+    
+  if (error) return { error: error.message }
+  revalidatePath('/insights')
+  revalidatePath('/admin/gallery')
+  return { success: true }
+}
+
+export async function toggleGalleryMediaStatus(id: string, currentStatus: boolean) {
+  const supabase = createClient()
+  const { error } = await supabase
+    .from('galleries')
+    .update({ is_active: !currentStatus })
+    .eq('id', id)
+    
+  if (error) return { error: error.message }
+  revalidatePath('/insights')
+  revalidatePath('/admin/gallery')
   return { success: true }
 }
