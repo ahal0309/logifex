@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import ApplyModal from "./ApplyModal";
+import JobDetailsModal from "./JobDetailsModal";
 
 interface CareerListingsClientProps {
   jobs: any[];
@@ -9,15 +10,27 @@ interface CareerListingsClientProps {
 
 export default function CareerListingsClient({ jobs }: CareerListingsClientProps) {
   const [selectedJob, setSelectedJob] = useState<any>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
 
   const handleApplyClick = (job: any | null) => {
     setSelectedJob(job);
-    setIsModalOpen(true);
+    setIsDetailsModalOpen(false); // Close details modal if open
+    setIsApplyModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleDetailsClick = (job: any) => {
+    setSelectedJob(job);
+    setIsDetailsModalOpen(true);
+  };
+
+  const closeApplyModal = () => {
+    setIsApplyModalOpen(false);
+    setSelectedJob(null);
+  };
+
+  const closeDetailsModal = () => {
+    setIsDetailsModalOpen(false);
     setSelectedJob(null);
   };
 
@@ -28,13 +41,14 @@ export default function CareerListingsClient({ jobs }: CareerListingsClientProps
           jobs.map((job) => (
             <div 
               key={job.id} 
-              className="bg-surface border border-secondary-container rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col h-full"
+              className="bg-surface border border-secondary-container rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col h-full cursor-pointer hover:border-primary/30"
+              onClick={() => handleDetailsClick(job)}
             >
               <div className="mb-4">
                 <span className="inline-block bg-primary-container/10 text-primary px-3 py-1 rounded-full text-xs font-label-bold mb-3 uppercase tracking-wider">
                   {job.department}
                 </span>
-                <h3 className="font-headline-display text-xl font-bold text-on-surface mb-2">
+                <h3 className="font-headline-display text-xl font-bold text-on-surface mb-2 flex justify-between items-center">
                   {job.title}
                 </h3>
                 <div className="flex flex-wrap gap-3 text-sm text-secondary font-medium">
@@ -48,17 +62,6 @@ export default function CareerListingsClient({ jobs }: CareerListingsClientProps
                   </span>
                 </div>
               </div>
-              
-              <p className="text-secondary text-sm mb-6 flex-grow leading-relaxed">
-                {job.description}
-              </p>
-              
-              <button 
-                onClick={() => handleApplyClick(job)}
-                className="mt-auto block text-center bg-primary text-white font-label-bold py-2.5 rounded-lg hover:bg-primary-container transition-colors w-full"
-              >
-                Apply Now
-              </button>
             </div>
           ))
         ) : (
@@ -84,8 +87,16 @@ export default function CareerListingsClient({ jobs }: CareerListingsClientProps
         </button>
       </div>
 
-      {isModalOpen && (
-        <ApplyModal job={selectedJob} onClose={closeModal} />
+      {isDetailsModalOpen && (
+        <JobDetailsModal 
+          job={selectedJob} 
+          onClose={closeDetailsModal} 
+          onApply={handleApplyClick} 
+        />
+      )}
+
+      {isApplyModalOpen && (
+        <ApplyModal job={selectedJob} onClose={closeApplyModal} />
       )}
     </>
   );
