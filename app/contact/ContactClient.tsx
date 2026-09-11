@@ -78,10 +78,13 @@ export default function ContactClient({ content }: { content: any[] }) {
             </div>
             <div>
               <h3 className="font-headline-md text-lg font-bold text-on-background">
-                UAE Headquarters - Dubai
+                Logifex Air & Sea Cargo Services LLC
               </h3>
-              <p className="text-xs text-secondary mt-1">
-                Al Qusais 2, PO Box 89201, Dubai, United Arab Emirates
+              <p className="text-xs text-secondary mt-1 whitespace-pre-wrap">
+                UAE (Dubai) Office Address{"\n"}
+                GSuit 117/32, First Floor, Shaikha Mhara Building{"\n"}
+                171 Al Nahda St, Al Qusais 2 - Dubai, UAE{"\n"}
+                P.O Box : 237951
               </p>
             </div>
             <div className="space-y-2 text-xs text-on-surface pt-2">
@@ -138,10 +141,13 @@ export default function ContactClient({ content }: { content: any[] }) {
             </div>
             <div>
               <h3 className="font-headline-md text-lg font-bold text-on-background">
-                India Regional Center
+                Logifex Freight Services
               </h3>
-              <p className="text-xs text-secondary mt-1">
-                Tripunithura, Cochin, Kerala 682301, India
+              <p className="text-xs text-secondary mt-1 whitespace-pre-wrap">
+                Indian Office Address{"\n"}
+                Ground Floor, Micyn Building, Karingachira{"\n"}
+                Hill Palace Road, Tripunithura{"\n"}
+                Ernakulam District, Kerala - 682309
               </p>
             </div>
             <div className="space-y-2 text-xs text-on-surface pt-2">
@@ -150,10 +156,10 @@ export default function ContactClient({ content }: { content: any[] }) {
                   call
                 </span>
                 <a
-                  href="tel:+914842778899"
+                  href="tel:+914842778052"
                   className="hover:underline font-bold"
                 >
-                  +91 484 277 8899
+                  +91 484 2778052
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -161,10 +167,10 @@ export default function ContactClient({ content }: { content: any[] }) {
                   mail
                 </span>
                 <a
-                  href="mailto:india@logifexgroup.com"
+                  href="mailto:info@logifexgroup.com"
                   className="hover:underline"
                 >
-                  india@logifexgroup.com
+                  info@logifexgroup.com
                 </a>
               </div>
               <div className="flex items-center gap-2 text-secondary">
@@ -201,10 +207,13 @@ export default function ContactClient({ content }: { content: any[] }) {
             </div>
             <div>
               <h3 className="font-headline-md text-lg font-bold text-on-background">
-                UK & Europe Hub
+                Logifex Freight UK LTD
               </h3>
-              <p className="text-xs text-secondary mt-1">
-                London Logistics Corridor, Greater London, United Kingdom
+              <p className="text-xs text-secondary mt-1 whitespace-pre-wrap">
+                UK Office Address{"\n"}
+                SUITE RA01{"\n"}
+                195-197 WOOD STREET{"\n"}
+                LONDON, UNITED KINGDOM E17 3NU
               </p>
             </div>
             <div className="space-y-2 text-xs text-on-surface pt-2">
@@ -213,18 +222,18 @@ export default function ContactClient({ content }: { content: any[] }) {
                   call
                 </span>
                 <a
-                  href="tel:+442079460912"
+                  href="tel:+447423164881"
                   className="hover:underline font-bold"
                 >
-                  +44 20 7946 0912
+                  +44 7423 164881
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary text-sm">
                   mail
                 </span>
-                <a href="mailto:uk@logifexgroup.com" className="hover:underline">
-                  uk@logifexgroup.com
+                <a href="mailto:info@logifexgroup.com" className="hover:underline">
+                  info@logifexgroup.com
                 </a>
               </div>
               <div className="flex items-center gap-2 text-secondary">

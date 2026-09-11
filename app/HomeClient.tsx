@@ -284,7 +284,7 @@ function ServicesSection({ services }: { services: any[] }) {
 function AchievementsSection() {
   const stats = [
     { title: "193+", subtitle: "Global Destinations", desc: "Extensive worldwide coverage connecting all major commercial trade hubs." },
-    { title: "5,000+", subtitle: "Shipments Delivered", desc: "Ensured timely and secure delivery across various global trade lanes." },
+    { title: "35,000+", subtitle: "Shipments Delivered", desc: "Ensured timely and secure delivery across various global trade lanes." },
     { title: "50+", subtitle: "Trusted Partners", desc: "Built a strong worldwide network of carriers and supply chain experts." },
     { title: "100%", subtitle: "Client Retention", desc: "Maintained an exceptional standard of service and continuous customer support." },
   ];
