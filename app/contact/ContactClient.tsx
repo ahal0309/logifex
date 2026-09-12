@@ -141,7 +141,7 @@ export default function ContactClient({ content }: { content: any[] }) {
             </div>
             <div>
               <h3 className="font-headline-md text-lg font-bold text-on-background">
-                Logifex Freight Services
+                Logifex Freight Services Pvt. Ltd.
               </h3>
               <p className="text-xs text-secondary mt-1 whitespace-pre-wrap">
                 Indian Office Address{"\n"}
