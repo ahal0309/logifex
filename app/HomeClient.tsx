@@ -378,7 +378,7 @@ export default function HomeClient({ content, services }: { content: any[], serv
         {/* Video/Image Background Container (covers Hero and About card) */}
       <div className="relative w-full bg-inverse-surface overflow-hidden">
         {/* Background */}
-        {getVal('hero_video', '') ? (
+        {true ? (
           <video
             autoPlay
             loop
@@ -387,7 +387,7 @@ export default function HomeClient({ content, services }: { content: any[], serv
             poster={getVal('hero_image', '')}
             className="absolute inset-0 w-full h-full object-cover z-0"
           >
-            <source src={getVal('hero_video', '/images/hero-video.mp4')} type="video/mp4" />
+            <source src="/images/hero-video-new.mp4" type="video/mp4" />
           </video>
         ) : getVal('hero_image', '') ? (
           <img
