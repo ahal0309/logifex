@@ -44,7 +44,7 @@ export default function HeaderClient({ content }: { content: any[] }) {
               className="bg-white/15 hover:bg-white/25 transition-colors px-2.5 py-0.5 rounded text-[11px] flex items-center gap-1 cursor-pointer"
             >
               <span className="material-symbols-outlined text-[13px]">download</span>
-              Company Profile
+              Brochure
             </a>
             <span className="bg-white/15 px-2.5 py-0.5 rounded text-[11px]">
               24/7 Global Dispatch & Customer Care
