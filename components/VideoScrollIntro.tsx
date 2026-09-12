@@ -25,9 +25,9 @@ export default function VideoScrollIntro({ onComplete }: { onComplete: () => voi
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    const frameCount = 120;
+    const frameCount = 240;
     const currentFrame = (index: number) => 
-      `/video-frames/frame_${index.toString().padStart(3, "0")}.webp`;
+      `/video-frames/frame_${index.toString().padStart(3, "0")}.jpg`;
 
     const images: HTMLImageElement[] = [];
     
@@ -44,7 +44,7 @@ export default function VideoScrollIntro({ onComplete }: { onComplete: () => voi
     for (let i = 1; i <= frameCount; i++) {
       const img = new Image();
       img.src = currentFrame(i);
-      img.onload = () => {
+      const onImgLoad = () => {
         loadedCount++;
         if (loadedCount === 1) {
           // Draw first frame immediately
@@ -52,6 +52,11 @@ export default function VideoScrollIntro({ onComplete }: { onComplete: () => voi
           render(1);
         }
       };
+      if (img.complete) {
+        onImgLoad();
+      } else {
+        img.onload = onImgLoad;
+      }
       images.push(img);
     }
 

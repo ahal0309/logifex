@@ -17,9 +17,9 @@ export default function VideoScrollHero({ children }: { children?: ReactNode }) 
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    const frameCount = 120;
+    const frameCount = 240;
     const currentFrame = (index: number) => 
-      `/video-frames/frame_${index.toString().padStart(3, "0")}.webp`;
+      `/video-frames/frame_${index.toString().padStart(3, "0")}.jpg`;
 
     const images: HTMLImageElement[] = [];
     const scrollObj = { frame: 1 };
@@ -39,11 +39,17 @@ export default function VideoScrollHero({ children }: { children?: ReactNode }) 
       images.push(img);
     }
 
-    images[0].onload = () => {
+    const initRender = () => {
       handleResize();
       render();
-      ScrollTrigger.refresh(); // Crucial: tell GSAP to recalculate pin spacing now that the canvas is rendering
+      ScrollTrigger.refresh();
     };
+
+    if (images[0].complete) {
+      initRender();
+    } else {
+      images[0].onload = initRender;
+    }
 
     function handleResize() {
       if (!canvas || !ctx) return;
@@ -63,7 +69,7 @@ export default function VideoScrollHero({ children }: { children?: ReactNode }) 
       canvas.style.width = `${windowWidth}px`;
       canvas.style.height = `${windowHeight}px`;
 
-      const imgRatio = 1280 / 720;
+      const imgRatio = 1920 / 1080;
       const winRatio = windowWidth / windowHeight;
 
       if (winRatio > imgRatio) {
